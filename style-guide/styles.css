@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway';
+}
+
+body, section, thead {
+    width: 100%;
+}
+
+header {
+    background-color: rgb(31, 30, 30);
+    width: 100%;
+    height: 73px; 
+    
+}
+
+header h1 {
+    color: aliceblue;
+    display: inline;
+    position: relative;
+    top: 11px;
+    left: 3px;
+    width: 100px;
+    font-size: 50px;
+}
+
+header h4 {
+    color: aliceblue;
+    width: fit-content;
+    display: inline;
+    text-align: right;
+    float: right;
+    position: relative;
+    top: 41px;
+    right: 4px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+header h4 span {
+    position: relative;
+    bottom: 3px;
+    left: 5px;
+   
+}
+
+header #underline {
+    border-bottom: 1px solid aliceblue;
+    width: 100%;
+    position: relative;
+    top: 1px;
+}
+
+nav {
+    width: 100%;
+    background-color: gainsboro;
+    position:sticky;
+    top: 0px;
+}
+
+nav ul {
+    padding: 5px 0;
+    padding-left: 3px;
+}
+
+.nav {
+    display: inline;
+    padding: 0 5px;
+    border: 3px inset black;
+
+}
+
+.nav a:visited {
+    color: rgb(49, 49, 238);
+}
+
+.nav:hover {
+    border: 1px outset black;
+    box-shadow: 0px 1px 2px black;
+    
+}
+
+.nav:active {
+    position: relative;
+    top: 1px;
+    box-shadow: 0px 0px 0px black;
+}
+
+.nav a {
+    list-style-type: none;
+    text-decoration: none;
+    color: rgb(49, 49, 238);
+    text-align: center;
+}
+
+table {
+    width:98%;
+    border: 1px solid rgb(31, 30, 30);
+    margin-top: -1px;
+    margin: 0px 19.5px;   
+}
+
+#colors td {
+    padding: 15px;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+h3 {
+    margin-top: 15px;
+    background-color:rgb(31, 30, 30);
+    text-align: left;
+    padding-top: 3px;
+    padding-left: 12px;
+    color:aliceblue;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: 'Monofett';
+    color: rgb(62, 202, 202);
+}
+
+#colors div {
+    
+    width: 70%;
+    height: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cb, #co, #pb, #pr {
+    color: aliceblue;
+}
+
+#cb {
+    background-color: rgb(62, 202, 202);
+}
+
+#pg {
+    background-color: gainsboro;
+}
+
+#pb {
+    background-color: rgb(31, 30, 30);
+}
+
+#pw {
+    background-color: aliceblue;
+}
+
+#co {
+    background-color: rgb(255, 149, 78);
+}
+
+#pr {
+    background-color: rgb(255, 43, 85);
+}
+
+#fonts th {
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 22px;
+    text-decoration: underline;
+}
+
+#fonts td {
+    padding: 7px 15px;
+    font-size: 21px;
+}
+
+#fonts li {
+    list-style-type: none;
+    padding-top: 12px;
+}
+
+#fonts a, #css-tricks a {
+    color: rgb(49, 49, 238);
+}
+
+#fonts a:visited, #css-tricks a:visited {
+    color: rgb(49, 49, 238);
+}
+
+#fonts a:hover, #css-tricks a:hover {
+    color: rgb(255, 43, 85);
+}
+
+#os li, #os a {
+    font-family:'Open Sans';
+}
+
+#pts li, #pts a {
+    font-family: 'PT Serif';
+}
+
+#mtn li, #mtn a {
+    font-family: 'Monoton';
+    font-size: 27px;
+}
+
+#rbo li, #rbo a {
+    font-family: 'Roboto';
+}
+
+#lora li, #lora a {
+    font-family: 'Lora';
+}
+
+#mf li, #mf a {
+    font-family: 'Monofett';
+    font-size: 30px;
+}
+
+#tw li, #tw a {
+    font-family: 'Titillium Web';
+}
+
+#bt li, #bt a {
+    font-family: 'Bitter';
+}
+
+#bn li, #bn a{
+    font-family: 'Bebas Neue';
+    font-size: 25px;
+}
+
+#d li, #d a {
+    font-family: 'Dosis';
+}
+
+#pfd li, #pfd a {
+    font-family: 'Playfair Display';
+}
+
+#rw li, #rw a {
+    font-family: 'Raleway';
+}
+
+#m li, #m a {
+    font-family: 'Mukta';
+}
+
+.italics {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#text-styles ul {
+    width: fit-content;
+}
+
+#text-styles li {
+    list-style-type: none;
+    font-family: 'Roboto';
+}
+
+#text-styles td {
+    width: 16.66%;
+    padding-bottom: 10px;
+}
+
+table h4 {
+    font-size: 18px;
+}
+
+#declarations td {
+    padding-left: 15px;
+}
+
+#css-tricks td {
+    padding-left: 15px;
+}
+
+#css-tricks th {
+    text-align: left;
+}
