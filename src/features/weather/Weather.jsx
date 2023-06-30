@@ -14,7 +14,8 @@ const Weather = () => {
     current: {
       temp_f: '',
       condition: {
-        text: ''
+        text: '',
+        icon: '',
       }
     },
     location: {
@@ -22,6 +23,9 @@ const Weather = () => {
     }
   });
 
+  const weatherIconSrc = `https:${weather.current.condition.icon}`
+  const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`
+  
   useEffect(() => {
     const fetchWeather = async () => {
       try {
@@ -41,7 +45,7 @@ const Weather = () => {
   }, []);
   return (
     <div>
-      {`${weather.current.condition.text} and ${weather.current.temp_f}° in ${weather.location.name}`}
+      <img src={weatherIconSrc} alt={weatherIconAltText} /><p>{`${weather.current.condition.text} and ${weather.current.temp_f}° in ${weather.location.name}`}</p>
     </div>
   );
 };
