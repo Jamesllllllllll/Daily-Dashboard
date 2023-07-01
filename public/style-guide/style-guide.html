@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dashboard Design Style Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitter&family=Dosis&family=Lora&family=Monofett&family=Monoton&family=Mukta&family=Open+Sans&family=PT+Serif&family=Playfair+Display&family=Raleway&family=Roboto&family=Titillium+Web&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Belanosima:wght@400;600&family=Caprasimo&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Quicksand:wght@400;700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+        <h1>Daily Dashboard Design Style Guide</h1>
+        <div id="underline"></div>
+    </header>
+    <nav>
+        <ul>
+            <li class="nav"><a href="#colors">Colors</a></li>
+            <li class="nav"><a href="#fonts">Fonts</a></li>
+            <li class="nav"><a href="#text-styles">Base Styles</a></li>
+            <li class="nav"><a href="#declarations">CSS Base Declarations</a></li>
+            <li class="nav"><a href="#css-tricks">CSS Tricks</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="colors">
+            <h3>Color Schemes</h3></th>
+            <table>
+                <tbody>
+                    <tr>
+                        <th colspan="4">Color Set #1</th>
+                    </tr>
+                    <tr>
+                        <td><div class="FFDD99">Champagne - #FFDD99</div></td>
+                        <td><div class="H99FFAA">Mint Green - #99FFAA</div></td>
+                        <td><div class="H99BBFF">Baby Blue Eyes - #99BBFF</div></td>
+                        <td><div class="FF99EE">Lavender Rose - #FF99EE</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FFDD99 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H002775">The five boxing wizards jump quickly. - #002775</span>
+                                <span class="H003AAD">The five boxing wizards jump quickly. - #003AAD</span>
+                                <span class="H614100">The five boxing wizards jump quickly. - #614100</span>
+                                <span class="H005710">The five boxing wizards jump quickly. - #005710</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H99FFAA fore">
+                                <span>Foreground/Text</span>
+                                <span class="H002775">The five boxing wizards jump quickly. - #002775</span>
+                                <span class="H614100">The five boxing wizards jump quickly. - #614100</span>
+                                <span class="H570048">The five boxing wizards jump quickly. - #570048</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H99BBFF fore">
+                                <span>Foreground/Text</span>
+                                <span class="H002775">The five boxing wizards jump quickly. - #002775</span>
+                                <span class="H570048">The five boxing wizards jump quickly. - #570048</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="FF99EE fore">
+                                <span>Foreground/Text</span>
+                                <span class="H002775">The five boxing wizards jump quickly. - #002775</span>
+                                <span class="H570048">The five boxing wizards jump quickly. - #570048</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Color Set #2</th>
+                    </tr>
+                    <tr>
+                        <td><div class="H26E600">Harlequin - #26E600</div></td>
+                        <td><div class="H0099E6">Rich Electric Blue - #0099E6</div></td>
+                        <td><div class="C000E6">Electric Purple - #C000E6</div></td>
+                        <td><div class="E64D00">Tangelo - #E64D00</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="H26E600 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H0A3D00">The five boxing wizards jump quickly. - #0A3D00</span>
+                                <span class="H003652">The five boxing wizards jump quickly. - #003652</span>
+                                <span class="H5E0070">The five boxing wizards jump quickly. - #5E0070</span>
+                                <span class="H612000">The five boxing wizards jump quickly. - #612000</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Color Set #3</th>
+                    </tr>
+                    <tr>
+                        <td><div class="FFFF66">Unmellow Yellow - #FFFF66</div></td>
+                        <td><div class="H66FFB3">Medium Aquamarine - #66FFB3</div></td>
+                        <td><div class="H6666FF">Medium Slate Blue - #6666FF</div></td>
+                        <td><div class="FF66B3">Hot Pink - #FF66B3</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="FFFF66 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H575700">The five boxing wizards jump quickly. - #575700</span>
+                                <span class="H006130">The five boxing wizards jump quickly. - #006130</span>
+                                <span class="H1F1FFF">The five boxing wizards jump quickly. - #1F1FFF</span>
+                                <span class="A80054">The five boxing wizards jump quickly. - #A80054</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H66FFB3 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H474700">The five boxing wizards jump quickly. - #474700</span>
+                                <span class="H005229">The five boxing wizards jump quickly. - #005229</span>
+                                <span class="H0000F5">The five boxing wizards jump quickly. - #0000F5</span>
+                                <span class="H94004A">The five boxing wizards jump quickly. - #94004A</span>
+                            </div>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="FF66B3 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H00004D">The five boxing wizards jump quickly. - #00004D</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Color Set #4</th>
+                    </tr>
+                    <tr>
+                        <td><div class="H26004D">Midnight Blue - #26004D</div></td>
+                        <td><div class="H4D0001">Bulgarian Rose - #4D0001</div></td>
+                        <td><div class="H274D00">Lincoln Green - #274D00</div></td>
+                        <td><div class="H004D4C">Deep Jungle Green - #004D4C</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="H26004D fore">
+                                <span>Foreground/Text</span>
+                                <span class="C48AFF">The five boxing wizards jump quickly. - #C48AFF</span>
+                                <span class="FF7A7D">The five boxing wizards jump quickly. - #FF7A7D</span>
+                                <span class="H5EBD00">The five boxing wizards jump quickly. - #5EBD00</span>
+                                <span class="H00B8B1">The five boxing wizards jump quickly. - #00B8B1</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H4D0001 fore">
+                                <span>Foreground/Text</span>
+                                <span class="CC99FF">The five boxing wizards jump quickly. - #CC99FF</span>
+                                <span class="FF8A8C">The five boxing wizards jump quickly. - #FF8A8C</span>
+                                <span class="H61C200">The five boxing wizards jump quickly. - #61C200</span>
+                                <span class="H00C2BF">The five boxing wizards jump quickly. - #00C2BF</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H274D00 fore">
+                                <span>Foreground/Text</span>
+                                <span class="EBD6FF">The five boxing wizards jump quickly. - #EBD6FF</span>
+                                <span class="FFD1D2">The five boxing wizards jump quickly. - #FFD1D2</span>
+                                <span class="H7DFA00">The five boxing wizards jump quickly. - #7DFA00</span>
+                                <span class="H00F5F1">The five boxing wizards jump quickly. - #00F5F1 </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H004D4C fore">
+                                <span>Foreground/Text</span>
+                                <span class="H00F5F1">The five boxing wizards jump quickly. - #00F5F1</span>
+                                <span class="EBD6FF">The five boxing wizards jump quickly. - #EBD6FF</span>
+                                <span class="FFD1D2">The five boxing wizards jump quickly. - #FFD1D2</span>
+                                <span class="H7DFA00">The five boxing wizards jump quickly. - #7DFA00</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Color Set #5</th>
+                    </tr>
+                    <tr>
+                        <td><div class="FF3355">Radical Red - #FF3355</div></td>
+                        <td><div class="BBFF33">Green-yellow - #BBFF33</div></td>
+                        <td><div class="H33FFDD">Turquoise - #33FFDD</div></td>
+                        <td><div class="H7733FF">Blue-violet - #7733FF</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="BBFF33 fore">
+                                <span>Foreground/Text</span>
+                                <span class="H9E001A">The five boxing wizards jump quickly. - #9E001A</span>
+                                <span class="H385200">The five boxing wizards jump quickly. - #385200</span>
+                                <span class="H005748">The five boxing wizards jump quickly. - #005748</span>
+                                <span class="H4D00E6">The five boxing wizards jump quickly. - #4D00E6</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H33FFDD fore">
+                                <span>Foreground/Text</span>
+                                <span class="H940019">The five boxing wizards jump quickly. - #940019</span>
+                                <span class="H334D00">The five boxing wizards jump quickly. - #334D00</span>
+                                <span class="H005244">The five boxing wizards jump quickly. - #005244</span>
+                                <span class="H4900DB">The five boxing wizards jump quickly. - #4900DB</span>
+                            </div>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Color Set #6</th>
+                    </tr>
+                    <tr>
+                        <td><div class="H828602">Heart Gold - #828602</div></td>
+                        <td><div class="H028647">North Texas Green - #028647</div></td>
+                        <td><div class="H050286">Dark Blue - #050286</div></td>
+                        <td><div class="H860240">Pansy Purple - #860240</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="H050286 fore">
+                                <span>Foreground/Text</span>
+                                <span class="B0B602">The five boxing wizards jump quickly. - #B0B602</span>
+                                <span class="H02CA69">The five boxing wizards jump quickly. - #02CA69</span>
+                                <span class="ADAAFD">The five boxing wizards jump quickly. - #ADAAFD</span>
+                                <span class="FD8BC1">The five boxing wizards jump quickly. - #FD8BC1</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="H860240 fore">
+                                <span>Foreground/Text</span>
+                                <span class="DCE302">The five boxing wizards jump quickly. - #DCE302</span>
+                                <span class="H03FC84">The five boxing wizards jump quickly. - #03FC84</span>
+                                <span class="D7D7F9">The five boxing wizards jump quickly. - #D7D7F9</span>
+                                <span class="FDCEE3">The five boxing wizards jump quickly. - #FDCEE3</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="fonts">
+            <h3>Fonts</h3></th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sans-Serif</th>
+                        <th>Serif</th>
+                        <th>Funky</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="os">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Open+Sans" target="_blank">Open Sans</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="pts">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/PT+Serif" target="_blank">PT Serif</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="dancing-script">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Dancing+Script" target="_blank">Dancing Script</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="rbo">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Roboto" target="_blank">Roboto</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="lora">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Lora" target="_blank">Lora</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="mf">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Monofett?query=mono" target="_blank">Monofett</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="tw">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Titillium+Web" target="_blank">Titillium Web</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="bt">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Bitter" target="_blank">Bitter</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="bn">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Bebas+Neue" target="_blank">Bebas Neue</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="d">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Dosis" target="_blank">Dosis</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="pfd">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Playfair+Display" target="_blank">Playfair Display</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="caprasimo">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Caprasimo" target="_blank">Caprasimo</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="rw">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Raleway" target="_blank">Raleway</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="abril-fatface">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Abril+Fatface" target="_blank">Abril Fatface</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="m">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Mukta" target="_blank">Mukta</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                        <td id="cormorant">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Cormorant+Garamond" target="_blank"> Cormorant Garamond</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="belanosima">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Belanosima" target="_blank">Belanosima</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="roboto-mono">
+                            <ul>
+                                <li><a href="https://fonts.google.com/specimen/Roboto+Mono" target="_blank">Roboto Mono</a></li>
+                                <li>Whereas recognition of the inherent dignity</li>
+                                <li class="italics">Whereas recognition of the inherent dignity</li>
+                                <li class="bold">Whereas recognition of the inherent dignity</li>
+                            </ul> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="text-styles">
+            <h3>Base Styles</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <th><h4>Main Headings</h4></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><strong>Web Browser Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-weight: </li>
+                                <li>Font-family: </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><strong>Mobile App Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Text-shadow: </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><h4>Sub Headings</h4></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><strong>Web Browser Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><strong>Mobile App Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><h4>Text Inputs</h4></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><strong>Web Browser Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><strong>Mobile App Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><h4>Buttons</h4></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><strong>Web Browser Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><strong>Mobile App Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><h4>Icons</h4></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><strong>Web Browser Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><strong>Mobile App Style</strong></li>
+                                <li>Font-size: </li>
+                                <li>Font-Weight: </li>
+                                <li>Font-family: </li>
+                                <li>Font-style: </li>
+                                <li>Border: </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="declarations">
+            <h3>CSS Base Declarations</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>* {
+                                    margin: 0;
+                                    padding: 0;
+                                    z-index: 0;
+                                }</li>
+                                <li>body {
+                                    width: 100%;
+                                }</li>
+                                <li>html, body {
+                                    overflow: visible;
+                                }</li>
+                                <li>html {
+                                    box-sizing: border-box;
+                                }</li>
+                                <li>*, *:before, *:after {
+                                    box-sizing: inherit;
+                                }</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="css-tricks">
+            <h3>Cool Effects/Overlays/Animations</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li><a href="https://css-tricks.com/snippets/css/" target="_blank">CSS Tricks</a></li>
+                                <li><a href="https://tympanus.net/Tutorials/AnimatedBorderMenus/index2.html" target="_blank">Burger Menu Example</a></li>
+                                <li><a href="https://tympanus.net/Development/FullscreenOverlayStyles/index11.html" target="_blank">Full Screen Overlay Examples</a></li>
+                                <li><a href="https://css-tricks.com/snippets/css/css-box-shadow/" target="_blank">Box-shadow</a></li>
+                                <li><a href="https://css-tricks.com/snippets/css/transparent-background-images/" target="_blank">Transparent Background Images</a></li>
+                                <li><a href="https://css-tricks.com/snippets/css/ribbon/" target="_blank">Ribbons</a></li>
+                                <li><a href="https://css-tricks.com/snippets/css/top-shadow/" target="_blank">Top shadow</a></li>
+                                <li><a href="https://css-tricks.com/snippets/css/star-wars-crawl-text/" target="_blank">Star Wars crawl text</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
