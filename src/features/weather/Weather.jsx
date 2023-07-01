@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { fetchPlace } from "../../utils/fetchPlace";
 
-const url = "https://api.weatherapi.com/v1/current.json?key=";
-
 const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-// Will need to hide API key with Vercel Environment Variables
+// Maps & Weather API keys have been added to Vercel Environment Variables
 
 const Weather = () => {
   // This component's state can be refactored to use the Redux store if necessary
@@ -26,8 +24,10 @@ const Weather = () => {
     },
   });
 
+  const url = "https://api.weatherapi.com/v1/current.json?key=";
   const params = "&q=" + city + "&days=1&aqi=no&alerts=no";
 
+  // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
     setShowWeather(false);
     setCity(e.target.value);
@@ -40,6 +40,7 @@ const Weather = () => {
     res.error ? setAutocompleteErr(res.error) : setAutocompleteErr("");
   };
 
+  // I changed the form to only fetch the weather on submit. Otherwise it fetches for every keystroke.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!city) {
@@ -75,9 +76,6 @@ const Weather = () => {
           <div className="placesAutocomplete__inputWrap">
             <label htmlFor="city" className="label">
               Your city:
-              {autocompleteErr && (
-                <span className="inputError">{autocompleteErr}</span>
-              )}
             </label>
             <input
               list="places"
@@ -90,6 +88,11 @@ const Weather = () => {
               pattern={autocompleteCities.join("|")}
               autoComplete="off"
             />
+            {autocompleteErr && (
+              <span className="inputError">{autocompleteErr}</span>
+            )}
+            {/* The datalist element gives the available options for the input. 
+                The id="places" ties it to the element above with list="places" */}
             <datalist id="places">
               {autocompleteCities.map((city, i) => (
                 <option key={i}>{city}</option>
@@ -99,9 +102,9 @@ const Weather = () => {
           </div>
         </div>
       </form>
+      {/* Conditionally show weather if showWeather === true */}
       {showWeather && (
         <div>
-          <p>{console.log(city)}</p>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
           <p>{`${weather.current.condition.text} and ${weather.current.temp_f}° in ${weather.location.name}`}</p>
         </div>
