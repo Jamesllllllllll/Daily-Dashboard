@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { fetchPlace } from "../../utils/fetchPlace";
 
-const url = "https://api.weatherapi.com/v1/forecast.json?";
+const url = "https://api.weatherapi.com/v1/current.json?key=";
 
-const API_KEY = "key=0561c4bba9b34aae89c111806231206";
+const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
 // Will need to hide API key with Vercel Environment Variables
 
-// This will be changed by either a prompt to enter city, or detecting location
-
 const Weather = () => {
-  // This components' state can be refactored to use the Redux store if necessary
+  // This component's state can be refactored to use the Redux store if necessary
   const [city, setCity] = useState("");
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
@@ -47,30 +45,28 @@ const Weather = () => {
     if (!city) {
       return;
     } else {
-      setShowWeather(true);
+      fetchWeather();
     }
   };
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
 
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const response = await fetch(`${url}${API_KEY}${params}`);
-        if (response.ok) {
-          const data = await response.json();
-          setWeather(data);
-        } else {
-          console.log(`Error: ${response.statusText}`);
-          return <p>No weather data</p>;
-        }
-      } catch (error) {
-        console.log(error);
+  const fetchWeather = async () => {
+    try {
+      const response = await fetch(`${url}${weatherApiKey}${params}`);
+      if (response.ok) {
+        const data = await response.json();
+        setWeather(data);
+        setShowWeather(true);
+      } else {
+        console.log(`Error: ${response.statusText}`);
+        return <p>No weather data</p>;
       }
-    };
-    fetchWeather();
-  }, [city, params]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -103,13 +99,13 @@ const Weather = () => {
           </div>
         </div>
       </form>
-      {showWeather && 
+      {showWeather && (
         <div>
           <p>{console.log(city)}</p>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
           <p>{`${weather.current.condition.text} and ${weather.current.temp_f}° in ${weather.location.name}`}</p>
         </div>
-      }
+      )}
     </>
   );
   // }
