@@ -106,7 +106,8 @@ const Weather = () => {
       {showWeather && (
         <div>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
-          <p>{`${weather.current.condition.text} and ${weather.current.temp_f}° in ${weather.location.name}`}</p>
+          <p>{`${weather.current.condition.text} and ${city.includes('United States') ? weather.current.temp_f : weather.current.temp_c}° in ${weather.location.name}`}</p>
+          {/* Conditionally display temp in farenheit if in USA, otherwise display in celcius */}
         </div>
       )}
     </>
