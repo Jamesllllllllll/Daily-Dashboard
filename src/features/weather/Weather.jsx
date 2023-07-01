@@ -46,9 +46,14 @@ const Weather = () => {
     if (!city) {
       return;
     } else {
+      setShowWeather(true);
       fetchWeather();
     }
   };
+
+  const changeCity = () => {
+    setShowWeather(false);
+  }
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
@@ -71,6 +76,7 @@ const Weather = () => {
 
   return (
     <>
+    {!showWeather && (
       <form onSubmit={handleSubmit}>
         <div className="placesAutocomplete">
           <div className="placesAutocomplete__inputWrap">
@@ -101,13 +107,15 @@ const Weather = () => {
             <button type="submit">Submit</button>
           </div>
         </div>
-      </form>
+      </form>)
+      }
       {/* Conditionally show weather if showWeather === true */}
       {showWeather && (
         <div>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
           <p>{`${weather.current.condition.text} and ${city.includes('United States') ? weather.current.temp_f : weather.current.temp_c}° in ${weather.location.name}`}</p>
           {/* Conditionally display temp in farenheit if in USA, otherwise display in celcius */}
+          <p><button onClick={changeCity}>Change city</button></p>
         </div>
       )}
     </>
