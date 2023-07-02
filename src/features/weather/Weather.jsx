@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { fetchPlace } from "../../utils/fetchPlace";
 
 const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
@@ -26,7 +26,6 @@ const Weather = () => {
 
   const url = "https://api.weatherapi.com/v1/current.json?key=";
   const params = "&q=" + city + "&days=1&aqi=no&alerts=no";
-  console.log(params)
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
@@ -49,14 +48,12 @@ const Weather = () => {
     } else {
       setShowWeather(true);
       fetchWeather();
-      localStorage.setItem("city", JSON.stringify(city));
     }
   };
 
   const changeCity = () => {
     setShowWeather(false);
-    setCity("");
-  };
+  }
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
@@ -77,63 +74,48 @@ const Weather = () => {
     }
   };
 
-  useEffect(() => {
-    const savedCity = JSON.parse(localStorage.getItem("city"));
-    if (savedCity) {
-      setCity(savedCity);
-    }
-    console.log(`City: ${city}`)
-    fetchWeather();
-  }, [city]);
-
   return (
     <>
-      {!showWeather && (
-        <form onSubmit={handleSubmit}>
-          <div className="placesAutocomplete">
-            <div className="placesAutocomplete__inputWrap">
-              <label htmlFor="city" className="label">
-                Your city:
-              </label>
-              <input
-                list="places"
-                type="text"
-                id="city"
-                name="city"
-                onChange={handleCityChange}
-                value={city}
-                required
-                pattern={autocompleteCities.join("|")}
-                autoComplete="off"
-              />
-              {autocompleteErr && (
-                <span className="inputError">{autocompleteErr}</span>
-              )}
-              {/* The datalist element gives the available options for the input. 
+    {!showWeather && (
+      <form onSubmit={handleSubmit}>
+        <div className="placesAutocomplete">
+          <div className="placesAutocomplete__inputWrap">
+            <label htmlFor="city" className="label">
+              Your city:
+            </label>
+            <input
+              list="places"
+              type="text"
+              id="city"
+              name="city"
+              onChange={handleCityChange}
+              value={city}
+              required
+              pattern={autocompleteCities.join("|")}
+              autoComplete="off"
+            />
+            {autocompleteErr && (
+              <span className="inputError">{autocompleteErr}</span>
+            )}
+            {/* The datalist element gives the available options for the input. 
                 The id="places" ties it to the element above with list="places" */}
-              <datalist id="places">
-                {autocompleteCities.map((city, i) => (
-                  <option key={i}>{city}</option>
-                ))}
-              </datalist>
-              <button type="submit">Submit</button>
-            </div>
+            <datalist id="places">
+              {autocompleteCities.map((city, i) => (
+                <option key={i}>{city}</option>
+              ))}
+            </datalist>
+            <button type="submit">Submit</button>
           </div>
-        </form>
-      )}
+        </div>
+      </form>)
+      }
       {/* Conditionally show weather if showWeather === true */}
       {showWeather && (
         <div>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
-          <p>{`${weather.current.condition.text} and ${
-            city.includes("United States")
-              ? weather.current.temp_f
-              : weather.current.temp_c
-          }° in ${weather.location.name}`}</p>
+          <p>{`${weather.current.condition.text} and ${city.includes('United States') ? weather.current.temp_f : weather.current.temp_c}° in ${weather.location.name}`}</p>
           {/* Conditionally display temp in farenheit if in USA, otherwise display in celcius */}
-          <p>
-            <button onClick={changeCity}>Change city</button>
-          </p>
+          <p><button onClick={changeCity}>Change city</button></p>
         </div>
       )}
     </>
