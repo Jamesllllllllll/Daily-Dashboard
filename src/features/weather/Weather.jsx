@@ -60,7 +60,8 @@ const Weather = () => {
 
   const fetchWeather = async () => {
     try {
-      const response = await fetch(`${url}${weatherApiKey}${params}`);
+    const response = await fetch(`/api/weather?city=${city}`)
+//  const response = await fetch(`${url}${weatherApiKey}${params}`);
       if (response.ok) {
         const data = await response.json();
         setWeather(data);
