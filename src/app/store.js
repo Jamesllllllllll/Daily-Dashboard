@@ -24,7 +24,6 @@ const rootReducer = combineReducers({
   calendar: calendarReducer,
   notes: notesReducer,
   weather: weatherReducer,
-  settings: settingsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
