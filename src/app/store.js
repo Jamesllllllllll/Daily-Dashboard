@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   energyCheckin: energyCheckinReducer,
   lineChart: lineChartReducer,
   notes: notesReducer,
-  weather: weatherReducer,
+  weather: weatherReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
