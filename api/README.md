@@ -39,6 +39,8 @@ export default async function handler(request, response) {
 }
 ```
 
+> Note: There is an issue with using Axios, so I switched the weather's serverless functions call using the Fetch() API instead.
+
 It should return a stringified JSON object, which can be parsed with `response.json()` in the component
 
 See /api/weather.js for an example. It uses axios but you can use the regular fetch() API.
