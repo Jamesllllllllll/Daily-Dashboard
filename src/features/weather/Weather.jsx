@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { fetchPlace } from "../../utils/fetchPlace";
 
-const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
-// Maps & Weather API keys have been added to Vercel Environment Variables
-
 const Weather = () => {
   // This component's state can be refactored to use the Redux store if necessary
   const [city, setCity] = useState("");
@@ -23,9 +20,6 @@ const Weather = () => {
       name: "",
     },
   });
-
-  const url = "https://api.weatherapi.com/v1/current.json?key=";
-  const params = "&q=" + city + "&days=1&aqi=no&alerts=no";
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
@@ -61,7 +55,6 @@ const Weather = () => {
   const fetchWeather = async () => {
     try {
     const response = await fetch(`/api/weather?city=${city}`)
-//  const response = await fetch(`${url}${weatherApiKey}${params}`);
       if (response.ok) {
         const data = await response.json();
         setWeather(data);
@@ -71,6 +64,7 @@ const Weather = () => {
         return <p>No weather data</p>;
       }
     } catch (error) {
+      console.log('crap!');
       console.log(error);
     }
   };

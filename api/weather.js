@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 export default async function handler(request, response) {
+
   const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
   const url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}`;
   const { city } = request.query; // or .queryStringParameters ?
