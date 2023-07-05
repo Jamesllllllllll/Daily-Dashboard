@@ -43,7 +43,7 @@ export default async function handler(request, response) {
 
 It should return a stringified JSON object, which can be parsed with `response.json()` in the component
 
-See /api/weather.js for an example. It uses axios but you can use the regular fetch() API.
+See /api/weather.js for an example.
 
 ### Development
 
