@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { fetchPlace } from "../../utils/fetchPlace";
 
 const Weather = () => {
   // This component's state can be refactored to use the Redux store if necessary

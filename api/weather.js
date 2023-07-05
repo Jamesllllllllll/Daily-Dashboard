@@ -12,6 +12,6 @@ export default async function handler(request, response) {
       return response.send(JSON.stringify(data));
     }
   } catch (error) {
-    return console.log(error);
+    return { error: "Unable to fetch weather" };
   }
 };
