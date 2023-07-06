@@ -5,9 +5,7 @@ const Weather = () => {
   const [city, setCity] = useState("");
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
-  const [showWeather, setShowWeather] = useState(false);
-  const [weather, setWeather] = useState({
-    // Not sure why can't it be an empty object (need to define properties used)
+  const defaultWeather = {
     current: {
       temp_f: "",
       condition: {
@@ -18,11 +16,11 @@ const Weather = () => {
     location: {
       name: "",
     },
-  });
+  };
+  const [weather, setWeather] = useState(defaultWeather);
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
-    setShowWeather(false);
     setCity(e.target.value);
     if (!city) return;
 
@@ -50,7 +48,10 @@ const Weather = () => {
   };
 
   const changeCity = () => {
-    setShowWeather(false);
+    setWeather(defaultWeather);
+    setCity("");
+    setAutocompleteCities([]);
+    setAutocompleteErr("")
   };
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
@@ -62,7 +63,6 @@ const Weather = () => {
       if (response.ok) {
         const data = await response.json();
         setWeather(data);
-        setShowWeather(true);
       } else {
         console.log(`Error: ${response.statusText}`);
         return <p>No weather data</p>;
@@ -74,7 +74,7 @@ const Weather = () => {
 
   return (
     <>
-      {!showWeather && (
+      {(weather.location.name === "") ? (
         <form onSubmit={handleSubmit}>
           <div className="placesAutocomplete">
             <div className="placesAutocomplete__inputWrap">
@@ -106,9 +106,7 @@ const Weather = () => {
             </div>
           </div>
         </form>
-      )}
-      {/* Conditionally show weather if showWeather === true */}
-      {showWeather && (
+      ) : (
         <div>
           <img src={weatherIconSrc} alt={weatherIconAltText} />
           <p>{`${weather.current.condition.text} and ${
