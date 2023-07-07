@@ -1,6 +1,6 @@
 import React from 'react';
 import Weather from './features/weather/Weather';
-import Notes from './components/Notes/Notes';
+import Notes from './features/notes/Notes';
 import './App.css';
 
 function App() {
