@@ -74,7 +74,7 @@ const Weather = () => {
 
   return (
     <>
-      {(weather.location.name === "") ? (
+      {JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
         <form onSubmit={handleSubmit}>
           <div className="placesAutocomplete">
             <div className="placesAutocomplete__inputWrap">
