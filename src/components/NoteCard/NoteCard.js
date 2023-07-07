@@ -10,24 +10,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import RichTextEditor from '../RichTextEditor/RichTextEditor';
 import PositionedMenu from '../PositionedMenu/PositionedMenu';
+import getShortDescription from '../../utils/getShortDescription';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import { editNote } from '../../features/notes/notesSlice';
+import { useDispatch } from 'react-redux';
+import { Typography } from '@mui/material';
+
 
 const NoteCard = ({
   dateTime,
-  data,
-  handleEditNote,
-  handleDeleteNote
+  data
 }) => {
+
+  const dispatch = useDispatch();
 
   const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
@@ -46,31 +41,40 @@ const NoteCard = ({
   }
   const handleSubmit = () => {
     setAllowEdit(false);
-    handleEditNote(dateTime, newData);
+    dispatch(editNote({ dateTime, newData }));
   }
 
-  const date = new Date(Date.parse(dateTime)).toDateString();
+  // Parse date and time
+  const dateTimeObject = new Date(Date.parse(dateTime));
+  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const date = dateTimeObject.toLocaleDateString('en-AU', dateOptions);
+  const time = dateTimeObject.toLocaleTimeString('en-AU');
+
+  // Short description
+  const shortDescription = getShortDescription(newData);
 
   return (
-    <Card sx={{
-      width: '60%',
-      margin: '1rem'
-    }}>
+    <Card sx={cardStyles}>
       <CardHeader
         action={
           <PositionedMenu
             dateTime={dateTime}
-            handleDeleteNote={handleDeleteNote}
             handleOnEdit={handleOnEdit}
           />
         }
-        subheader={date}
-        sx={{
-          fontSize: '1rem',
-          textAlign: 'start',
-          height: 'fit-content'
-        }}
+        title={date}
+        titleTypographyProps={{ variant: 'subtitle1' }}
+        subheader={time}
+        subheaderTypographyProps={{ variant: 'subtitle2' }}
+        sx={headerStyles}
       />
+
+      <CardContent sx={{ margin: '0 auto', padding: '0 auto', ...headerStyles }}>
+        <Typography variant='body2' color="text.secondary">
+          {!expanded ? shortDescription : null}
+        </Typography>
+      </CardContent>
+
       <CardActions disableSpacing>
         <ExpandMore
           expand={expanded}
@@ -86,15 +90,7 @@ const NoteCard = ({
         timeout="auto"
         unmountOnExit
       >
-        <CardContent
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            justifyContent: 'end',
-            overflow: 'auto'
-          }}
-        >
+        <CardContent sx={contentStyles}>
           <RichTextEditor
             data={newData}
             setData={setNewData}
@@ -107,5 +103,36 @@ const NoteCard = ({
     </Card>
   );
 }
+
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
+const cardStyles = {
+  width: '60%',
+  margin: '1rem'
+};
+
+const headerStyles = {
+  fontSize: '1rem',
+  textAlign: 'start',
+  height: 'fit-content'
+};
+
+const contentStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  justifyContent: 'end',
+  overflow: 'auto'
+};
 
 export default NoteCard;

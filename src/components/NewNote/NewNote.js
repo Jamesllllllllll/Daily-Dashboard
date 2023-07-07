@@ -2,10 +2,26 @@ import React, { useState } from 'react';
 import { Paper, CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-
 import RichTextEditor from '../RichTextEditor/RichTextEditor';
 
-const NewNote = ({ handleAddNote }) => {
+import { useDispatch } from 'react-redux';
+import { addNote } from '../../features/notes/notesSlice';
+
+
+const paperStyles = {
+    width: '60%', // Set the desired maximum width
+    padding: '1rem', // Center the editor on the page
+    height: 'fitContent',
+    border: '1px solid #ccc',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'end',
+    alignItems: 'center'
+};
+
+const NewNote = () => {
+
+    const dispatch = useDispatch();
 
     const theme = createTheme();
 
@@ -20,7 +36,7 @@ const NewNote = ({ handleAddNote }) => {
     ]
 
     const [data, setData] = useState(initialValue);
-    const [dateTime, setDate] = useState(new Date().toString());
+    const [dateTime, setDateTime] = useState(new Date().toString());
 
     const handleSubmit = () => {
         // Do not proceed if text field is empty
@@ -28,9 +44,9 @@ const NewNote = ({ handleAddNote }) => {
             return;
         };
         // Each note object is idenified by a datetime string
-        setDate(new Date().toString());
-        // Add to state
-        handleAddNote({ dateTime, data });
+        setDateTime(new Date().toString());
+        // Add note to notes state
+        dispatch(addNote({ dateTime, data }));
         // Finally clear data
         setData(initialValue);
     }
@@ -40,18 +56,7 @@ const NewNote = ({ handleAddNote }) => {
         <>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Paper
-                    sx={{
-                        width: '60%', // Set the desired maximum width
-                        padding: '1rem', // Center the editor on the page
-                        height: 'fitContent',
-                        border: '1px solid #ccc',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'end',
-                        alignItems: 'center'
-                    }}
-                >
+                <Paper sx={paperStyles}>
                     <RichTextEditor
                         data={data}
                         allowEdit={true}
@@ -59,7 +64,6 @@ const NewNote = ({ handleAddNote }) => {
                         handleSubmit={handleSubmit}
                         newNote={true}
                     />
-
                 </Paper>
             </ThemeProvider>
         </>
