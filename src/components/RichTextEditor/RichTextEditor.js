@@ -24,34 +24,6 @@ import {
     toggleMark
 } from './slateComponents';
 
-const HOTKEYS = {
-    "mod+b": "bold",
-    "mod+i": "italic",
-    "mod+u": "underline",
-    "mod+`": "code"
-};
-
-const toolbarStyles = {
-    width: '100%',
-    margin: '1rem auto',
-    fontSize: '1rem',
-    textAlign: 'center'
-}
-const editableStyles = {
-    padding: '0 0.75rem',
-    minHeight: '10rem',
-    margin: '1rem',
-    fontFamily: 'Arial, sans-serif',
-    width: '100%',
-    fontSize: '1rem',
-    lineHeight: 'normal',
-    textAlign: 'start'
-}
-
-const buttonStyles = {
-    margin: '1rem',
-}
-
 
 const RichTextEditor = ({
     data,
@@ -79,12 +51,11 @@ const RichTextEditor = ({
         setData(newData);
     };
 
-    const handleOnClick = () => {
+    const handleSave = () => {
         handleSubmit();
         if (newNote) {
             handleClearText(editor);
         };
-
     }
 
     return (
@@ -137,11 +108,8 @@ const RichTextEditor = ({
                         variant="contained"
                         color="success"
                         size="small"
-                        onClick={handleOnClick}
-                        sx={{ 
-                            position: 'relative',
-                            right: '.75rem'
-                        }}
+                        onClick={handleSave}
+                        sx={buttonStyles}
                     >
                         Save
                     </Button>)
@@ -154,6 +122,33 @@ const RichTextEditor = ({
     );
 };
 
+const HOTKEYS = {
+    "mod+b": "bold",
+    "mod+i": "italic",
+    "mod+u": "underline",
+    "mod+`": "code"
+};
 
+const toolbarStyles = {
+    width: '100%',
+    margin: '1rem auto',
+    fontSize: '1rem',
+    textAlign: 'center'
+}
+const editableStyles = {
+    padding: '0 0.75rem',
+    minHeight: '10rem',
+    margin: '1rem',
+    fontFamily: 'Arial, sans-serif',
+    width: '100%',
+    fontSize: '1rem',
+    lineHeight: 'normal',
+    textAlign: 'start'
+}
+
+const buttonStyles = {
+    position: 'relative',
+    right: '.75rem'
+}
 
 export default RichTextEditor;
