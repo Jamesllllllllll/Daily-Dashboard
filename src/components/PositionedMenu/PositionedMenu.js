@@ -4,17 +4,25 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import { deleteNote } from '../../features/notes/notesSlice';
+import { useDispatch } from 'react-redux';
+
+
 export default function PositionedMenu({
     dateTime,
-    handleDeleteNote,
+    // handleDeleteNote,
     handleOnEdit
 }) {
+  const dispatch = useDispatch();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  
   const handleClick = (event) => {
     // Sets menu's anchor element
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     // Resets anchor element so the menu is no longer rendered 
     setAnchorEl(null);
@@ -27,7 +35,8 @@ export default function PositionedMenu({
   }
 
   const handleDelete = () => {
-    handleDeleteNote(dateTime);
+    // handleDeleteNote(dateTime);
+    dispatch(deleteNote(dateTime))
     handleClose();
   }
 
