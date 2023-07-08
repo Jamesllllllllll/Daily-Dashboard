@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Weather from './features/weather/Weather';
 import { EmotionsCheckin } from './features/emotionsCheckin/EmotionsCheckin';
 import { EnergyCheckin } from './features/energyCheckin/EnergyCheckin';
 import { LineChart } from './features/lineChart/LineChart';
