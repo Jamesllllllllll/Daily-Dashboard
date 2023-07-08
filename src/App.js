@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Notes from './features/notes/Notes';
 import Weather from './features/weather/Weather';
 import { EmotionsCheckin } from './features/emotionsCheckin/EmotionsCheckin';
 import { EnergyCheckin } from './features/energyCheckin/EnergyCheckin';
@@ -10,8 +11,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Daily Dashboard App </h1>        
-        <Weather />
       </header>
+      <Weather />
+      <Notes />
       <EmotionsCheckin />
       <EnergyCheckin />
       <LineChart />
