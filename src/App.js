@@ -5,6 +5,7 @@ import Weather from './features/weather/Weather';
 import { EmotionsCheckin } from './features/emotionsCheckin/EmotionsCheckin';
 import { EnergyCheckin } from './features/energyCheckin/EnergyCheckin';
 import { LineChart } from './features/lineChart/LineChart';
+import QuoteOrFact from './components/QuoteOrFact/QuoteOrFact'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <h1>Daily Dashboard App </h1>        
       </header>
       <Weather />
+      <QuoteOrFact />
       <Notes />
       <EmotionsCheckin />
       <EnergyCheckin />
