@@ -1,27 +1,38 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { citySelector, weatherSelector, defaultWeatherSelector, updateCity, updateWeather } from './weatherSlice';
 
 const Weather = () => {
-  // This component's state can be refactored to use the Redux store if necessary
-  const [city, setCity] = useState("");
+  
+  const dispatch = useDispatch();
+
+  const city = useSelector(citySelector);
+  // const [city, setCity] = useState("");
+  
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
-  const defaultWeather = {
-    current: {
-      temp_f: "",
-      condition: {
-        text: "",
-        icon: "",
-      },
-    },
-    location: {
-      name: "",
-    },
-  };
-  const [weather, setWeather] = useState(defaultWeather);
+  
+  const weather = useSelector(weatherSelector);
+  const defaultWeather = useSelector(defaultWeatherSelector);
+
+  // const defaultWeather = {
+  //   current: {
+  //     temp_f: "",
+  //     condition: {
+  //       text: "",
+  //       icon: "",
+  //     },
+  //   },
+  //   location: {
+  //     name: "",
+  //   },
+  // };
+  // const [weather, setWeather] = useState(defaultWeather);
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
-    setCity(e.target.value);
+    dispatch(updateCity(e.target.value))
+    // setCity(e.target.value);
     if (!city) return;
 
     const response = await fetch(`/api/city?city=${city}`);
@@ -48,10 +59,11 @@ const Weather = () => {
   };
 
   const changeCity = () => {
-    setWeather(defaultWeather);
-    setCity("");
+    dispatch(updateWeather(defaultWeather));
+    dispatch(updateCity(''));
+    // setCity("");
     setAutocompleteCities([]);
-    setAutocompleteErr("")
+    setAutocompleteErr("");
   };
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
@@ -62,7 +74,8 @@ const Weather = () => {
       const response = await fetch(`/api/weather?city=${city}`);
       if (response.ok) {
         const data = await response.json();
-        setWeather(data);
+        dispatch(updateWeather(data))
+        // setWeather(data);
       } else {
         console.log(`Error: ${response.statusText}`);
         return <p>No weather data</p>;
