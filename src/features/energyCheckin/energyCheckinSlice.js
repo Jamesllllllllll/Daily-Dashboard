@@ -1,23 +1,47 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const initialState = {
-  todaysEnergy: 0,
-};
+/* let slider = document.getElementById("energy-slider");
+let sliderValue = slider.value; */
+
+//Thunk Functions 
+export const fetchEnergy = createAsyncThunk(
+  'energyCheckin/fetchEnergy', 
+  async () => {
+    const en = await fetch(sliderValue).then(
+    (data) => data.json()
+  )
+  return en
+});
+
+/* export const saveEnergy = createAsyncThunk('energyCheckin/saveEnergy', async (value) => {
+  const addEnergy = await client.post('/fakeApi/todos', { })
+
+}); */
+
 
 
 export const energyCheckinSlice = createSlice({
   name: 'energyCheckin',
-  initialState,
+
+  initialState: {
+    energy: 50,
+  },
   reducers: {
-    updateEnergy: (state, action) => {
-      state.todaysEnergy += action.payload;
-    },
+  
+  },
+  extraReducers: builder => {
+    builder.addCase(fetchEnergy.pending, (state) => {
+        state.energy = 50;
+      })
+      .addCase(fetchEnergy.fulfilled, (state, action) => {
+        const todaysEnergy = action.payload;
+        state.energy = todaysEnergy;
+      })
+      .addCase(fetchEnergy.rejected, (state, action ) => {
+        state.energy = action.payload;
+      })
   }
 });
   
-
-
-export const { updateEnergy, } = energyCheckinSlice.actions;
-
 
 export default energyCheckinSlice.reducer;
