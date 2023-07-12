@@ -10,11 +10,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Daily Dashboard App </h1>        
+        <h1>Daily Dashboard App </h1>
       </header>
-      <Suspense fallback={<Loading />}>
-        <Weather />
-      </Suspense>
+      <Weather />
       <Notes />
       <EmotionsCheckin />
       <EnergyCheckin />
@@ -28,4 +26,3 @@ export default App;
 const Loading = () => {
   return <h2>Loading...</h2>;
 };
-
