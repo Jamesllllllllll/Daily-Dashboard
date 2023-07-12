@@ -1,13 +1,22 @@
 import React from 'react';
-import Weather from './features/weather/Weather';
 import './App.css';
+import Notes from './features/notes/Notes';
+import Weather from './features/weather/Weather';
+import { EmotionsCheckin } from './features/emotionsCheckin/EmotionsCheckin';
+import { EnergyCheckin } from './features/energyCheckin/EnergyCheckin';
+import { LineChart } from './features/lineChart/LineChart';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Weather />
+        <h1>Daily Dashboard App </h1>        
       </header>
+      <Weather />
+      <Notes />
+      <EmotionsCheckin />
+      <EnergyCheckin />
+      <LineChart />
     </div>
   );
 }
