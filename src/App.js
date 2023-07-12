@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import Notes from './features/notes/Notes';
 import Weather from './features/weather/Weather';
@@ -12,7 +12,9 @@ function App() {
       <header className="App-header">
         <h1>Daily Dashboard App </h1>        
       </header>
-      <Weather />
+      <Suspense fallback={<Loading />}>
+        <Weather />
+      </Suspense>
       <Notes />
       <EmotionsCheckin />
       <EnergyCheckin />
@@ -22,3 +24,8 @@ function App() {
 }
 
 export default App;
+
+const Loading = () => {
+  return <h2>Loading...</h2>;
+};
+

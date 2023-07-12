@@ -1,37 +1,27 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { citySelector, weatherSelector, defaultWeatherSelector, updateCity, updateWeather } from './weatherSlice';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  citySelector,
+  weatherSelector,
+  defaultWeatherSelector,
+  updateCity,
+  updateWeather,
+} from "./weatherSlice";
 
 const Weather = () => {
-  
   const dispatch = useDispatch();
 
   const city = useSelector(citySelector);
-  // const [city, setCity] = useState("");
-  
+
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
-  
+
   const weather = useSelector(weatherSelector);
   const defaultWeather = useSelector(defaultWeatherSelector);
 
-  // const defaultWeather = {
-  //   current: {
-  //     temp_f: "",
-  //     condition: {
-  //       text: "",
-  //       icon: "",
-  //     },
-  //   },
-  //   location: {
-  //     name: "",
-  //   },
-  // };
-  // const [weather, setWeather] = useState(defaultWeather);
-
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
-    dispatch(updateCity(e.target.value))
+    dispatch(updateCity(e.target.value));
     // setCity(e.target.value);
     if (!city) return;
 
@@ -48,7 +38,6 @@ const Weather = () => {
       : setAutocompleteErr("");
   };
 
-  // I changed the form to only fetch the weather on submit. Otherwise it fetches for every keystroke.
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!city) {
@@ -60,7 +49,7 @@ const Weather = () => {
 
   const changeCity = () => {
     dispatch(updateWeather(defaultWeather));
-    dispatch(updateCity(''));
+    dispatch(updateCity(""));
     // setCity("");
     setAutocompleteCities([]);
     setAutocompleteErr("");
@@ -74,8 +63,7 @@ const Weather = () => {
       const response = await fetch(`/api/weather?city=${city}`);
       if (response.ok) {
         const data = await response.json();
-        dispatch(updateWeather(data))
-        // setWeather(data);
+        dispatch(updateWeather(data));
       } else {
         console.log(`Error: ${response.statusText}`);
         return <p>No weather data</p>;
@@ -121,13 +109,12 @@ const Weather = () => {
         </form>
       ) : (
         <div>
-          <img src={weatherIconSrc} alt={weatherIconAltText} />
-          <p>{`${weather.current.condition.text} and ${
-            city.includes("United States")
-              ? weather.current.temp_f
-              : weather.current.temp_c
-          }° in ${weather.location.name}`}</p>
-          {/* Conditionally display temp in farenheit if in USA, otherwise display in celcius */}
+            <img src={weatherIconSrc} alt={weatherIconAltText} />
+            <p>{`${weather.current.condition.text} and ${
+              city.includes("United States")
+                ? weather.current.temp_f
+                : weather.current.temp_c
+            }° in ${weather.location.name}`}</p>
           <p>
             <button onClick={changeCity}>Change city</button>
           </p>
@@ -135,7 +122,6 @@ const Weather = () => {
       )}
     </>
   );
-  // }
 };
 
 export default Weather;
