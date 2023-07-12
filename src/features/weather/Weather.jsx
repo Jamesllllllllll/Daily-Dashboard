@@ -22,7 +22,6 @@ const Weather = () => {
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
     dispatch(updateCity(e.target.value));
-    // setCity(e.target.value);
     if (!city) return;
 
     const response = await fetch(`/api/city?city=${city}`);
@@ -50,7 +49,6 @@ const Weather = () => {
   const changeCity = () => {
     dispatch(updateWeather(defaultWeather));
     dispatch(updateCity(""));
-    // setCity("");
     setAutocompleteCities([]);
     setAutocompleteErr("");
   };
@@ -73,54 +71,60 @@ const Weather = () => {
     }
   };
 
-  return (
-    <>
-      {JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
-        <form onSubmit={handleSubmit}>
-          <div className="placesAutocomplete">
-            <div className="placesAutocomplete__inputWrap">
-              <label htmlFor="city" className="label">
-                Your city:
-              </label>
-              <input
-                list="places"
-                type="text"
-                id="city"
-                name="city"
-                onChange={handleCityChange}
-                value={city}
-                required
-                pattern={autocompleteCities.join("|")}
-                autoComplete="off"
-              />
-              {autocompleteErr && (
-                <span className="inputError">{autocompleteErr}</span>
-              )}
-              {/* The datalist element gives the available options for the input. 
-                The id="places" ties it to the element above with list="places" */}
-              <datalist id="places">
-                {autocompleteCities.map((city, i) => (
-                  <option key={i}>{city}</option>
-                ))}
-              </datalist>
-              <button type="submit">Submit</button>
-            </div>
-          </div>
-        </form>
-      ) : (
-        <div>
-            <img src={weatherIconSrc} alt={weatherIconAltText} />
-            <p>{`${weather.current.condition.text} and ${
-              city.includes("United States")
-                ? weather.current.temp_f
-                : weather.current.temp_c
-            }° in ${weather.location.name}`}</p>
-          <p>
-            <button onClick={changeCity}>Change city</button>
-          </p>
-        </div>
-      )}
-    </>
+  const WeatherForm = () => {
+    return (
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="city" className="label">
+          Your city:
+        </label>
+        <input
+          list="places"
+          type="text"
+          id="city"
+          name="city"
+          onChange={handleCityChange}
+          value={city}
+          required
+          pattern={autocompleteCities.join("|")}
+          autoComplete="off"
+        />
+        {autocompleteErr && (
+          <span className="inputError">{autocompleteErr}</span>
+        )}
+        {/* The datalist element gives the available options for the input. 
+              The id="places" ties it to the element above with list="places" */}
+        <datalist id="places">
+          {autocompleteCities.map((city, i) => (
+            <option key={i}>{city}</option>
+          ))}
+        </datalist>
+        <button type="submit">Submit</button>
+      </form>
+    );
+  };
+
+  const CurrentWeather = () => {
+    return (
+      <div>
+        <img src={weatherIconSrc} alt={weatherIconAltText} />
+        <p>{`${weather.current.condition.text} and ${
+          city.includes("United States")
+            ? weather.current.temp_f
+            : weather.current.temp_c
+        }° in ${weather.location.name}`}</p>
+        <p>
+          <button onClick={changeCity}>Change city</button>
+        </p>
+      </div>
+    );
+  };
+
+  return JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
+    // Using function call here because form component re-renders on every keystroke.
+    // I tried adding keys to the component, form and input but nothing worked!
+    WeatherForm()
+  ) : (
+    <CurrentWeather />
   );
 };
 
