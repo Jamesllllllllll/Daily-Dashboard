@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './App.css';
 import Notes from './features/notes/Notes';
 import Weather from './features/weather/Weather';
@@ -22,7 +22,3 @@ function App() {
 }
 
 export default App;
-
-const Loading = () => {
-  return <h2>Loading...</h2>;
-};
