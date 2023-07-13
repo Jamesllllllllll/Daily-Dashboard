@@ -4,10 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
-import ErrorPage from "./error-page";
+import ErrorPage from './routes/error-page';
 import Settings from './routes/Settings';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import Home from './routes/Home';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -17,11 +18,17 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/settings',
+        element: <Settings />,
+      },
+    ],
   },
-  {
-    path: '/settings',
-    element: <Settings />
-  }
 ]);
 
 root.render(
