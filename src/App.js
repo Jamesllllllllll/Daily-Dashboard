@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Notes from './features/notes/Notes';
@@ -12,9 +12,6 @@ function App() {
     <>
       <Navigation />
       <div className="App">
-        {/* <header className="App-header">
-          <h1>Daily Dashboard App </h1>
-        </header> */}
         <Weather />
         <Notes />
         <EmotionsCheckin />
@@ -26,8 +23,3 @@ function App() {
 }
 
 export default App;
-
-const Loading = () => {
-  return <h2>Loading...</h2>;
-};
-
