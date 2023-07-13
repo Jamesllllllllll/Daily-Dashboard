@@ -12,9 +12,6 @@ function App() {
     <>
       <Navigation />
       <div className="App">
-        {/* <header className="App-header">
-          <h1>Daily Dashboard App </h1>
-        </header> */}
         <Weather />
         <Notes />
         <EmotionsCheckin />
@@ -22,7 +19,6 @@ function App() {
         <LineChart />
       </div>
     </>
-
   );
 }
 
