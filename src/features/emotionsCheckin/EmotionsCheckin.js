@@ -18,12 +18,19 @@ const dispatch = useDispatch();
 
 /* const storedEmotions = JSON.parse(localStorage.getItem('emotionsList')); */
 
-
-function handleClick(picName, picSrc) {
+//target is img
+function handleClick(e) {
   let date = new Date();
   let day = date.getDay();
+  const picName = e.target.name;
+  const picSrc = e.target.src;
+  console.log(picName)
 
-  dispatch(selectEmotion(picName));
+  dispatch(selectEmotion({
+    name: picName,
+    pic: picSrc,
+  }));
+
   dispatch(addToEmotionsHistory({
     date: day,
     name: picName,
@@ -35,23 +42,14 @@ function handleClick(picName, picSrc) {
  let emojiPics = emotionsArray.map( ({name, pic}) => {
   return (
    <li key={name}> 
-    <button value={name} onClick={handleClick(name, pic)}>
-      <img alt={name} src={pic} />
+    <button value={name} onClick={handleClick}>
+      <img alt={name} name={name} src={pic} />
     </button>
    </li>
   )
 })
  
-//I am planning on using useEffect to save the emotion selected to local Storage.
-
-/*  useEffect(() => {
-    localStorage.setItem('', JSON.stringify(''))
-    console.log(storedItems);
-  }, [todaysEmotion]); */
-  //use date method to push to array 
-  //[ { date: today, emotion: happy }, { date: ...
    
-
   return (
     <>
       <div className={styles.container}>

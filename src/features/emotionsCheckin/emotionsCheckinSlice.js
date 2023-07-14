@@ -1,23 +1,13 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import  emotionsArray  from './emotionsData';
-
-/* const addEmotionToHistory = createAsyncThunk(
-  'emotionsCheckin/addEmotion',
-  async (userId: number, thunkAPI) => {
-    const response = await userAPI.fetchById(userId)
-    return response.data
-  }
-) */
-
-const temporaryPic = emotionsArray[0].pic;
 
 export const emotionsCheckinSlice = createSlice({
   name: 'emotionsCheckin',
 
   initialState: {
     todaysEmotion: {
-      name: 'happy',
-      pic: temporaryPic,
+      name:  emotionsArray[0].name,
+      pic: emotionsArray[0].pic,
     },
     emotionsHistory: [{
       date: '',
@@ -28,9 +18,11 @@ export const emotionsCheckinSlice = createSlice({
   
   reducers: {
     selectEmotion: (state, action) => {
-      const newEmotion = action.payload;
-      state.todaysEmotion.name = newEmotion;
-      
+      let newEmotion = action.payload.name;
+      let newPic = action.payload.pic;
+      state.todaysEmotion.name = newEmotion; 
+      state.todaysEmotion.pic = newPic; 
+      return state
     },
     addToEmotionsHistory: (state, action) => {
       let date = new Date();
@@ -48,6 +40,7 @@ export const emotionsCheckinSlice = createSlice({
   }
   
 });
+
 
 export const { selectEmotion, addToEmotionsHistory } = emotionsCheckinSlice.actions;
 export default emotionsCheckinSlice.reducer;
