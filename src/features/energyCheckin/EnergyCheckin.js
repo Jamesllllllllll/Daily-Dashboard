@@ -25,7 +25,7 @@ export function EnergyCheckin() {
       <div className={styles.sliderContainer}>
         <input name="energy-slider" type="range" min="1" max="100"  
           className={styles.slider} value={energy} id="energy-slider" onChange={(event) => dispatch(fetchEnergy())}/>
-        <div class={styles.energyValue}>{energy}</div>
+        <div className={styles.energyValue}>{energy}</div>
       </div>
     </>
   )
