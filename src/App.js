@@ -1,25 +1,41 @@
-import React from 'react';
+import { createRef } from 'react';
+import { useLocation, useOutlet } from 'react-router-dom';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import Home from './routes/Home';
+import Settings from './routes/Settings';
 import './App.css';
-import Navigation from './components/Navigation/Navigation';
-import Notes from './features/notes/Notes';
-import Weather from './features/weather/Weather';
-import { EmotionsCheckin } from './features/emotionsCheckin/EmotionsCheckin';
-import { EnergyCheckin } from './features/energyCheckin/EnergyCheckin';
-import { LineChart } from './features/lineChart/LineChart';
 
-function App() {
+const routes = [
+  { path: '/', name: 'Home', element: <Home />, nodeRef: createRef() },
+  {
+    path: '/settings',
+    name: 'Settings',
+    element: <Settings />,
+    nodeRef: createRef(),
+  },
+];
+
+export default function App() {
+  const location = useLocation();
+  const currentOutlet = useOutlet();
+  const { nodeRef } =
+    routes.find((route) => route.path === location.pathname) ?? {};
+
   return (
-    <>
-      <Navigation />
-      <div className="App">
-        <Weather />
-        <Notes />
-        <EmotionsCheckin />
-        <EnergyCheckin />
-        <LineChart />
-      </div>
-    </>
+      <SwitchTransition>
+        <CSSTransition
+          key={location.pathname}
+          nodeRef={nodeRef}
+          timeout={400}
+          classNames="page"
+          unmountOnExit
+        >
+          {(state) => (
+            <div ref={nodeRef} className="page">
+              {currentOutlet}
+            </div>
+          )}
+        </CSSTransition>
+      </SwitchTransition>
   );
 }
-
-export default App;
