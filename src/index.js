@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import Home from './routes/Home';
 import { CssBaseline } from '@mui/material';
+import ArticlePage from './routes/ArticlePage';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/settings',
         element: <Settings />,
+      },
+      {
+        path: '/article/:id',
+        element: <ArticlePage />,
       },
     ],
   },
