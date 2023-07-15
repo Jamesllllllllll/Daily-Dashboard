@@ -1,8 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import unescapeURL from '../../utils/unescapeURL'
 
-export const fetchRedditPosts = createAsyncThunk('reddit/fetchRedditPosts', async (numPosts=5, thunkAPI) => {
+export const fetchRedditPosts = createAsyncThunk('reddit/fetchRedditPosts', async (numPosts=5, { getState }) => {
     
+    const { posts } = getState()
+    if(Object.keys(posts[0]).length === 0){
+        return;
+    }
+
     const queryParams = {
         limit: 25,
         after: null, // Retrieves posts after a certain post ID. 

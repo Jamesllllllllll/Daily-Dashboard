@@ -1,12 +1,12 @@
 import { React } from "react";
+import { Link } from 'react-router-dom';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-
 import { CardActionArea, Skeleton } from '@mui/material';
 import { styled } from '@mui/system';
 
@@ -14,13 +14,14 @@ import formatDistanceStrict from "date-fns/formatDistanceStrict";
 
 
 
+
+
 const ArticleCard = ({ id, url, title, author, description, image, publishedAt, isLoading }) => {
 
     return (
         <NewsCard key={id} sx={{ width: '50vw', height: 'auto' }}>
-
             <>
-                <CardActionArea disableRipple>
+                <CardActionArea component={Link} to={`/article/${id}`} disableRipple>
                     {!isLoading
                         ?
                         <CardMedia
