@@ -20,7 +20,7 @@ const RedditPosts = () => {
             <Stack spacing={2}>
                 {featuredPosts.map(({ id, url, description, author, title, image, publishedAt }) =>
                     <ArticleCard
-                        key={id}
+                        id={id}
                         url={url}
                         title={title}
                         description={description}
