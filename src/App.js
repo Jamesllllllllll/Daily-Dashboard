@@ -3,6 +3,7 @@ import { useLocation, useOutlet } from 'react-router-dom';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import Home from './routes/Home';
 import Settings from './routes/Settings';
+import ArticlePage from './routes/ArticlePage';
 import './App.css';
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
     element: <Settings />,
     nodeRef: createRef(),
   },
+  { path: '/article/:id', name: 'Article', element: <ArticlePage />, nodeRef: createRef() },
 ];
 
 export default function App() {
