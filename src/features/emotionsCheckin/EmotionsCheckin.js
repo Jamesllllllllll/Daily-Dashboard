@@ -16,9 +16,8 @@ const emotionPic = useSelector((state) => state.emotionsCheckin.todaysEmotion.pi
 //const emotionsHistory = useSelector((state) => state.emotionsCheckin.emotionsHistory);
 const dispatch = useDispatch();
 
-/* const storedEmotions = JSON.parse(localStorage.getItem('emotionsList')); */
-
-//target is img
+//handleClick dispatches actions
+//target is button
 function handleClick(e) {
   let date = new Date();
   let day = date.getDay();
@@ -38,8 +37,8 @@ function handleClick(e) {
   }));
 } 
 
-
- let emojiPics = emotionsArray.map( ({name, pic}) => {
+//emojiPics is an array of emoji buttons
+let emojiPics = emotionsArray.map( ({name, pic}) => {
   return (
    <li key={name}> 
     <button value={name} onClick={handleClick}>
