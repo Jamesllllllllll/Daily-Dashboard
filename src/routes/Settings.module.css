@@ -7,3 +7,11 @@
   width: 100%;
   padding: 2rem;
 }
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  margin-bottom: 2rem;
+}

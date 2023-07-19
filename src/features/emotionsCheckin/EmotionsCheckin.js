@@ -42,7 +42,7 @@ function handleClick(e) {
  let emojiPics = emotionsArray.map( ({name, pic}) => {
   return (
    <li key={name}> 
-    <button value={name} onClick={handleClick}>
+    <button value={name} onClick={handleClick} className={styles.button}>
       <img alt={name} name={name} src={pic} />
     </button>
    </li>

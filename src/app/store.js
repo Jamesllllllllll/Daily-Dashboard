@@ -5,6 +5,7 @@ import emotionsCheckinReducer from '../features/emotionsCheckin/emotionsCheckinS
 import lineChartReducer from '../features/lineChart/lineChartSlice';
 import notesReducer from '../features/notes/notesSlice';
 import weatherReducer from '../features/weather/weatherSlice';
+import settingsReducer from '../routes/settingsSlice';
 
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   lineChart: lineChartReducer,
   notes: notesReducer,
   weather: weatherReducer,
+  settings: settingsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
