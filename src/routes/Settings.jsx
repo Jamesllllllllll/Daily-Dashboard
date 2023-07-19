@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
   citySelector,
-  updateCity
+  defaultWeatherSelector,
+  updateCity,
+  weatherSelector,
 } from '../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from './settingsSlice';
 import Navigation from '../components/Navigation/Navigation';
@@ -11,6 +13,8 @@ import WeatherForm from '../components/WeatherForm/WeatherForm';
 export default function Settings() {
   const city = useSelector(citySelector);
   const wantToChangeCity = useSelector(changeCitySelector);
+  const weather = useSelector(weatherSelector);
+  const defaultWeather = useSelector(defaultWeatherSelector);
 
   const dispatch = useDispatch();
 
@@ -35,7 +39,11 @@ export default function Settings() {
         <h1>Settings</h1>
         <ul className={styles.list}>
           <li className={styles.listItem}>
-            {wantToChangeCity ? <WeatherForm /> : <CurrentCity />}
+            {JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
+              <WeatherForm />
+            ) : (
+              <CurrentCity />
+            )}
           </li>
         </ul>
       </div>
