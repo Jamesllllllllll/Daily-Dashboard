@@ -3,6 +3,7 @@ import {
   citySelector,
   defaultWeatherSelector,
   updateCity,
+  updateWeather,
   weatherSelector,
 } from '../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from './settingsSlice';
@@ -20,6 +21,7 @@ export default function Settings() {
 
   const setCity = () => {
     dispatch(updateCity(''));
+    dispatch(updateWeather(defaultWeather))
     dispatch(changeCity(!wantToChangeCity));
   };
 
