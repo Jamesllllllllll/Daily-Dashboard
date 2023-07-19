@@ -16,6 +16,7 @@ export default function Settings() {
   const wantToChangeCity = useSelector(changeCitySelector);
   const weather = useSelector(weatherSelector);
   const defaultWeather = useSelector(defaultWeatherSelector);
+  const showForm = JSON.stringify(weather) === JSON.stringify(defaultWeather)
 
   const dispatch = useDispatch();
 
@@ -41,7 +42,7 @@ export default function Settings() {
         <h1>Settings</h1>
         <ul className={styles.list}>
           <li className={styles.listItem}>
-            {JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
+            {showForm ? (
               <WeatherForm />
             ) : (
               <CurrentCity />

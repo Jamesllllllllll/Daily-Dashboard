@@ -11,6 +11,7 @@ const Weather = () => {
 
   const weather = useSelector(weatherSelector);
   const defaultWeather = useSelector(defaultWeatherSelector);
+  const showForm = JSON.stringify(weather) === JSON.stringify(defaultWeather);
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
@@ -28,7 +29,7 @@ const Weather = () => {
     );
   };
 
-  return JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
+  return showForm ? (
     <WeatherForm />
   ) : (
     <CurrentWeather />
