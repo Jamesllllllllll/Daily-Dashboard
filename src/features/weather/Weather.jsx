@@ -29,8 +29,6 @@ const Weather = () => {
   };
 
   return JSON.stringify(weather) === JSON.stringify(defaultWeather) ? (
-    // Using function call here because form component re-renders on every keystroke.
-    // I tried adding keys to the component, form and input but nothing worked!
     <WeatherForm />
   ) : (
     <CurrentWeather />
