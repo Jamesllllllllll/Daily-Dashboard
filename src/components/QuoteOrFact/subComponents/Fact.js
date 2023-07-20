@@ -4,17 +4,13 @@ import React, { useState, useEffect } from 'react'
 console.clear()
 //this component brings in 'facts' from API Ninjas and returns them to App.js for rendering.
 function Fact() {
-    //define apikey, url to call, set headers and initialize fact
-    const {REACT_APP_X_Api_Key} = process.env;
-    console.log(('API ' + REACT_APP_X_Api_Key))
-  const url = 'https://api.api-ninjas.com/v1/facts'
-  const options = {headers: { 'X-Api-Key': REACT_APP_X_Api_Key}, mode: 'cors' }
+
   const [fact, setFact] = useState('');
 
     //calling the API and setting fact to the response which comes back as an array object. you can find more information here https://api-ninjas.com/api/facts
   const fetchQuote = async () => {
     try {
-      const response = await fetch(`${url}`, options);
+      const response = await fetch(`/api/fact`);
       if (response.ok) {
         const data = await response.json();
         setFact(data[0].fact);
