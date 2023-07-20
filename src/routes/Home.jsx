@@ -6,7 +6,7 @@ import Weather from '../features/weather/Weather';
 import { EmotionsCheckin } from '../features/emotionsCheckin/EmotionsCheckin';
 import { EnergyCheckin } from '../features/energyCheckin/EnergyCheckin';
 import { LineChart } from '../features/lineChart/LineChart';
-import ToDoList from '../features/to-do-list/ToDoList'
+import ToDoList from '../features/to-do-list/ToDoList';
 
 export default function Home() {
   return (
