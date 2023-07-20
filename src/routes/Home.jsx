@@ -18,6 +18,7 @@ export default function Home() {
         <EmotionsCheckin />
         <EnergyCheckin />
         <LineChart />
+        <ToDoList />
       </div>
     </>
   );
