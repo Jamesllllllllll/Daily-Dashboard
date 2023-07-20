@@ -4,9 +4,7 @@ import React, { useState, useEffect } from 'react'
 //this component brings in 'quotes' from API Ninjas and returns them to App.js for rendering.
 function Quote() {
     //define apikey, url to call, set headers and initialize quote and author
-  const {REACT_APP_X_Api_Key} = process.env 
-  console.log('API ' + REACT_APP_X_Api_Key)
-  const options = {headers: { 'X-Api-Key': REACT_APP_X_Api_Key} }
+  
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -19,12 +17,11 @@ function Quote() {
   //console.log(categoryIndex)
   //console.log(category[categoryIndex])
 
-  const url = `https://api.api-ninjas.com/v1/quotes?category=${category[categoryIndex]}`
-    
+  
     //calling the API and setting quote and author to the response which comes back as an array object. you can find more information here https://api-ninjas.com/api/facts
   const fetchQuote = async () => {
     try {
-      const response = await fetch(`${url}`, options);
+      const response = await fetch(`/api/quote?category=${category[categoryIndex]}`);
       if (response.ok) {
         const data = await response.json();
         setQuote(data[0].quote);
