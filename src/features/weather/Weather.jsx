@@ -11,40 +11,7 @@ const Weather = () => {
 
   const weather = useSelector(weatherSelector);
   const defaultWeather = useSelector(defaultWeatherSelector);
-
-  // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
-  const handleCityChange = async (e) => {
-    dispatch(updateCity(e.target.value));
-    if (!city) return;
-
-    const response = await fetch(`/api/city?city=${city}`);
-    if (response.ok) {
-      const data = await response.json();
-      !autocompleteCities.includes(e.target.value) &&
-        data.features &&
-        setAutocompleteCities(data.features.map((place) => place.place_name));
-    }
-
-    response.error
-      ? setAutocompleteErr(response.error)
-      : setAutocompleteErr("Error fetching cities");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!city) {
-      return;
-    } else {
-      fetchWeather();
-    }
-  };
-
-  const changeCity = () => {
-    dispatch(updateWeather(defaultWeather));
-    dispatch(updateCity(""));
-    setAutocompleteCities([]);
-    setAutocompleteErr("");
-  };
+  const showForm = JSON.stringify(weather) === JSON.stringify(defaultWeather);
 
   const weatherIconSrc = `https:${weather.current.condition.icon}`;
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
