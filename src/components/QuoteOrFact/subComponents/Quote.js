@@ -13,11 +13,7 @@ function Quote() {
 
     //defining a number to act as an index so that the quote category can be randomized.  In the future, may add functionality to turn on or select the categories to recieve quotes from.
   const categoryIndex =Math.floor(Math.random() * category.length)
-  //console.log(category.length);
-  //console.log(categoryIndex)
-  //console.log(category[categoryIndex])
-
-  
+    
     //calling the API and setting quote and author to the response which comes back as an array object. you can find more information here https://api-ninjas.com/api/facts
   const fetchQuote = async () => {
     try {
@@ -31,7 +27,7 @@ function Quote() {
         return <p>No quote data</p>;
       }
     } catch (error) {
-      console.log('error');
+      console.log('Unable to retrieve quote');
     }
   };
 

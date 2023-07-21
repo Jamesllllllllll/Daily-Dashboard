@@ -12,7 +12,7 @@ export default async function handler(request, response) {
         return response.send(JSON.stringify(data));
       }
     } catch (err) {
-      return { error: "Unable to retrieve places" };
+      return { error: "Unable to retrieve quote" };
     }
   }
   
