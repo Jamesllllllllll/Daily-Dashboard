@@ -27,6 +27,10 @@ export const emotionsCheckinSlice = createSlice({
       state.todaysEmotion.pic = newPic; 
       return state
     },
+    //removes the last object from history
+    removeFromHistory: (state) => {
+      state.emotionsHistory.pop();
+    },
     //adds today's emotion to the history array
     addToEmotionsHistory: (state, action) => {
       let date = new Date();
@@ -43,5 +47,5 @@ export const emotionsCheckinSlice = createSlice({
 });
 
 
-export const { selectEmotion, addToEmotionsHistory } = emotionsCheckinSlice.actions;
+export const { selectEmotion, removeFromHistory, addToEmotionsHistory } = emotionsCheckinSlice.actions;
 export default emotionsCheckinSlice.reducer;
