@@ -34,7 +34,7 @@ const Weather = () => {
 
     response.error
       ? setAutocompleteErr(response.error)
-      : setAutocompleteErr("");
+      : setAutocompleteErr("Error fetching cities");
   };
 
   const handleSubmit = (e) => {
