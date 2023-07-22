@@ -1,26 +1,26 @@
 import React from 'react';
-/* import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { ShowHistory } from '../../components/ShowHistory/ShowHistory';
 import {
-  example,
-  example2
-} from './emotionsCheckinSlice'; */
+  toggleLineChart
+} from './lineChartSlice'; 
 import styles from './LineChart.module.css';
 
 
 export function LineChart() {
-/*     const count = useSelector(selectCount);
+  const lineChart = useSelector((state) => state.lineChart.lineChartOpen);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2'); */
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.lineChartContainer} >
-          <button type="submit" className={styles.button} /* onClick={() => dispatch(selectEmotion)}*/>
-            <img className={styles.emoticon} alt="sad" src='/media/LineChart.png' />
-          </button> 
+        <div className={styles.lineChartContainer}>
+          {lineChart === true ? <ShowHistory  /> : 
+          <button type="submit" className={styles.button}  onClick={() => dispatch(toggleLineChart())}>
+            <img className={styles.emoticon} alt="line-chart" src='/media/LineChart.png' />
+          </button> }
         </div>
       </div>
-  </> 
-  )
+    </> 
+  );
 }
