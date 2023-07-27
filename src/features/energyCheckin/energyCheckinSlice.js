@@ -8,15 +8,15 @@ export const energyCheckinSlice = createSlice({
     todaysEnergy: 50,
 
     energyHistory: [{
-      date: '',
-      energy: '',
+     /*  date: '',
+      energy: '', */
     }],
   },
   reducers: {
     selectEnergy: (state, action) => {   
       state.todaysEnergy = action.payload; 
     },
-    removeFromHistory: (state) => {
+    removeEnergyFromHistory: (state) => {
       state.energyHistory.pop();
     },
 
@@ -28,5 +28,5 @@ export const energyCheckinSlice = createSlice({
 });
   
 
-export const { selectEnergy, removeFromHistory, addToHistory } = energyCheckinSlice.actions;
+export const { selectEnergy, removeEnergyFromHistory, addToHistory } = energyCheckinSlice.actions;
 export default energyCheckinSlice.reducer;

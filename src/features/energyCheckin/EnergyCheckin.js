@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectEnergy,
-  removeFromHistory,
+  removeEnergyFromHistory,
   addToHistory,
 } from './energyCheckinSlice';
 import styles from './EnergyCheckin.module.css';
@@ -21,7 +21,7 @@ export function EnergyCheckin() {
     dispatch(selectEnergy(energyValue));
   
     if (today === latestDateStored){
-      dispatch(removeFromHistory())
+      dispatch(removeEnergyFromHistory())
     }
 
     dispatch(addToHistory({

@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import energyCheckinReducer from '../features/energyCheckin/energyCheckinSlice';
 import emotionsCheckinReducer from '../features/emotionsCheckin/emotionsCheckinSlice';
-import lineChartReducer from '../features/lineChart/lineChartSlice';
+import calendarReducer from '../features/calendar/calendarSlice';
 import notesReducer from '../features/notes/notesSlice';
 import weatherReducer from '../features/weather/weatherSlice';
 import settingsReducer from '../routes/settingsSlice';
@@ -21,7 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   emotionsCheckin: emotionsCheckinReducer,
   energyCheckin: energyCheckinReducer,
-  lineChart: lineChartReducer,
+  calendar: calendarReducer,
   notes: notesReducer,
   weather: weatherReducer,
   settings: settingsReducer,
