@@ -21,7 +21,6 @@ function mapOutEmotions(){
     existingDay=false;
     emotionsMapped.push(emotionsHistory.map( object => {
      if(object.date == i){
-      console.log(i, object.date, object.energy,"if");
       existingDay = true;
       return (
        <td key={object.name} className={styles.td}>
@@ -30,7 +29,6 @@ function mapOutEmotions(){
      )} 
     }));
     if(!existingDay){
-      console.log(i,"no if");
       emotionsMapped.push(<td key={counter++}> </td>);
     }
   } 
@@ -47,7 +45,6 @@ function mapOutEmotions(){
       existingDay=false;
       energyMapped.push(energyHistory.map( object => {
         if(object.date == i){
-          console.log(i, object.date, object.energy,"if");
           existingDay = true;
 
           return (
@@ -58,7 +55,6 @@ function mapOutEmotions(){
         )}
       }));
       if(!existingDay){
-        console.log(i,"no if");
         energyMapped.push(<td key={counter++}> </td>);
       }
       
