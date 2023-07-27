@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectEmotion,
-  removeFromHistory,
+  removeEmotionFromHistory,
   addToEmotionsHistory,
 } from './emotionsCheckinSlice';
 import emotionsArray  from './emotionsData';
@@ -25,7 +25,6 @@ function handleClick(e) {
   let today = date.getDay();
   const picName = e.target.name;
   const picSrc = e.target.src;
-  console.log(picName)
 
   dispatch(selectEmotion({
     name: picName,
@@ -33,7 +32,7 @@ function handleClick(e) {
   }));
 
   if (today === latestDateStored){
-    dispatch(removeFromHistory())
+    dispatch(removeEmotionFromHistory())
   }
 
   dispatch(addToEmotionsHistory({

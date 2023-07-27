@@ -6,7 +6,7 @@ import Weather from '../features/weather/Weather';
 import QuoteOrFact from '../components/QuoteOrFact/QuoteOrFact';
 import { EmotionsCheckin } from '../features/emotionsCheckin/EmotionsCheckin';
 import { EnergyCheckin } from '../features/energyCheckin/EnergyCheckin';
-import { LineChart } from '../features/lineChart/LineChart';
+import { Calendar } from '../features/calendar/Calendar';
 import ToDoList from '../features/to-do-list/ToDoList.js';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <Notes />
         <EmotionsCheckin />
         <EnergyCheckin />
-        <LineChart />
+        <Calendar />
         <ToDoList />
       </div>
     </>
