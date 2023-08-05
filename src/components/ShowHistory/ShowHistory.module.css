@@ -1,17 +1,24 @@
-.table{
-  border: 2px solid rgba(0,0,0,0.2)
+.table {
+  border-collapse: collapse;
+  border: 2px solid rgb(204, 204, 204);
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  padding: 3rem;
 }
 
 .thead{
-  border: 2px solid rgba(0,0,0,0.2)
+  border-bottom: 4px solid  rgb(204, 204, 204);;
 }
 
 .td{
-  border: 1px solid rgba(0,0,0,0.2)
+  border-collapse: collapse;
+  border-right: 2px solid rgb(204, 204, 204);
+  border-left: 2px solid rgb(204, 204, 204);
 }
 
+
+
 .button{
-    background-color: aliceblue;
     color: #274D00;
     border-radius: .25rem;
     box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2);

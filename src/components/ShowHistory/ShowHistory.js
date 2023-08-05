@@ -87,7 +87,7 @@ function mapOutEmotions(){
           </tr>
         </tbody>
       </table>
-      <button className={styles.button} onClick={() => dispatch(toggleCalendar())}>CLOSE</button>
+      <button className={styles.button} onClick={() => dispatch(toggleCalendar())}>Close</button>
     </>
   )
 }

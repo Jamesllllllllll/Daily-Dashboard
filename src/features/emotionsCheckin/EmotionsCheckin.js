@@ -61,7 +61,7 @@ let emojiPics = emotionsArray.map( ({name, pic}) => {
           <ul className={styles.list}>
             {emojiPics}
           </ul>
-            <button className={styles.openingEmoji}><img src={emotionPic} alt={emotionName}/></button>
+          <button className={styles.openingEmojiButton}><img src={emotionPic} alt={emotionName} className={styles.emojiPic}/></button>
         </div>
       </div>
      
