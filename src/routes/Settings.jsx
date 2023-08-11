@@ -7,7 +7,7 @@ import {
   weatherSelector,
 } from '../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from './settingsSlice';
-import Navigation from '../components/Navigation/Navigation';
+import { NavigationSettings } from '../components/Navigation/Navigation';
 import styles from './Settings.module.css';
 import WeatherForm from '../components/WeatherForm/WeatherForm';
 
@@ -37,7 +37,7 @@ export default function Settings() {
 
   return (
     <>
-      <Navigation />
+      <NavigationSettings />
       <div className={styles.Settings}>
         <h1>Settings</h1>
         <ul className={styles.list}>

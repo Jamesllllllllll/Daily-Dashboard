@@ -5,9 +5,8 @@ import {
   defaultWeatherSelector,
 } from './weatherSlice';
 import WeatherForm from '../../components/WeatherForm/WeatherForm';
-import styles from './weather.module.css';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
+import StyledCard from '../../components/LayoutComponents/FeatureCard';
 import Typography from '@mui/material/Typography';
 
 const Weather = () => {
@@ -22,18 +21,23 @@ const Weather = () => {
 
   const CurrentWeather = () => {
     return (
-      <div>
+      <>
         <img src={weatherIconSrc} alt={weatherIconAltText} />
-        <p>{`${weather.current.condition.text} and ${
+        <Typography>{`${weather.current.condition.text} and ${
           city.includes('United States')
             ? weather.current.temp_f
             : weather.current.temp_c
-        }° in ${weather.location.name}`}</p>
-      </div>
+        }° in ${weather.location.name}`}</Typography>
+      </>
     );
   };
 
-  return <Box><h2 className="cardTitle">Weather</h2>{showForm ? <WeatherForm /> : <CurrentWeather />}</Box>;
+  return (
+    <Box className="cardContainer">
+      <h2 className="cardTitle">Weather</h2>
+      <StyledCard content={showForm ? <WeatherForm /> : <CurrentWeather />} />
+    </Box>
+  );
 };
 
 export default Weather;

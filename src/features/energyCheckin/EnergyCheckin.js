@@ -7,7 +7,7 @@ import {
 } from './energyCheckinSlice';
 import styles from './EnergyCheckin.module.css';
 
-export function EnergyCheckin() {
+export default function EnergyCheckin() {
   //state variables:
   const energy = useSelector(state => state.energyCheckin.todaysEnergy);
   const latestDateStored = useSelector(state => state.energyCheckin.energyHistory.at(-1).date);
@@ -34,11 +34,11 @@ export function EnergyCheckin() {
 //this is what the user sees (slider);
   return (
     <>
-      {/* <div className={styles.sliderContainer}> */}
+      <div className={styles.sliderContainer}>
         <input name="energy-slider" type="range" min="0" max="100" step="10" 
           className={styles.slider} value={energy} id="energy-slider" onChange={handleChange}/>
           <p className={styles.energyValue}>{energy}</p>
-      {/* </div> */}
+      </div>
     </>
   )
 }

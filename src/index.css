@@ -1,5 +1,6 @@
 html{
   font-size: 16px;
+  background-color: #f1f3fd;
 }
 
 body {
@@ -11,17 +12,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: rgb(66, 66, 66);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: #9092c6;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
+.cardContainer {
+  max-width: 800px;
+  padding-bottom: 2rem;
+  margin: 1rem;
+  margin-bottom: 0; /* Temp fix: Saved notes have margin (James)*/
+}
 
 .cardTitle {
   text-align: left;
-  margin: 0;
-  color: #b5b6d2;
-  font-size: 0.9rem;
+  margin: 0.25rem 0.5rem;
+  color: #9092c6;
+  font-size: 1.1rem;
   font-weight: 200;
   justify-self: start;
   align-self: start;

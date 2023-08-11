@@ -10,7 +10,7 @@ import emotionsArray  from './emotionsData';
 import styles from './EmotionsCheckin.module.css';
 
 //This component returns the UI for the emojis section.
-export function EmotionsCheckin() {
+export default function EmotionsCheckin() {
 //state variables:  
 const emotionName = useSelector((state) => state.emotionsCheckin.todaysEmotion.name);
 const emotionPic = useSelector((state) => state.emotionsCheckin.todaysEmotion.pic);

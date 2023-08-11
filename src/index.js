@@ -10,6 +10,7 @@ import Settings from './routes/Settings';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import Home from './routes/Home';
+import { CssBaseline } from '@mui/material';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -36,7 +37,8 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
+        <CssBaseline />
+          <RouterProvider router={router} />
       </PersistGate>
     </Provider>
   </React.StrictMode>

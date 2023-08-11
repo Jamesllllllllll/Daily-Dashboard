@@ -11,7 +11,7 @@ const Notes = () => {
 
   return (
     <>
-      <Box>
+      <Box sx={{ maxWidth: 800 }} className="cardContainer">
         <h2 className="cardTitle">Notes</h2>
         <NewNote />
         {notes.map((entry) => (

@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
+import StyledCard from '../LayoutComponents/FeatureCard';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
@@ -16,12 +16,7 @@ import { editNote } from '../../features/notes/notesSlice';
 import { useDispatch } from 'react-redux';
 import { Typography } from '@mui/material';
 
-
-const NoteCard = ({
-  dateTime,
-  data
-}) => {
-
+const NoteCard = ({ dateTime, data }) => {
   const dispatch = useDispatch();
 
   const [expanded, setExpanded] = useState(false);
@@ -38,15 +33,20 @@ const NoteCard = ({
     setAllowEdit(true);
     // Automatically expand the card
     setExpanded(true);
-  }
+  };
   const handleSubmit = () => {
     setAllowEdit(false);
     dispatch(editNote({ dateTime, newData }));
-  }
+  };
 
   // Parse date and time
   const dateTimeObject = new Date(Date.parse(dateTime));
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const dateOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   const date = dateTimeObject.toLocaleDateString('en-AU', dateOptions);
   const time = dateTimeObject.toLocaleTimeString('en-AU');
 
@@ -54,56 +54,54 @@ const NoteCard = ({
   const shortDescription = getShortDescription(newData);
 
   return (
-    <Card sx={cardStyles}>
-      <CardHeader
-        action={
-          <PositionedMenu
-            dateTime={dateTime}
-            handleOnEdit={handleOnEdit}
+    <StyledCard
+      content={
+        <>
+          <CardHeader
+            action={
+              <PositionedMenu dateTime={dateTime} handleOnEdit={handleOnEdit} />
+            }
+            title={date}
+            titleTypographyProps={{ variant: 'subtitle1' }}
+            subheader={time}
+            subheaderTypographyProps={{ variant: 'subtitle2' }}
+            sx={headerStyles}
           />
-        }
-        title={date}
-        titleTypographyProps={{ variant: 'subtitle1' }}
-        subheader={time}
-        subheaderTypographyProps={{ variant: 'subtitle2' }}
-        sx={headerStyles}
-      />
 
-      <CardContent sx={{ margin: '0 auto', padding: '0 auto', ...headerStyles }}>
-        <Typography variant='body2' color="text.secondary">
-          {!expanded ? shortDescription : null}
-        </Typography>
-      </CardContent>
+          <CardContent
+            sx={{ margin: '0 auto', padding: '0 auto', ...headerStyles }}
+          >
+            <Typography variant="body2" color="text.secondary">
+              {!expanded ? shortDescription : null}
+            </Typography>
+          </CardContent>
 
-      <CardActions disableSpacing>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse
-        in={expanded}
-        timeout="auto"
-        unmountOnExit
-      >
-        <CardContent sx={contentStyles}>
-          <RichTextEditor
-            data={newData}
-            setData={setNewData}
-            handleSubmit={handleSubmit}
-            allowEdit={allowEdit}
-            newNote={false}
-          />
-        </CardContent>
-      </Collapse>
-    </Card>
+          <CardActions disableSpacing>
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent sx={contentStyles}>
+              <RichTextEditor
+                data={newData}
+                setData={setNewData}
+                handleSubmit={handleSubmit}
+                allowEdit={allowEdit}
+                newNote={false}
+              />
+            </CardContent>
+          </Collapse>
+        </>
+      }
+    />
   );
-}
-
+};
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -116,15 +114,15 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const cardStyles = {
-  minWidth: 275,
-  margin: '1rem'
-};
+// const cardStyles = {
+//   minWidth: 275,
+//   margin: '1rem'
+// };
 
 const headerStyles = {
   fontSize: '1rem',
   textAlign: 'start',
-  height: 'fit-content'
+  height: 'fit-content',
 };
 
 const contentStyles = {
@@ -132,7 +130,7 @@ const contentStyles = {
   alignItems: 'center',
   flexWrap: 'wrap',
   justifyContent: 'end',
-  overflow: 'auto'
+  overflow: 'auto',
 };
 
 export default NoteCard;

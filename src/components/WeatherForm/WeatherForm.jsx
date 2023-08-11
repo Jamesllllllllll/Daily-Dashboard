@@ -6,7 +6,6 @@ import {
   updateWeather,
 } from '../../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
-import Card from '@mui/material/Card';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -64,7 +63,6 @@ const WeatherForm = () => {
   };
 
   return (
-    <Card sx={{ minWidth: 550, p: '1rem' }}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="city" className="label">
           <Typography sx={{ display: 'inline' }}>Enter your city:</Typography>
@@ -96,7 +94,6 @@ const WeatherForm = () => {
           Submit
         </Button>
       </form>
-    </Card>
   );
 };
 
