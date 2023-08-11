@@ -5,6 +5,10 @@ import {
   defaultWeatherSelector,
 } from './weatherSlice';
 import WeatherForm from '../../components/WeatherForm/WeatherForm';
+import styles from './weather.module.css';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
 
 const Weather = () => {
   const city = useSelector(citySelector);
@@ -29,11 +33,7 @@ const Weather = () => {
     );
   };
 
-  return showForm ? (
-    <WeatherForm />
-  ) : (
-    <CurrentWeather />
-  );
+  return <Box><h2 className="cardTitle">Weather</h2>{showForm ? <WeatherForm /> : <CurrentWeather />}</Box>;
 };
 
 export default Weather;

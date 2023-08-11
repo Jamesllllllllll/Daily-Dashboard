@@ -9,10 +9,10 @@ import { addNote } from '../../features/notes/notesSlice';
 
 
 const paperStyles = {
-    width: '60%', // Set the desired maximum width
+    minWidth: 550, // Set the desired maximum width
     padding: '1rem', // Center the editor on the page
     height: 'fitContent',
-    border: '1px solid #ccc',
+    // border: '1px solid #ccc',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'end',

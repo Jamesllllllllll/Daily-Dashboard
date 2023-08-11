@@ -15,3 +15,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.cardTitle {
+  text-align: left;
+  margin: 0;
+  color: #b5b6d2;
+  font-size: 0.9rem;
+  font-weight: 200;
+  justify-self: start;
+  align-self: start;
+}
+

@@ -34,11 +34,11 @@ export function EnergyCheckin() {
 //this is what the user sees (slider);
   return (
     <>
-      <div className={styles.sliderContainer}>
+      {/* <div className={styles.sliderContainer}> */}
         <input name="energy-slider" type="range" min="0" max="100" step="10" 
           className={styles.slider} value={energy} id="energy-slider" onChange={handleChange}/>
-        <h3 className={styles.energyValue}>{energy}</h3>
-      </div>
+          <p className={styles.energyValue}>{energy}</p>
+      {/* </div> */}
     </>
   )
 }

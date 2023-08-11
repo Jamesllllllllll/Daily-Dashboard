@@ -117,7 +117,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const cardStyles = {
-  width: '60%',
+  minWidth: 275,
   margin: '1rem'
 };
 

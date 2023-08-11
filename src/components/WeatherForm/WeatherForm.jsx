@@ -6,6 +6,10 @@ import {
   updateWeather,
 } from '../../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
+import Card from '@mui/material/Card';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 const WeatherForm = () => {
   const dispatch = useDispatch();
@@ -60,33 +64,39 @@ const WeatherForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="city" className="label">
-        Enter your city: 
-      </label>
-      <input
-        list="places"
-        type="text"
-        id="city"
-        name="city"
-        onChange={handleCityChange}
-        value={city}
-        required
-        pattern={autocompleteCities.join('|')}
-        autoComplete="off"
-      />
-      {autocompleteErr && <span className="inputError">{autocompleteErr}</span>}
-      {/* The datalist element gives the available options for the input. 
+    <Card sx={{ minWidth: 550, p: '1rem' }}>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="city" className="label">
+          <Typography sx={{ display: 'inline' }}>Enter your city:</Typography>
+        </label>
+        <TextField
+          sx={{ mx: '1rem' }}
+          variant="standard"
+          list="places"
+          type="text"
+          id="city"
+          name="city"
+          onChange={handleCityChange}
+          value={city}
+          required
+          pattern={autocompleteCities.join('|')}
+          autoComplete="off"
+        />
+        {autocompleteErr && (
+          <span className="inputError">{autocompleteErr}</span>
+        )}
+        {/* The datalist element gives the available options for the input. 
               The id="places" ties it to the element above with list="places" */}
-      <datalist id="places">
-        {autocompleteCities.map((city, i) => (
-          <option key={i}>{city}</option>
-        ))}
-      </datalist>
-      <button type="submit" className="button">
-        Submit
-      </button>
-    </form>
+        <datalist id="places">
+          {autocompleteCities.map((city, i) => (
+            <option key={i}>{city}</option>
+          ))}
+        </datalist>
+        <Button type="submit" className="button" variant="outlined">
+          Submit
+        </Button>
+      </form>
+    </Card>
   );
 };
 
