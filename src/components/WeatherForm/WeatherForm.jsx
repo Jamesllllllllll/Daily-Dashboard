@@ -42,25 +42,25 @@ const WeatherForm = () => {
     if (!city) {
       return;
     } else {
-      fetchWeather();
+      // fetchWeather();
       dispatch(changeCity(!wantToChangeCity));
     }
   };
 
-  const fetchWeather = async () => {
-    try {
-      const response = await fetch(`/api/weather?city=${city}`);
-      if (response.ok) {
-        const data = await response.json();
-        dispatch(updateWeather(data));
-      } else {
-        console.log(`Error: ${response.statusText}`);
-        return <p>No weather data</p>;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchWeather = async () => {
+  //   try {
+  //     const response = await fetch(`/api/weather?city=${city}`);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       dispatch(updateWeather(data));
+  //     } else {
+  //       console.log(`Error: ${response.statusText}`);
+  //       return <p>No weather data</p>;
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
       <form onSubmit={handleSubmit}>
