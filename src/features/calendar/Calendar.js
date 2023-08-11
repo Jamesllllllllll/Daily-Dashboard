@@ -7,7 +7,7 @@ import {
 import styles from './Calendar.module.css';
 
 
-export function Calendar() {
+export default function Calendar() {
   const lineChart = useSelector((state) => state.calendar.calendarOpen);
   const dispatch = useDispatch();
 

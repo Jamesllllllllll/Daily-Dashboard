@@ -105,8 +105,7 @@ const RichTextEditor = ({
                 allowEdit
                     ?
                     (<Button
-                        variant="contained"
-                        color="success"
+                        variant="outlined"
                         size="small"
                         onClick={handleSave}
                         sx={buttonStyles}
@@ -136,17 +135,19 @@ const toolbarStyles = {
     textAlign: 'center'
 }
 const editableStyles = {
-    padding: '0 0.75rem',
+    // padding: '0 0.75rem',
     minHeight: '10rem',
-    margin: '1rem',
+    // margin: '1rem',
     fontFamily: 'Arial, sans-serif',
     width: '100%',
     fontSize: '1rem',
     lineHeight: 'normal',
-    textAlign: 'start'
+    textAlign: 'start',
+    border: '1px solid #ddd',
 }
 
 const buttonStyles = {
+    marginTop: '1rem',
     position: 'relative',
     right: '.75rem'
 }
