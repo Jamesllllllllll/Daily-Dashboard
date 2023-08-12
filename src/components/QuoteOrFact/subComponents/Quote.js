@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Skeleton, Box } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch';
 //this component brings in 'quotes' from API Ninjas and returns them to App.js for rendering.
 function Quote() {
   //define apikey, url to call, set headers and initialize quote and author
@@ -128,8 +129,8 @@ function Quote() {
           <p>
             -
             <a id="author" href={link} target="blank">
-              {author}
-            </a>{' '}
+              {author}<LaunchIcon sx={{ height: '1rem' }} />
+            </a>
           </p>
         </Box>
       ) : (

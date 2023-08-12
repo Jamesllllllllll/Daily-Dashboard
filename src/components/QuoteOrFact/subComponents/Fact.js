@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Skeleton, Box } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 //this component brings in 'facts' from API Ninjas and returns them to App.js for rendering.
 function Fact() {
@@ -47,7 +48,7 @@ function Fact() {
           }}
         >
           <a href={search} target="blank">
-            {fact}
+            {fact}<LaunchIcon sx={{ height: '1rem' }} />
           </a>
         </Box>
       ) : (

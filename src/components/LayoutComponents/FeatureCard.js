@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 const StyledCard = styled((props) => <Card {...props} />)(({ theme }) => ({
   borderRadius: 25,
-  maxWidth: 800,
+  width: '100%',
   padding: '2rem',
   marginBottom: '1rem',
   boxShadow: '0 15px 25px rgba(0,0,0,.15); 0 5px 10px rgba(0,0,0.05)',

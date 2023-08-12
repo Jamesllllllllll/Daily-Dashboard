@@ -28,9 +28,6 @@ code {
 }
 
 .cardContainer {
-  max-width: 800px;
-  padding-bottom: 2rem;
-  margin: 1rem;
   margin-bottom: 0; /* Temp fix: Saved notes have margin (James)*/
 }
 
