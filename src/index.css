@@ -33,9 +33,16 @@ code {
 
 .cardTitle {
   text-align: left;
-  margin: 0.25rem 0.5rem;
+  background-color: #fff;
+  display: inline;
+  padding: 0.65rem;
+  padding-top: 0.45rem;
+  margin-left: 1.5rem;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 15px 25px rgba(0,0,0,.15), 0 5px 10px rgba(0,0,0,0.05);
   color: #9092c6;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 200;
   justify-self: start;
   align-self: start;
