@@ -13,7 +13,7 @@ function QuoteOrFact() {
   //use the number stored in quoteOrFact to determine if a quote or a fact will be displayed.
   //className container is set for styling purposes
   return (
-    <Box className="cardContainer">
+    <Box className="cardContainer" sx={{ width: {xs: '100%', sm: '75%'} }}>
       <h2 className="cardTitle">{quoteOrFact > 0 ? 'Quote' : 'Fact'}</h2>
       <StyledCard content={quoteOrFact > 0 ? <Quote /> : <Fact />} />
     </Box>

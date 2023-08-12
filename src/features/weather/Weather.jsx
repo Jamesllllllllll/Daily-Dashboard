@@ -57,7 +57,7 @@ const Weather = () => {
       </Box>
     ) : (
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Skeleton variant="circular" width={50} height={50} animation="wave" sx={{ mb: '1rem' }} />
+        <Skeleton variant="circular" width={50} height={50} animation="wave" sx={{ my: '1rem' }} />
         <Skeleton
           variant="rounded"
           width={200}
@@ -69,7 +69,7 @@ const Weather = () => {
   };
 
   return (
-    <Box className="cardContainer">
+    <Box className="cardContainer" sx={{ width: {xs: '50%', sm: '25%'}, minWidth: 250, alignSelf: {xs: 'center', sm: 'flex-start'} }}>
       <h2 className="cardTitle">Weather</h2>
       <StyledCard content={showForm ? <WeatherForm /> : <CurrentWeather />} />
     </Box>
