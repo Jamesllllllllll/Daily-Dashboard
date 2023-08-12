@@ -20,7 +20,12 @@ export default function Home() {
             direction="column"
             sx={{ width: '100%' }}
           >
-            <Stack spacing={'1rem'} direction={{ xs: 'column', sm: 'row' }} alignItems='flex-start' sx={{ width: '100%' }}>
+            <Stack
+              spacing={'1rem'}
+              direction={{ xs: 'column', sm: 'row' }}
+              alignItems="flex-start"
+              sx={{ width: '100%' }}
+            >
               <Weather />
               <QuoteOrFact />
             </Stack>
