@@ -48,6 +48,7 @@ input.slider[type='range']::-webkit-slider-thumb {
   width: 2rem;
   background-image: url('../../../public/media/Lightning.png');
   background-size: contain;
+  background-repeat: no-repeat;
   border-radius: 50%;
   border: none;
   box-shadow: -407px 0 0 400px #f50; 
@@ -75,7 +76,7 @@ input.slider[type='range']::-moz-range-thumb {
   height: 2rem;
   width: 2rem;
   background-image: url('../../../public/media/Lightning.png');
-  background-size: cover;
+  background-size: contain;
   border-radius: 50%;
   border: none;
   transition: 0.2s ease-in-out;
