@@ -16,6 +16,11 @@
   border-left: 2px solid rgb(204, 204, 204);
 }
 
+.energy{
+  z-index: 2;
+  background-image: url('../../Lightning.png');
+}
+
 
 
 .button{
