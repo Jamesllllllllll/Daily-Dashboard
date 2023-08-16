@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 
-console.clear()
+// console.clear()
 //this component brings in 'facts' from API Ninjas and returns them to App.js for rendering.
 function Fact() {
 
