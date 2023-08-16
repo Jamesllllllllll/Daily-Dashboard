@@ -5,8 +5,6 @@ import emotionsCheckinReducer from '../features/emotionsCheckin/emotionsCheckinS
 import calendarReducer from '../features/calendar/calendarSlice';
 import notesReducer from '../features/notes/notesSlice';
 import weatherReducer from '../features/weather/weatherSlice';
-import settingsReducer from '../routes/settingsSlice';
-import redditReducer from '../features/reddit/redditSlice';
 
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -25,8 +23,6 @@ const rootReducer = combineReducers({
   calendar: calendarReducer,
   notes: notesReducer,
   weather: weatherReducer,
-  reddit: redditReducer,
-  settings: settingsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
