@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import React, { useEffect } from 'react';
 import styles from './Home.module.css';
 import { NavigationHome } from '../components/Navigation/Navigation';
 import RedditPosts from '../features/reddit/RedditPosts';
@@ -10,9 +9,6 @@ import ToDoList from '../features/to-do-list/ToDoList.js';
 import WellBeingCheckin from '../components/WellBeingCheckin/WellBeingCheckin';
 
 export default function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
