@@ -5,8 +5,7 @@ import StyledCard from '../LayoutComponents/FeatureCard';
 import Box from '@mui/material/Box';
 export default function WellBeingCheckin() {
   return (
-    <>
-      <Box sx={{ minWidth: 550 }} className="cardContainer">
+      <Box className="cardContainer">
         <h2 className="cardTitle">Well Being Check-in</h2>
         <StyledCard
           content={
@@ -18,6 +17,5 @@ export default function WellBeingCheckin() {
           }
         />
       </Box>
-    </>
   );
 }
