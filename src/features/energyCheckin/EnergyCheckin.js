@@ -37,25 +37,17 @@ export default function EnergyCheckin() {
     })); 
   }  
 
-const EnergySlider = () => {
-  return (
-    <div class={styles.sliderInputContainer}>
-      <input name="energy-slider" type="range" min="0" max="100" step="1" 
-      className={styles.slider} value={energy} id="energy-slider" onChange={handleChange} style={{}}/>
-      <p className={styles.energyValue}>{energy}</p> 
-      <Button variant="outlined" onClick={() => dispatch(toggleSlider())} sx={{ alignSelf: 'center' }}>Close</Button>
-    </div>
-  )
-}
-
 //check sliderOpen state and display either slider or lightning picture:
   return (
     <div className={styles.sliderContainer}>
       <img src={lightning} alt="lightning" className={styles.lightning} onClick={() => dispatch(toggleSlider())}/>
       <div style={{ overflow: 'hidden', width: '100%' }}>
       <CSSTransition nodeRef={nodeRef} in={sliderOpen} timeout={500} classNames="sliderMount" unmountOnExit>
-        <div ref={nodeRef} style={{ width: '100% '}}>
-          <EnergySlider />
+          <div ref={nodeRef} style={{ width: '100%' }} class={styles.sliderInputContainer}>
+          <input name="energy-slider" type="range" min="0" max="100" step="1" 
+          className={styles.slider} value={energy} id="energy-slider" onChange={handleChange} style={{}}/>
+          <p className={styles.energyValue}>{energy}</p> 
+          <Button variant="outlined" onClick={() => dispatch(toggleSlider())} sx={{ alignSelf: 'center' }}>Close</Button>
         </div>
       </CSSTransition>
       </div>
