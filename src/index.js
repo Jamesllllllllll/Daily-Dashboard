@@ -46,7 +46,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <CssBaseline />
           <RouterProvider router={router} />
       </PersistGate>
     </Provider>
