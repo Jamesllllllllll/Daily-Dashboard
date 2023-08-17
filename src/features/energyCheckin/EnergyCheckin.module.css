@@ -1,9 +1,7 @@
 .sliderContainer {
-  margin: auto;
-  height: 3rem;
-  width: 70%;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   padding: 0.5rem;
 }
@@ -13,6 +11,8 @@
   align-self: center;
   padding-left: 2rem;
   margin-right: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .closeButton{
@@ -31,18 +31,24 @@
   width: 2rem;
 }
 
+.sliderInputContainer {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 input.slider[type='range'] {
   /* removing default appearance */
   align-self: center;
   -webkit-appearance: none;
   appearance: none;
-  width: 50%;
+  width: 300px;
   justify-content: start;
   cursor: pointer;
   outline: none;
   height: 1rem;
   background: #ccc;
   border-radius: 1rem;
+  left: -100px !important;
 
 }
 
@@ -97,5 +103,3 @@ input.slider[type='range']::-moz-range-thumb {
   transition: 0.2s ease-in-out;
   overflow: visible;
 }
-
-

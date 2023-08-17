@@ -48,3 +48,17 @@ code {
   align-self: start;
 }
 
+.sliderMount-enter {
+  transform: translateX(-500px);
+}
+.sliderMount-enter-active {
+  transform: translateX(0px);
+  transition: transform 750ms;
+}
+.sliderMount-exit {
+  transform: translate(0px)
+}
+.sliderMount-exit-active {
+  transform: translate(-500px);
+  transition: transform 750ms;
+}

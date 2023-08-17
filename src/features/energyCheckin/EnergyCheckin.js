@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectEnergy,
@@ -6,8 +6,11 @@ import {
   removeEnergyFromHistory,
   addToHistory,
 } from './energyCheckinSlice';
-import lightning from "../../../src/Lightning.png"
+import lightning from "../../../src/Lightning.png";
+import Button from '@mui/material/Button';
+import { CSSTransition } from 'react-transition-group'; 
 import styles from './EnergyCheckin.module.css';
+import '../../index.css';
 
 export default function EnergyCheckin() {
   //state variables:
@@ -15,6 +18,7 @@ export default function EnergyCheckin() {
   const energy = useSelector(state => state.energyCheckin.todaysEnergy);
   const latestDateStored = useSelector(state => state.energyCheckin.energyHistory.at(-1).date);
   const dispatch = useDispatch();
+  const nodeRef = useRef(null);
 
   function handleChange(e) {
     let date = new Date();
@@ -33,20 +37,29 @@ export default function EnergyCheckin() {
     })); 
   }  
 
+const EnergySlider = () => {
+  return (
+    <div class={styles.sliderInputContainer}>
+      <input name="energy-slider" type="range" min="0" max="100" step="1" 
+      className={styles.slider} value={energy} id="energy-slider" onChange={handleChange} style={{}}/>
+      <p className={styles.energyValue}>{energy}</p> 
+      <Button variant="outlined" onClick={() => dispatch(toggleSlider())} sx={{ alignSelf: 'center' }}>Close</Button>
+    </div>
+  )
+}
 
 //check sliderOpen state and display either slider or lightning picture:
   return (
-    <>
-      {sliderOpen === true ? 
-        <div className={styles.sliderContainer}>
-          <input name="energy-slider" type="range" min="0" max="100" step="10" 
-          className={styles.slider} value={energy} id="energy-slider" onChange={handleChange}/>
-          <p className={styles.energyValue}>{energy}</p> 
-          <button className={styles.closeButton} onClick={() => dispatch(toggleSlider())}>Close</button>
-        </div> : 
-        <img src={lightning} alt="lightning" className={styles.lightning} onClick={() => dispatch(toggleSlider())}/>
-      }
-    </>   
+    <div className={styles.sliderContainer}>
+      <img src={lightning} alt="lightning" className={styles.lightning} onClick={() => dispatch(toggleSlider())}/>
+      <div style={{ overflow: 'hidden', width: '100%' }}>
+      <CSSTransition nodeRef={nodeRef} in={sliderOpen} timeout={500} classNames="sliderMount" unmountOnExit>
+        <div ref={nodeRef} style={{ width: '100% '}}>
+          <EnergySlider />
+        </div>
+      </CSSTransition>
+      </div>
+    </div>   
   )
 }
 
