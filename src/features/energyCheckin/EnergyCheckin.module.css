@@ -90,6 +90,8 @@ input.slider[type='range']::-moz-range-track {
 input[type="range"]::-moz-range-progress{
   background-color: #f50;
   height: inherit;
+  border-radius: 16px;
+
 }
 
 
