@@ -12,9 +12,10 @@ export const emotionsCheckinSlice = createSlice({
     },
     //array of objects- up tp 7 days of emotions
     emotionsHistory: [{
-      date: '',
+      /*object will look like this:
+       date: '',
       name: '',
-      pic: '',
+      pic: '', */
     }],
   },
   
@@ -32,14 +33,6 @@ export const emotionsCheckinSlice = createSlice({
     },
     //adds today's emotion to the history array
     addToEmotionsHistory: (state, action) => {
-      let date = new Date();
-      let day = date.getDay();
-
-      //checks that is just one emotion per day
-      if (action.payload.date === day){
-        state.emotionsHistory.pop();
-      }
-
       state.emotionsHistory.push(action.payload);
     },
   },

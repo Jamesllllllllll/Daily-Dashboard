@@ -7,8 +7,11 @@ export const energyCheckinSlice = createSlice({
     //state variables:
     todaysEnergy: 50,
 
+    sliderOpen: false,
+
     energyHistory: [{
-     /*  date: '',
+     /*  object will look like this:
+      date: '',
       energy: '', */
     }],
   },
@@ -16,6 +19,12 @@ export const energyCheckinSlice = createSlice({
     selectEnergy: (state, action) => {   
       state.todaysEnergy = action.payload; 
     },
+
+    toggleSlider: (state) => {   
+      state.sliderOpen ? state.sliderOpen = false : state.sliderOpen = true;
+      return state
+    },
+  
     removeEnergyFromHistory: (state) => {
       state.energyHistory.pop();
     },
@@ -28,5 +37,5 @@ export const energyCheckinSlice = createSlice({
 });
   
 
-export const { selectEnergy, removeEnergyFromHistory, addToHistory } = energyCheckinSlice.actions;
+export const { selectEnergy, removeEnergyFromHistory, addToHistory, toggleSlider } = energyCheckinSlice.actions;
 export default energyCheckinSlice.reducer;

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   toggleCalendar
 } from '../../features/calendar/calendarSlice'; 
-import styles from './ShowHistory.module.css'
+import styles from './ShowHistory.module.css';
 
 
 export function ShowHistory() {
@@ -16,25 +16,23 @@ function mapOutEmotions(){
   let emotionsMapped = [];
   let counter = 0;
   let existingDay;
-  
+
    for(let i= 0; i<=6; i++){
-    existingDay=false;
     emotionsMapped.push(emotionsHistory.map( object => {
-     if(object.date == i){
-      console.log(i, object.date, object.energy,"if");
+     if(object.date === i){
       existingDay = true;
+      
       return (
-       <td key={object.name} className={styles.td}>
-        <img src={object.pic} className={styles.emojiPic}/>
-       </td>
-     )} 
+        <td key={object.name} className={styles.td}>
+        <img src={object.pic} alt={object.name} className={styles.emojiPic}/>
+        </td>
+      )}
     }));
     if(!existingDay){
-      console.log(i,"no if");
       emotionsMapped.push(<td key={counter++}> </td>);
     }
-  } 
-    return emotionsMapped
+  }
+  return emotionsMapped
   };  
 
   
@@ -44,24 +42,19 @@ function mapOutEmotions(){
     let existingDay;
   
     for(let i= 0; i<=6; i++){
-      existingDay=false;
       energyMapped.push(energyHistory.map( object => {
-        if(object.date == i){
-          console.log(i, object.date, object.energy,"if");
+        if(object.date === i){
           existingDay = true;
 
           return (
           <td key={object.energy} className={styles.td}>
-            <img  className={styles.energyPic} src={'./media/Lightning.png'}/>
-            <p>{object.energy}</p>
+            <p className={styles.energy}>{object.energy}</p>
           </td>
         )}
       }));
       if(!existingDay){
-        console.log(i,"no if");
         energyMapped.push(<td key={counter++}> </td>);
       }
-      
     } 
       return energyMapped
     };  
@@ -91,7 +84,7 @@ function mapOutEmotions(){
           </tr>
         </tbody>
       </table>
-      <button className={styles.button} onClick={() => dispatch(toggleCalendar())}>CLOSE</button>
+      <button className={styles.button} onClick={() => dispatch(toggleCalendar())}>Close</button>
     </>
   )
 }
