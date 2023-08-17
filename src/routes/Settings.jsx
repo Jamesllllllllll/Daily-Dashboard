@@ -4,7 +4,6 @@ import {
   defaultWeatherSelector,
   updateCity,
   updateWeather,
-  weatherSelector,
 } from '../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from './settingsSlice';
 import { NavigationSettings } from '../components/Navigation/Navigation';
@@ -15,7 +14,6 @@ import StyledCard from '../components/LayoutComponents/FeatureCard';
 export default function Settings() {
   const city = useSelector(citySelector);
   const wantToChangeCity = useSelector(changeCitySelector);
-  const weather = useSelector(weatherSelector);
   const defaultWeather = useSelector(defaultWeatherSelector);
 
   const dispatch = useDispatch();
