@@ -23,32 +23,38 @@ const Weather = () => {
   const weatherIconAltText = `Current weather icon: ${weather.current.condition.text}`;
   const dispatch = useDispatch();
 
-  const fetchWeather = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/weather?city=${city}`);
-      if (response.ok) {
-        const data = await response.json();
-        dispatch(updateWeather(data));
-        setLoading(false);
-      } else {
-        console.log(`Error: ${response.statusText}`);
-        setLoading(false);
-        return <p>No weather data</p>;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const fetchWeather = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`/api/weather?city=${city}`);
+        if (response.ok) {
+          const data = await response.json();
+          dispatch(updateWeather(data));
+          setLoading(false);
+        } else {
+          console.log(`Error: ${response.statusText}`);
+          setLoading(false);
+          return <p>No weather data</p>;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchWeather();
-  }, [city]);
+  }, [city, dispatch]);
 
   const CurrentWeather = () => {
     return !loading ? (
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <img src={weatherIconSrc} alt={weatherIconAltText} height="64" width="64" />
+      <Box
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        <img
+          src={weatherIconSrc}
+          alt={weatherIconAltText}
+          height="64"
+          width="64"
+        />
         <Typography>{`${weather.current.condition.text} and ${
           city.includes('United States')
             ? weather.current.temp_f
@@ -56,8 +62,16 @@ const Weather = () => {
         }° in ${weather.location.name}`}</Typography>
       </Box>
     ) : (
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Skeleton variant="circular" width={50} height={50} animation="wave" sx={{ my: '1rem' }} />
+      <Box
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        <Skeleton
+          variant="circular"
+          width={50}
+          height={50}
+          animation="wave"
+          sx={{ my: '1rem' }}
+        />
         <Skeleton
           variant="rounded"
           width={200}
@@ -69,9 +83,16 @@ const Weather = () => {
   };
 
   return (
-    <Box className="cardContainer" sx={{ width: {xs: '50%', sm: '25%'}, minWidth: 250, alignSelf: {xs: 'center', sm: 'flex-start'} }}>
+    <Box
+      className="cardContainer"
+      sx={{
+        width: { xs: '50%', sm: '25%' },
+        minWidth: 250,
+        alignSelf: { xs: 'center', sm: 'flex-start' },
+      }}
+    >
       <h2 className="cardTitle">Weather</h2>
-      <StyledCard content={showForm ? <WeatherForm /> : <CurrentWeather />} />
+      <StyledCard content={showForm && !city ? <WeatherForm /> : <CurrentWeather />} />
     </Box>
   );
 };
