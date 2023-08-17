@@ -16,27 +16,22 @@ const RedditPosts = () => {
   return (
     <>
       <h1>Articles</h1>
-      <Stack spacing={2}>
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          featuredPosts.map(
+      <Stack alignItems="center" spacing={2}>
+          {featuredPosts.map(
             ({ id, url, description, author, title, image, publishedAt }) => (
-              <ArticleCard
-                key={id}
-                id={id}
-                url={url}
-                title={title}
-                description={description}
-                author={author}
-                image={image}
-                publishedAt={publishedAt}
-                isLoading={isLoading}
-              />
-            )
-          )
-        )}
-        {/* } */}
+                <ArticleCard
+                  key={id}
+                  id={id}
+                  url={url}
+                  title={title}
+                  description={description}
+                  author={author}
+                  image={image}
+                  publishedAt={publishedAt}
+                  isLoading={isLoading}
+                />
+             )
+          )}
       </Stack>
     </>
   );

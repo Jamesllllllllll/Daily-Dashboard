@@ -48,13 +48,13 @@ const ArticleCard = ({
                 <Skeleton variant="text" width={'100%'} height={20} sx={{}} />
               )}
             </Typography>
-            <Typography variant="body2" height="2.9rem" color="text.secondary" sx={{ overflow: 'hidden', py: '0.5rem' }}>
+            {/* <Typography variant="body2" height="2.9rem" color="text.secondary" sx={{ overflow: 'hidden', py: '0.5rem' }}>
               {!isLoading ? (
                 description
               ) : (
                 <Skeleton variant="text" width={'100%'} height={20} sx={{}} />
               )}
-            </Typography>
+            </Typography> */}
           </CardContent>
           <CardContent
             sx={{
@@ -73,7 +73,7 @@ const ArticleCard = ({
                   {formatPublishedAt(publishedAt)} • {author}
                 </>
               ) : (
-                <Skeleton variant="text" width={'5vw'} height={20} sx={{}} />
+                <Skeleton variant="text" width={'12rem'} height={20} sx={{}} />
               )}
             </Typography>
             <IconButton aria-label="more" id="long-button">

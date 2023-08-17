@@ -33,6 +33,7 @@ export default function Home() {
               <Weather />
               <QuoteOrFact />
             </Stack>
+            <RedditPosts />
             <Notes />
             <WellBeingCheckin />
             <ToDoList />
