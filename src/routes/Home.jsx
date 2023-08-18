@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Home.module.css';
 import { NavigationHome } from '../components/Navigation/Navigation';
+import RedditPosts from '../features/reddit/RedditPosts';
 import Notes from '../features/notes/Notes';
 import Weather from '../features/weather/Weather';
 import QuoteOrFact from '../components/QuoteOrFact/QuoteOrFact';
@@ -9,6 +10,9 @@ import WellBeingCheckin from '../components/WellBeingCheckin/WellBeingCheckin';
 import Stack from '@mui/material/Stack';
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <NavigationHome />
@@ -29,6 +33,7 @@ export default function Home() {
               <Weather />
               <QuoteOrFact />
             </Stack>
+            <RedditPosts />
             <Notes />
             <WellBeingCheckin />
             <ToDoList />
