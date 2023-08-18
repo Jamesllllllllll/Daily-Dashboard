@@ -1,3 +1,4 @@
+import { TextField, Button, List, ListItem, Checkbox, FormControlLabel } from "@mui/material";
 import React, { useState } from "react";
 
 function FullTaskDisplay (props) {
@@ -8,7 +9,7 @@ function FullTaskDisplay (props) {
     }
 
     const handleCheck = (event) => {
-        let stepIndex = event.target.attributes.stepindex.value;
+        let stepIndex = event.target.parentNode.attributes.stepindex.value;
         props.allTasks[props.index].taskSteps[stepIndex].complete = !props.allTasks[props.index].taskSteps[stepIndex].complete;
     }
 
@@ -19,10 +20,12 @@ function FullTaskDisplay (props) {
             props.allTasks[props.index].taskSteps[stepIndex].removed = false;
             event.target.parentNode.childNodes[0].disabled = false;
             event.target.parentNode.childNodes[1].disabled = false;
+            console.log(event);
         } else {
             props.allTasks[props.index].taskSteps[stepIndex].removed = true;
             event.target.parentNode.childNodes[0].disabled = true;
             event.target.parentNode.childNodes[1].disabled = true;
+            console.log(event);
         }
         props.setCount(props.count + 1);
     }
@@ -55,12 +58,18 @@ function FullTaskDisplay (props) {
     return (
         <div>
           <form>
-            <input
+            <TextField
+                  label="Task Title"
                   defaultValue={props.allTasks[props.index].taskTitle}
                   onChange={handleTaskTitleEdit}
             />
-            <button onClick={handleListClose}>Close</button>
-            <ul>
+            <Button 
+              variant="outlined" 
+              size="small" 
+              onClick={handleListClose}
+              sx={{ marginLeft: '5px' }}  
+            >Save</Button>
+            <List>
               {props.allTasks[props.index].taskSteps.map((step, stepIndex) => {
   
                 const handleStepTitleEdit = (event) => {
@@ -69,25 +78,56 @@ function FullTaskDisplay (props) {
                 }
                 
                 return (
-                    <li key={step.stepTitle + stepIndex}>
-                      <input defaultValue={step.stepTitle} onChange={handleStepTitleEdit}/>
-                      <input stepindex={stepIndex} type="checkbox" onClick={handleCheck} defaultChecked={step.complete}/>
-                      <button stepindex={stepIndex} listid={props.index} onClick={handleSubmittedStepDelete}>{step.removed === true ? 'Re-add' : 'Remove'}</button>
-                    </li>
+                    <ListItem key={step.stepTitle + stepIndex}>
+                      <TextField 
+                        disabled={step.removed} 
+                        size="small" 
+                        defaultValue={step.stepTitle} 
+                        onChange={handleStepTitleEdit}
+                      />
+                      <FormControlLabel
+                        control={<Checkbox 
+                            disabled={step.removed}
+                            stepindex={stepIndex} 
+                            type="checkbox" 
+                            onClick={handleCheck} 
+                            defaultChecked={step.complete}
+                            sx={{ padding: '0px' }}/>
+                          }
+                        label="Completed?"
+                        sx={{ margin: '0px 15px 0px 0px' }}
+                      />
+                      <Button 
+                        variant="outlined" 
+                        size="small"
+                        stepindex={stepIndex} 
+                        listid={props.index} 
+                        onClick={handleSubmittedStepDelete}
+                      >{step.removed === true ? 'Re-add' : 'Remove'}</Button>
+                    </ListItem>
                 )})
               }
-              <li>
-                <input 
-                        type="text"
-                        placeholder="Add Step"
-                        taskindex={props.index}
-                        newstepindex={props.allTasks[props.index].taskSteps.length}
-                        value={submittedTaskNewStep}
-                        onChange={handleSubmittedTaskNewStepChange}
-                    />
-                <button onClick={handleSubmittedTaskNewStepAdd} listid={props.index}>Add Step</button>
-              </li>
-            </ul>
+              <ListItem>
+                <TextField 
+                  type="text"
+                  label="Add steps"
+                  variant="standard"
+                  size="small"
+                  //placeholder="Add Step"
+                  taskindex={props.index}
+                  newstepindex={props.allTasks[props.index].taskSteps.length}
+                  value={submittedTaskNewStep}
+                  onChange={handleSubmittedTaskNewStepChange}
+                />
+                <Button 
+                  variant="outlined" 
+                  size="small" 
+                  onClick={handleSubmittedTaskNewStepAdd} 
+                  listid={props.index}
+                  sx={{ marginLeft: '5px' }} 
+                >Add Step</Button>
+              </ListItem>
+            </List>
           </form>
         </div>
     )
