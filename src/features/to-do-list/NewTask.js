@@ -1,4 +1,9 @@
+import { TextField, Button, List, ListItem, styled, Container } from "@mui/material";
 import React, { useState } from "react";
+
+const NewTaskButton = styled(Button)(({ theme }) => ({
+    marginLeft: '5px',
+ }));
 
 function NewTask(props) {
     const stepsObjArr = [];
@@ -45,47 +50,76 @@ function NewTask(props) {
         props.steps.splice(stepIndex, 1);
         props.setCount(props.count + 1);
         //props.setSteps(newSteps);
+        
     }
-    
+   
     return (
         <form onSubmit={props.handleSubmit}>
-            <input
+            <TextField
+                variant="outlined"
+                label="Enter new Task Title"
                 name="taskTitle"
-                placeholder="New Task"
+                //placeholder="Enter new task..."
                 value={props.newTask.taskTitle || ""}
-                onChange={props.handleTaskTitleChange}
+                onChange={props.handleTaskTitleChange} 
             />
+            
             {!props.newTask.taskTitle ? null: (
             <>
-                <ul>
+                <List 
+                    sx={{ 
+                        display: "flex", 
+                        flexDirection: 'column', 
+                        alignItems: 'flex-end', 
+                        marginBottom: '1rem',
+                    }}
+                >
                     {props.steps.map((step, index) => {
 
                         const handleStepChange = (event) => {
-                            props.steps[index] = event.target.value;
-                            //props.setCount(props.count + 1);
+                        props.steps[index] = event.target.value;
+                        //props.setCount(props.count + 1);
                         }
-                        
+
                         return (
-                            <li key={step + index}>
-                                <input 
+                            <ListItem key={step + index} sx={{ width: 'fit-content' }}>
+                                <TextField 
                                     type="text"
+                                    size="small"
+                                    variant="outlined"
                                     defaultValue={props.steps[index]}
                                     onChange={handleStepChange}
                                     onFocus={onFocus}
-                                    onBlur={onBlur}
+                                    onBlur={onBlur} 
                                 />
-                                <button listid={index} onClick={handleStepAddorRemove}>Remove</button>
-                            </li>
-                    )})}
-                </ul>
-                <input 
-                    type="text"
-                    placeholder="Add Step"
-                    value={props.stepTitle}
-                    onChange={handleStepTitle}
-                />
-                <button onClick={handleAdd}>Add Step</button>
-                <input type="submit" value="Save Task"/>
+                                <NewTaskButton 
+                                    variant="outlined" 
+                                    size="small" 
+                                    listid={index} 
+                                    onClick={handleStepAddorRemove}
+                                    sx={{ marginLeft: '5px' }}    
+                                >Remove</NewTaskButton>
+                            </ListItem>
+                        )
+                    })}
+                </List>
+                <Container sx={{ display: 'flex', alignItems: 'center' }}>
+                    <TextField 
+                        type="text"
+                        size="small"
+                        label="Enter new Task Step"
+                        variant="standard"
+                        //placeholder="Add new task step..."
+                        value={props.stepTitle}
+                        onChange={handleStepTitle}
+                    />
+                    <NewTaskButton 
+                        variant="outlined" 
+                        size="small" 
+                        onClick={handleAdd}
+                    >Add Step</NewTaskButton>
+                    <NewTaskButton variant="outlined" size="small" type="submit">Save Task</NewTaskButton>
+                </Container>
             </>)}
         </form>
     )

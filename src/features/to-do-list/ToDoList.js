@@ -47,16 +47,16 @@ function ToDoList() {
             {index ? null : (
               <>
                 <NewTask
-                  newTask={newTask}
-                  stepTitle={stepTitle}
-                  setStepTitle={setStepTitle}
-                  steps={steps}
-                  setSteps={setSteps}
-                  handleTaskTitleChange={handleTaskTitleChange}
-                  handleSubmit={handleSubmit}
-                  count={count}
-                  setCount={setCount}
-                />
+                    newTask={newTask}
+                    stepTitle={stepTitle}
+                    setStepTitle={setStepTitle}
+                    steps={steps}
+                    setSteps={setSteps}
+                    handleTaskTitleChange={handleTaskTitleChange}
+                    handleSubmit={handleSubmit}
+                    count={count}
+                    setCount={setCount}
+                  />  
                 <TaskList
                   setIndex={setIndex}
                   allTasks={allTasks}
