@@ -68,7 +68,7 @@ function FullTaskDisplay (props) {
               size="small" 
               onClick={handleListClose}
               sx={{ marginLeft: '5px' }}  
-            >Close</Button>
+            >Save</Button>
             <List>
               {props.allTasks[props.index].taskSteps.map((step, stepIndex) => {
   

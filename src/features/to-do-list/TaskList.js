@@ -3,6 +3,30 @@ import React from "react";
 
 const TaskListItem = styled(Paper)(({ theme }) => ({
    padding: "10px",
+   maxWidth: '335px',
+   overflow: 'auto',
+   height: 'fit-content',
+   alignSelf: 'center',
+   '&:hover': {
+       cursor: 'pointer'  
+   }
+}));
+
+export const PermDeleteButton = styled(Button)(({ theme }) => ({
+    height: 'fit-content', 
+    alignSelf: 'center',  
+    minWidth: '0px', 
+    color: 'red',
+    border: 'none',
+    marginRight: '2px',
+    paddingLeft: '10px',
+    opacity: '.7',
+    '&:hover': {
+        marginRight: '1px',
+        borderColor: 'red',
+        paddingLeft: '9px',
+        opacity: '1'
+    }
 }));
 
 function TaskList(props) {
@@ -25,20 +49,22 @@ function TaskList(props) {
 
     return (
         <>
-            <Typography 
-                variant="h6" 
-                component="h4" 
-                sx={{ marginTop: '20px', textDecoration: 'underline',}}
-            >To-Do List</Typography>
+            {props.allTasks.length < 1 ? null : 
+                <Typography 
+                    variant="h6" 
+                    component="h4" 
+                    sx={{ marginTop: '20px', textDecoration: 'underline', textAlign: 'center' }}
+                >To-Do List</Typography>
+            }
             <List 
                 sx= {{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "flex-end",
+                    alignItems: "flex-start",
                 }}
             >
                 {props.allTasks.map((taskObj, index) => (
-                    <ListItem key={taskObj.taskTitle + index} listid={index} sx={{ width: "fit-content" }}>
+                    <ListItem key={taskObj.taskTitle + index} listid={index} sx={{ }}>
                         <Stack 
                             direction="row" 
                             spacing={2}
@@ -46,27 +72,41 @@ function TaskList(props) {
                             listid={index} 
                             sx={{ display: "flex", }} 
                         >
-                            <TaskListItem elevation={2} listid={index} onClick={props.handleFullTaskDisplay}>
+                            <PermDeleteButton 
+                                    variant="outlined" 
+                                    size="small"
+                                    listid={index} 
+                                    onClick={handleTaskDelete}
+                                    sx={{ 
+                                        height: 'fit-content', 
+                                        alignSelf: 'center',  
+                                        minWidth: '0px' }}
+                            >X</PermDeleteButton>
+                            <TaskListItem 
+                                elevation={2} 
+                                listid={index} 
+                                onClick={props.handleFullTaskDisplay}
+                                sx={{ backgroundColor: completedStepCounter(taskObj.taskSteps) === taskObj.taskSteps.length ? 'rgba(0, 255, 0, .25)' : '#fff' }}
+                            >
                                 <Typography 
                                     variant="body1"
                                     listid={index} 
                                     onClick={props.handleFullTaskDisplay}
                                 >{taskObj.taskTitle}</Typography>
                             </TaskListItem>
-                            <TaskListItem elevation={2} listid={index} onClick={props.handleFullTaskDisplay}>
+                            <TaskListItem 
+                                elevation={2} 
+                                listid={index} 
+                                onClick={props.handleFullTaskDisplay} 
+                                sx={{ backgroundColor: completedStepCounter(taskObj.taskSteps) === taskObj.taskSteps.length ? 'rgba(0, 255, 0, .25)' : '#fff' }}
+                            >
                                 <Typography 
                                     variant="body1"
                                     listid={index} 
                                     onClick={props.handleFullTaskDisplay}
                                 >{`Completed ${completedStepCounter(taskObj.taskSteps)} of ${taskObj.taskSteps.length} steps.`}</Typography>
                             </TaskListItem>
-                            <Button 
-                                    variant="outlined" 
-                                    size="small"
-                                    listid={index} 
-                                    onClick={handleTaskDelete}
-                                    sx={{ height: 'fit-content', alignSelf: 'center' }}
-                            >Remove</Button>
+                            
                         </Stack> 
                     </ListItem>
                 ))}
