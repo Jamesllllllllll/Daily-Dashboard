@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 const WeatherForm = () => {
   const dispatch = useDispatch();
 
-  const city = useSelector(citySelector);
+  const [city, setCity] = useState('');
   const wantToChangeCity = useSelector(changeCitySelector);
 
   const [autocompleteCities, setAutocompleteCities] = useState([]);
@@ -21,7 +21,7 @@ const WeatherForm = () => {
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
-    dispatch(updateCity(e.target.value));
+    setCity(e.target.value);
     if (!city) return;
 
     const response = await fetch(`/api/city?city=${city}`);
@@ -42,7 +42,7 @@ const WeatherForm = () => {
     if (!city) {
       return;
     } else {
-      // fetchWeather();
+      dispatch(updateCity(city))
       dispatch(changeCity(!wantToChangeCity));
     }
   };
