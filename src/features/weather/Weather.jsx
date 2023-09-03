@@ -30,7 +30,6 @@ const Weather = () => {
         const response = await fetch(`/api/weather?city=${city}`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data)
           dispatch(updateWeather(data));
           setLoading(false);
         } else {
