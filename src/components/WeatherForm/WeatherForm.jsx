@@ -28,9 +28,9 @@ const WeatherForm = () => {
         setAutocompleteCities(data.features.map((place) => place.place_name));
     }
 
-    response.error
-      ? setAutocompleteErr(response.error)
-      : setAutocompleteErr('');
+    // response.error
+    //   ? setAutocompleteErr(response.error)
+    //   : setAutocompleteErr('');
   };
 
   const handleSubmit = (e) => {

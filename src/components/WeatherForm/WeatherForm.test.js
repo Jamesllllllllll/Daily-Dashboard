@@ -19,10 +19,10 @@ it('Should show text content as Toronto', async () => {  
 	// Render the component to test  
 	renderWithProviders(<WeatherForm />); 
 	// Extract the textbox component  
-	const textbox = screen.getByRole('cityInput');  
+	const textbox = screen.getByRole('textbox');  
 	// Simulate typing 'Toronto'  
 	user.type(textbox, 'Toronto');  
 	// Assert textbox has text content 'Toronto'  
-  const city = await screen.findByText('Toronto');
+  const city = await screen.findByDisplayValue('Toronto');
 	expect(city).toBeInTheDocument();
 });
