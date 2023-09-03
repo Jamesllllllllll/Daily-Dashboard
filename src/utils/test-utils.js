@@ -5,8 +5,7 @@
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
-import { Provider, combineReducers } from 'react-redux';
+import { Provider } from 'react-redux';
 
 // setupStore sends the rootReducer from app/store
 import { setupStore } from '../app/store';
