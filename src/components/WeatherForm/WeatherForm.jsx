@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  citySelector,
   updateCity,
-  updateWeather,
 } from '../../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
 import TextField from '@mui/material/TextField';

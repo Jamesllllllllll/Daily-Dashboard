@@ -29,6 +29,15 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
 });
 
+// setupStore is for ./src/utils/test-utils.js
+// If we ever change the root reducer above, we don't need to change it there
+export const setupStore = preloadedState => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
