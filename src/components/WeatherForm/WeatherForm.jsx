@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  updateCity,
-} from '../../features/weather/weatherSlice';
+import { updateCity } from '../../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import FormLabel from '@mui/material/FormLabel';
 
 const WeatherForm = () => {
   const dispatch = useDispatch();
@@ -82,15 +80,15 @@ const WeatherForm = () => {
         )}
         {/* The datalist element gives the available options for the input. 
               The id="places" ties it to the element above with list="places" */}
-        <datalist id="places">
-          {autocompleteCities.map((city, i) => (
-            <option key={i}>{city}</option>
-          ))}
-        </datalist>
-        <Button type="submit" className="button" variant="outlined">
-          Submit
-        </Button>
-      </form>
+      <datalist id="places">
+        {autocompleteCities.map((city, i) => (
+          <option key={i}>{city}</option>
+        ))}
+      </datalist>
+      <Button type="submit" className="button" variant="outlined">
+        Submit
+      </Button>
+    </form>
   );
 };
 

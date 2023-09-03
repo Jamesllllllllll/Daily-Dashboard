@@ -1,38 +1,28 @@
 import React from 'react';
-import WeatherForm from "./WeatherForm";
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event';
+import { renderWithProviders } from '../../utils/test-utils';
+import WeatherForm from "./WeatherForm";
 import '@testing-library/jest-dom';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import weatherReducer from '../../features/weather/weatherSlice';
-import {
-  updateCity,
-} from '../../features/weather/weatherSlice';
-import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
 
-export function renderWithProviders(
-  ui,
-  {
-    preloadedState ={},
-    // Automatically create a store instance if no store was passed in
-    store = configureStore({ reducer: { city: cityReducer }, preloadedState }),
-    ...renderOptions
-  } = {}
-) {
-  function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>
-  }
-  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions })}
-}
+// import { Provider } from 'react-redux';
+// import { configureStore } from '@reduxjs/toolkit';
+// import weatherReducer from '../../features/weather/weatherSlice';
+// import {
+//   updateCity,
+// } from '../../features/weather/weatherSlice';
+// import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
 
-it('Should show text content as Toronto', () => {  
+it('Should show text content as Toronto', async () => {  
+  // set up userEvent before component is rendered (https://testing-library.com/docs/user-event/intro#writing-tests-with-userevent)
+  const user = userEvent.setup()
 	// Render the component to test  
-	render(<WeatherForm />);  
+	renderWithProviders(<WeatherForm />); 
 	// Extract the textbox component  
-	const textbox = screen.getByRole('textbox');  
+	const textbox = screen.getByRole('cityInput');  
 	// Simulate typing 'Toronto'  
-	userEvent.type(textbox, 'Toronto');  
-	// Assert textbox has text content 'Hey Mack!'  
-	expect(textbox).toHaveValue('Toronto');
+	user.type(textbox, 'Toronto');  
+	// Assert textbox has text content 'Toronto'  
+  const city = await screen.findByText('Toronto');
+	expect(city).toBeInTheDocument();
 });
