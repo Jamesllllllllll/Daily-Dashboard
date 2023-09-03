@@ -20,17 +20,17 @@ const WeatherForm = () => {
     setCity(e.target.value);
     if (!city) return;
 
-    const response = await fetch(`/api/city?city=${city}`);
-    if (response.ok) {
-      const data = await response.json();
-      !autocompleteCities.includes(e.target.value) &&
-        data.features &&
-        setAutocompleteCities(data.features.map((place) => place.place_name));
-    }
+    // const response = await fetch(`/api/city?city=${city}`);
+    // if (response.ok) {
+    //   const data = await response.json();
+    //   !autocompleteCities.includes(e.target.value) &&
+    //     data.features &&
+    //     setAutocompleteCities(data.features.map((place) => place.place_name));
+    // }
 
-    response.error
-      ? setAutocompleteErr(response.error)
-      : setAutocompleteErr('');
+    // response.error
+    //   ? setAutocompleteErr(response.error)
+    //   : setAutocompleteErr('');
   };
 
   const handleSubmit = (e) => {
@@ -70,7 +70,6 @@ const WeatherForm = () => {
         type="text"
         id="city"
         name="city"
-        role="cityInput"
         onChange={handleCityChange}
         value={city}
         required
