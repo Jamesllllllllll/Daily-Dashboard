@@ -20,17 +20,21 @@ const WeatherForm = () => {
     setCity(e.target.value);
     if (!city) return;
 
-    // const response = await fetch(`/api/city?city=${city}`);
-    // if (response.ok) {
-    //   const data = await response.json();
-    //   !autocompleteCities.includes(e.target.value) &&
-    //     data.features &&
-    //     setAutocompleteCities(data.features.map((place) => place.place_name));
-    // }
+    //-----------------------
+    // NOTE: Fetching cities below is disabled for now while MSW is set up - James
+    //-----------------------
 
-    // response.error
-    //   ? setAutocompleteErr(response.error)
-    //   : setAutocompleteErr('');
+    const response = await fetch(`/api/city?city=${city}`);
+    if (response.ok) {
+      const data = await response.json();
+      !autocompleteCities.includes(e.target.value) &&
+        data.features &&
+        setAutocompleteCities(data.features.map((place) => place.place_name));
+    }
+
+    response.error
+      ? setAutocompleteErr(response.error)
+      : setAutocompleteErr('');
   };
 
   const handleSubmit = (e) => {
