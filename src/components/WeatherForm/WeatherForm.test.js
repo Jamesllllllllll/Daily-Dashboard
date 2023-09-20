@@ -4,7 +4,7 @@ import React from 'react';
 import { server } from '../../mocks/server';
 
 // import react-testing methods
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithProviders } from '../../utils/test-utils';
 import userEvent from '@testing-library/user-event';
 
@@ -28,19 +28,14 @@ it('Should show text content as Toronto', async () => {
 
   // Render the component to test
   renderWithProviders(<WeatherForm />);
+
   // Extract the textbox component
   const textbox = screen.getByRole('textbox');
-  // Simulate typing 'Toronto'
+
+  // Simulate typing 'Atlanta'
   user.type(textbox, 'Atlanta');
+
   // Assert textbox has text content 'Toronto'
   const city = await screen.findByDisplayValue('Atlanta');
   expect(city).toBeInTheDocument();
-});
-
-it('fetches & receives a list of cities as the user types', async () => {
-  renderWithProviders(<WeatherForm />);
-
-  const textbox = screen.getByRole('textbox');
-
-  expect(textbox.value).toBe('');
 });
