@@ -4,8 +4,7 @@ import React from "react";
 function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, setAllTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDelete, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
 
   return (
-    <div>
-      <form onSubmit={handleListClose}>
+    <form onSubmit={handleListClose}>
         <TextField
           label="Task Title"
           name="Task Title"
@@ -31,12 +30,12 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
 
             
             return (
-                <ListItem key={step.title + stepIndex}>
+                <ListItem key={step + stepIndex}>
                   <TextField 
                     type="text"
                     disabled={step.removed} 
                     size="small" 
-                    value={allTasks[index].taskSteps[stepIndex].title} 
+                    defaultValue={allTasks[index].taskSteps[stepIndex].title} 
                     onChange={handleStepTitleEdit}
                     onFocus={onFocus}
                     onBlur={onBlur} 
@@ -85,9 +84,8 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               listid={index}
               sx={{ marginLeft: '5px' }} 
             >Add Step</Button>
-          </Container>  
-      </form>
-    </div>
+        </Container>  
+    </form>
   )
 }
 

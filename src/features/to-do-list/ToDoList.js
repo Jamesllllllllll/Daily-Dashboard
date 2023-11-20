@@ -169,7 +169,7 @@ function ToDoList() {
       setSubmittedTaskNewStep('');
       //console.log(allTasks.taskSteps);
   }
-
+  
   const handleListClose = (event) => {
     event.preventDefault();
     let updateAllTasks = [...allTasks];
