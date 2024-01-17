@@ -6,62 +6,23 @@ const NewTaskButton = styled(Button)(({ theme }) => ({
     marginLeft: '5px',
  }));
 
-function NewTask(props) {
-    const stepsObjArr = [];
-    const [focused, setFocused] = useState(false);
-    const onFocus = () => setFocused(true);
-    const onBlur = () => setFocused(false);
+function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleTaskTitleChange, handleStepTitleChange, handleStepAdd, handleStepRemove, handleTaskSubmit }) {
 
-    const handleStepTitle = (event) => {
-        props.setStepTitle(event.target.value);
-    }
-
-    const handleAdd = (event) => {
-        event.preventDefault();
-        if (props.steps.length === 0 && props.stepTitle) {
-            props.setSteps([props.stepTitle]);
-        } else if (props.stepTitle) {
-            props.setSteps(prev => [...prev, props.stepTitle]);
-        } 
-        props.setStepTitle("");
-    }
-
-    if (props.steps.length !== 0) {
-        props.steps.forEach((step, index) => {
-            stepsObjArr.push({
-                id: index + 1,
-                stepTitle: step,
-                complete: false
-            })});
-    } else {
-        stepsObjArr.push({
-            id: 1,
-            stepTitle: props.newTask.taskTitle,
-            complete: false
-        })
-    }
-
-    props.newTask.taskSteps = stepsObjArr;
-
-    const handleStepAddorRemove = (event) => {
-        event.preventDefault();
-        let stepIndex = event.target.attributes.listid.value;
-        props.steps.splice(stepIndex, 1);
-        props.setCount(props.count + 1); 
-    }
+    //console.log(steps);
+    //console.log(newTask);
    
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleTaskSubmit}>
             <Box sx={{ display: 'flex', flexDirection: 'column'}}>
                 <TextField
                     variant="outlined"
                     label="Enter new Task Title"
                     name="taskTitle"
-                    value={props.newTask.taskTitle || ""}
-                    onChange={props.handleTaskTitleChange} 
+                    value={newTask.taskTitle || ""}
+                    onChange={handleTaskTitleChange} 
                 />
                 
-                {!props.newTask.taskTitle ? null: (
+                {newTask.taskTitle && (
                 <>
                     <List 
                         sx={{ 
@@ -71,10 +32,12 @@ function NewTask(props) {
                             marginBottom: '1rem',
                         }}
                     >
-                        {props.steps.map((step, index) => {
+                        {steps.map((step, index) => {
 
-                            const handleStepChange = (event) => {
-                            props.steps[index] = event.target.value;
+                            const handleStepChange = ({ target }) => {
+                                const updateArr = [...steps];
+                                updateArr[index].title = target.value;
+                                setSteps(updateArr);
                             }
 
                             return (
@@ -83,16 +46,16 @@ function NewTask(props) {
                                         type="text"
                                         size="small"
                                         variant="outlined"
-                                        defaultValue={props.steps[index]}
+                                        value={steps[index].title}
                                         onChange={handleStepChange}
-                                        onFocus={onFocus}
-                                        onBlur={onBlur} 
+                                        //onFocus={onFocus}
+                                        //onBlur={onBlur} 
                                     />
                                     <PermDeleteButton 
                                         variant="outlined" 
                                         size="small" 
                                         listid={index} 
-                                        onClick={handleStepAddorRemove}
+                                        onClick={handleStepRemove}
                                         sx={{ marginLeft: '5px' }}    
                                     >X</PermDeleteButton>
                                 </ListItem>
@@ -105,15 +68,19 @@ function NewTask(props) {
                             size="small"
                             label="Enter new Task Step"
                             variant="standard"
-                            value={props.stepTitle}
-                            onChange={handleStepTitle}
+                            value={stepTitle}
+                            onChange={handleStepTitleChange}
                         />
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
-                            onClick={handleAdd}
+                            onClick={handleStepAdd}
                         >Add Step</NewTaskButton>
-                        <NewTaskButton variant="outlined" size="small" type="submit">Save Task</NewTaskButton>
+                        <NewTaskButton 
+                            variant="outlined" 
+                            size="small" 
+                            type="submit"
+                        >Save Task</NewTaskButton>
                     </Container>
                 </>)}
             </Box>

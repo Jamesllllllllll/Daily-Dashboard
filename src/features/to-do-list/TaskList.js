@@ -29,27 +29,11 @@ export const PermDeleteButton = styled(Button)(({ theme }) => ({
     }
 }));
 
-function TaskList(props) {
-    const completedStepCounter = (stepsArr) => {
-        let counter = 0;
-        for (const step of stepsArr) {
-            if (step.complete !== false) {
-                counter++;
-            }
-        }
-        return counter;
-    }
-
-    const handleTaskDelete = (event) => {
-        event.preventDefault();
-        let taskIndexToRemove = event.target.attributes.listid.value;
-        props.allTasks.splice(taskIndexToRemove, 1);
-        props.setCount(props.count + 1);
-    }
+function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completedStepCounter }) {
 
     return (
         <>
-            {props.allTasks.length < 1 ? null : 
+            {allTasks.length < 1 ? null : 
                 <Typography 
                     variant="h6" 
                     component="h4" 
@@ -63,7 +47,7 @@ function TaskList(props) {
                     alignItems: "flex-start",
                 }}
             >
-                {props.allTasks.map((taskObj, index) => (
+                {allTasks.map((taskObj, index) => (
                     <ListItem key={taskObj.taskTitle + index} listid={index} sx={{ }}>
                         <Stack 
                             direction="row" 
@@ -85,25 +69,25 @@ function TaskList(props) {
                             <TaskListItem 
                                 elevation={2} 
                                 listid={index} 
-                                onClick={props.handleFullTaskDisplay}
+                                onClick={handleFullTaskDisplay}
                                 sx={{ backgroundColor: completedStepCounter(taskObj.taskSteps) === taskObj.taskSteps.length ? 'rgba(0, 255, 0, .25)' : '#fff' }}
                             >
                                 <Typography 
                                     variant="body1"
                                     listid={index} 
-                                    onClick={props.handleFullTaskDisplay}
+                                    onClick={handleFullTaskDisplay}
                                 >{taskObj.taskTitle}</Typography>
                             </TaskListItem>
                             <TaskListItem 
                                 elevation={2} 
                                 listid={index} 
-                                onClick={props.handleFullTaskDisplay} 
+                                onClick={handleFullTaskDisplay} 
                                 sx={{ backgroundColor: completedStepCounter(taskObj.taskSteps) === taskObj.taskSteps.length ? 'rgba(0, 255, 0, .25)' : '#fff' }}
                             >
                                 <Typography 
                                     variant="body1"
                                     listid={index} 
-                                    onClick={props.handleFullTaskDisplay}
+                                    onClick={handleFullTaskDisplay}
                                 >{`Completed ${completedStepCounter(taskObj.taskSteps)} of ${taskObj.taskSteps.length} steps.`}</Typography>
                             </TaskListItem>
                             
