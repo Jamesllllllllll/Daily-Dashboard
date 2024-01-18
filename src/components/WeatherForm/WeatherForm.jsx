@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateCity } from '../../features/weather/weatherSlice';
+import { updateCity, updateWeather } from '../../features/weather/weatherSlice';
 import { changeCitySelector, changeCity } from '../../routes/settingsSlice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import FormLabel from '@mui/material/FormLabel';
+import { Typography } from '@mui/material';
 
 const WeatherForm = () => {
   const dispatch = useDispatch();
 
-  const [city, setCity] = useState('');
   const wantToChangeCity = useSelector(changeCitySelector);
 
   const [localCity, setLocalCity] = useState('');
@@ -42,9 +41,10 @@ const WeatherForm = () => {
     }
   };
 
-  const fetchWeather = async () => { //uncommented this function to clear eslint errors
+  const fetchWeather = async () => {
+    //uncommented this function to clear eslint errors
     try {
-      const response = await fetch(`/api/weather?city=${city}`);
+      const response = await fetch(`/api/weather?city=${localCity}`);
       if (response.ok) {
         const data = await response.json();
         dispatch(updateWeather(data));
@@ -58,43 +58,32 @@ const WeatherForm = () => {
   };
 
   return (
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="city" className="label">
-          <Typography sx={{ display: 'inline' }}>Enter your city:</Typography>
-        </label>
-        <TextField
-          sx={{ mx: '1rem' }}
-          variant="standard"
-          list="places"
-          type="text"
-          id="city"
-          name="city"
-          onChange={handleCityChange}
-          value={localCity}
-          required
-          pattern={autocompleteCities.join('|')}
-          autoComplete="off"
-        />
-        {autocompleteErr && (
-          <span className="inputError">{autocompleteErr}</span>
-        )}
-        {/* The datalist element gives the available options for the input. 
+    <form onSubmit={handleSubmit}>
+      <label htmlFor='city' className='label'>
+        <Typography sx={{ display: 'inline' }}>Enter your city:</Typography>
+      </label>
+      <TextField
+        sx={{ mx: '1rem' }}
+        variant='standard'
+        list='places'
+        type='text'
+        id='city'
+        name='city'
+        onChange={handleCityChange}
+        value={localCity}
+        required
+        pattern={autocompleteCities.join('|')}
+        autoComplete='off'
+      />
+      {autocompleteErr && <span className='inputError'>{autocompleteErr}</span>}
+      {/* The datalist element gives the available options for the input. 
               The id="places" ties it to the element above with list="places" */}
-      <datalist id="places">
+      <datalist id='places'>
         {autocompleteCities.map((city, i) => (
           <option key={i}>{city}</option>
         ))}
       </datalist>
-      <Button type="submit" className="button" variant="outlined">
-        Submit
-      </Button>
-    </form>
-      <datalist id="places">
-        {autocompleteCities.map((city, i) => (
-          <option key={i}>{city}</option>
-        ))}
-      </datalist>
-      <Button type="submit" className="button" variant="outlined">
+      <Button type='submit' className='button' variant='outlined'>
         Submit
       </Button>
     </form>
