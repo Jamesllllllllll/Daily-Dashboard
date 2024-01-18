@@ -9,7 +9,7 @@ import FormLabel from '@mui/material/FormLabel';
 const WeatherForm = () => {
   const dispatch = useDispatch();
 
-  const city = useSelector(citySelector);
+  const [city, setCity] = useState('');
   const wantToChangeCity = useSelector(changeCitySelector);
 
   const [localCity, setLocalCity] = useState('');
@@ -80,6 +80,15 @@ const WeatherForm = () => {
         )}
         {/* The datalist element gives the available options for the input. 
               The id="places" ties it to the element above with list="places" */}
+      <datalist id="places">
+        {autocompleteCities.map((city, i) => (
+          <option key={i}>{city}</option>
+        ))}
+      </datalist>
+      <Button type="submit" className="button" variant="outlined">
+        Submit
+      </Button>
+    </form>
       <datalist id="places">
         {autocompleteCities.map((city, i) => (
           <option key={i}>{city}</option>
