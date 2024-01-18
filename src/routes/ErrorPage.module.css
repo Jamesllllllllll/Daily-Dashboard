@@ -1,0 +1,9 @@
+.errorPage {
+    min-height: 97vh;
+    width: 100%;
+    display: flex;
+}
+
+.errorMessage {
+    margin: 0 2rem;
+}
