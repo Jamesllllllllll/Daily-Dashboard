@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './Home.module.css';
 import { NavigationHome } from '../components/Navigation/Navigation';
-import RedditPosts from '../features/reddit/RedditPosts';
+// import RedditPosts from '../features/reddit/RedditPosts';
 import Notes from '../features/notes/Notes';
 import Weather from '../features/weather/Weather';
 import QuoteOrFact from '../components/QuoteOrFact/QuoteOrFact';
@@ -33,7 +33,7 @@ export default function Home() {
               <Weather />
               <QuoteOrFact />
             </Stack>
-            <RedditPosts />
+            {/* <RedditPosts /> */}
             <Notes />
             <WellBeingCheckin />
             <ToDoList />

@@ -106,7 +106,8 @@ function Quote() {
 
   
     fetchQuote();
-}, [category, categoryIndex]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []); // James: "I removed category & categoryIndex from dependency array since it caused an ininite loop"
 
   //link variable is defined to pull a wikipedia article for the returned author. No special syntax was given, url  auto corrects for spacing within author
   const link = `https://en.wikipedia.org/wiki/${author}`;

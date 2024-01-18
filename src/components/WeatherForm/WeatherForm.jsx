@@ -16,15 +16,15 @@ const WeatherForm = () => {
   const city = useSelector(citySelector);
   const wantToChangeCity = useSelector(changeCitySelector);
 
+  const [localCity, setLocalCity] = useState('');
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState('');
 
   // More on this city picker here: https://javascript.plainenglish.io/create-a-simple-city-autocomplete-field-in-react-f7675d249c74#5057
   const handleCityChange = async (e) => {
-    dispatch(updateCity(e.target.value));
-    if (!city) return;
+    setLocalCity(e.target.value);
 
-    const response = await fetch(`/api/city?city=${city}`);
+    const response = await fetch(`/api/city?city=${localCity}`);
     if (response.ok) {
       const data = await response.json();
       !autocompleteCities.includes(e.target.value) &&
@@ -39,10 +39,9 @@ const WeatherForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!city) {
-      return;
-    } else {
-      fetchWeather(); //uncommented this line
+    if (localCity) {
+      dispatch(updateCity(localCity));
+      fetchWeather();
       dispatch(changeCity(!wantToChangeCity));
     }
   };
@@ -75,7 +74,7 @@ const WeatherForm = () => {
           id="city"
           name="city"
           onChange={handleCityChange}
-          value={city}
+          value={localCity}
           required
           pattern={autocompleteCities.join('|')}
           autoComplete="off"
