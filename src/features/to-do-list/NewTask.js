@@ -1,6 +1,6 @@
 import { TextField, Button, List, ListItem, styled, Container, Box } from "@mui/material";
 import { PermDeleteButton } from "./TaskList";
-import React, { useState } from "react";
+import React from "react"; //removed useState import as it was not in use
 
 const NewTaskButton = styled(Button)(({ theme }) => ({
     marginLeft: '5px',

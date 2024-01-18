@@ -15,11 +15,13 @@ export function ShowHistory() {
 function mapOutEmotions(){
   let emotionsMapped = [];
   let counter = 0;
-  let existingDay;
-
+  
    for(let i= 0; i<=6; i++){
+    let existingDay; //moved this so it reset each day
     emotionsMapped.push(emotionsHistory.map( object => {
-     if(object.date === i){
+     if(object.date !== i){
+      return null; // added this return null so that it would not return undefined for the days that did not have an emotion
+    } else {
       existingDay = true;
       
       return (
@@ -33,31 +35,32 @@ function mapOutEmotions(){
     }
   }
   return emotionsMapped
-  };  
+};  
 
-  
-  function mapOutEnergy(){
-    let energyMapped = [];
-    let counter = 8;
+function mapOutEnergy(){
+  let energyMapped = [];
+  let counter = 8;
+
+  for(let i= 0; i<=6; i++){
     let existingDay;
-  
-    for(let i= 0; i<=6; i++){
-      energyMapped.push(energyHistory.map( object => {
-        if(object.date === i){
-          existingDay = true;
+    energyMapped.push(energyHistory.map( object => {
+      if(object.date === i){
+        return null; // added this return null so that it would not return undefined for the days that did not have an emotion
+      } else {
+        existingDay = true;       
 
-          return (
-          <td key={object.energy} className={styles.td}>
-            <p className={styles.energy}>{object.energy}</p>
-          </td>
-        )}
-      }));
-      if(!existingDay){
-        energyMapped.push(<td key={counter++}> </td>);
-      }
-    } 
-      return energyMapped
-    };  
+        return (
+        <td key={object.energy} className={styles.td}>
+          <p className={styles.energy}>{object.energy}</p>
+        </td>
+      )}
+    }));
+    if(!existingDay){
+      energyMapped.push(<td key={counter++}> </td>);
+    }
+  } 
+    return energyMapped
+  };  
   
 
 

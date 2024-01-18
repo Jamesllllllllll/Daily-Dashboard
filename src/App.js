@@ -4,7 +4,7 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import Home from './routes/Home';
 import Settings from './routes/Settings';
 import ArticlePage from './routes/ArticlePage';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+//import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
 import { CssBaseline } from '@mui/material';
 import { BottomNavigation } from '@mui/material';
