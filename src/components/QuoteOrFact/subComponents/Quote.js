@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Skeleton, Box } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 //this component brings in 'quotes' from API Ninjas and returns them to App.js for rendering.
@@ -9,7 +9,7 @@ function Quote() {
   const [author, setAuthor] = useState('');
   const [loading, setLoading] = useState(true);
   //the category array is comprised of the list of possible quote categories provided by API Ninjas
-  const category = [
+  const category = useMemo(() => [
     'age',
     'alone',
     'amazing',
@@ -77,36 +77,36 @@ function Quote() {
     'morning',
     'movies',
     'success',
-  ];
+  ], []);
 
   //defining a number to act as an index so that the quote category can be randomized.  In the future, may add functionality to turn on or select the categories to recieve quotes from.
   const categoryIndex = Math.floor(Math.random() * category.length);
 
   //calling the API and setting quote and author to the response which comes back as an array object. you can find more information here https://api-ninjas.com/api/facts
-  const fetchQuote = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `/api/quote?category=${category[categoryIndex]}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        setQuote(data[0].quote);
-        setAuthor(data[0].author);
-        setLoading(false);
-      } else {
-        console.log(`Error: ${response.statusText}`);
-        setLoading(false);
-        return <p>No quote data</p>;
-      }
-    } catch (error) {
-      console.log('Unable to retrieve quote');
-    }
-  };
-
   useEffect(() => {
+    const fetchQuote = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`/api/quote?category=${category[categoryIndex]}`);
+        if (response.ok) {
+          const data = await response.json();
+          setQuote(data[0].quote);
+          setAuthor(data[0].author)
+        } else {
+          console.log(`Error: ${response.statusText}`);
+          return <p>No quote data</p>;
+        }
+      } catch (error) {
+        console.log('Unable to retrieve quote');
+      } finally {
+        setLoading(false);
+      }
+    }
+  
+
+  
     fetchQuote();
-  }, []);
+}, [category, categoryIndex]);
 
   //link variable is defined to pull a wikipedia article for the returned author. No special syntax was given, url  auto corrects for spacing within author
   const link = `https://en.wikipedia.org/wiki/${author}`;

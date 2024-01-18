@@ -44,6 +44,7 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
+    <CssBaseline /> {/* Added CSS Baseline  as it was imported but not in use*/}
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
           <RouterProvider router={router} />
