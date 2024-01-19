@@ -17,12 +17,12 @@ function mapOutEmotions(){
   let counter = 0;
   
    for(let i= 0; i<=6; i++){
-    let existingDay; //moved this so it reset each day
+    let existingEmotionDay; //moved this so it reset each day
     emotionsMapped.push(emotionsHistory.map( object => {
      if(object.date !== i){
       return null; // added this return null so that it would not return undefined for the days that did not have an emotion
     } else {
-      existingDay = true;
+      existingEmotionDay = true;
       
       return (
         <td key={object.name} className={styles.td}>
@@ -30,7 +30,7 @@ function mapOutEmotions(){
         </td>
       )}
     }));
-    if(!existingDay){
+    if(!existingEmotionDay){
       emotionsMapped.push(<td key={counter++}> </td>);
     }
   }
@@ -39,15 +39,15 @@ function mapOutEmotions(){
 
 function mapOutEnergy(){
   let energyMapped = [];
-  let counter = 8;
+  let counter = 7;
 
   for(let i= 0; i<=6; i++){
-    let existingDay;
+    let existingEnergyDay;
     energyMapped.push(energyHistory.map( object => {
       if(object.date === i){
         return null; // added this return null so that it would not return undefined for the days that did not have an emotion
       } else {
-        existingDay = true;       
+        existingEnergyDay = true;       
 
         return (
         <td key={object.energy} className={styles.td}>
@@ -55,7 +55,7 @@ function mapOutEnergy(){
         </td>
       )}
     }));
-    if(!existingDay){
+    if(!existingEnergyDay){
       energyMapped.push(<td key={counter++}> </td>);
     }
   } 
