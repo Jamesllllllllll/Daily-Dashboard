@@ -17,3 +17,11 @@
 ### Quick Start
 
 Create a file in the foramt `conpomentName.test.js` in the same folder as your component. Jest will automatically look for testing files.
+
+### Contributing
+In order to make API calls locally you have to sign up for account at:
+https://mapbox.com 
+https://api-ninjas.com
+https://www.weatherapi.com
+
+Use "public token" for mapbox
