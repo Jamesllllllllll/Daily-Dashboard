@@ -9,6 +9,7 @@ const StyledCard = styled((props) => <Card {...props} />)(({ theme }) => ({
   padding: '2rem',
   marginBottom: '1rem',
   boxShadow: '0 15px 25px rgba(0,0,0,.15); 0 5px 10px rgba(0,0,0,.05)',
+  overflow: 'visible',
 }));
 
 const FeatureCard = (props) => {

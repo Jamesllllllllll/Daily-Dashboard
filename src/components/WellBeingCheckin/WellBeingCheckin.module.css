@@ -1,0 +1,9 @@
+.checkinContainer {
+    max-width: 27.45%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    overflow:visible
+}

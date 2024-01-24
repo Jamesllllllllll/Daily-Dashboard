@@ -12,13 +12,18 @@ export default function Calendar() {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.calendarContainer}>
-          {lineChart === true ? <ShowHistory  /> : 
-          <button type="submit" className={styles.calendarButton}  onClick={() => dispatch(toggleCalendar())}>
-            <img className={styles.img} alt="calendar" src='/media/Calendar.png' />
-          </button> }
+        <button type="submit" className={styles.calendarButton}  onClick={() => dispatch(toggleCalendar())}>
+          <img className={styles.img} alt="calendar" src='/media/Calendar.png' />
+        </button>          
       </div>
-    </> 
+      {lineChart &&
+      <div className={styles.lineChartContainer}>
+        <ShowHistory />
+      </div>
+    }
+    </div>
+    
   );
 }

@@ -21,7 +21,7 @@ export const energyCheckinSlice = createSlice({
     },
 
     toggleSlider: (state) => {   
-      state.sliderOpen ? state.sliderOpen = false : state.sliderOpen = true;
+      state.sliderOpen = !state.sliderOpen;
       return state
     },
   
