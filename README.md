@@ -69,3 +69,4 @@ After setting up and running the application, you can access the Daily Dashboard
 We welcome contributions to the Daily Dashboard! In order to contribute, you will have to create a PR with your changes, and try to merge it into `development`. The repo uses GitHub Actions to run tests and validate PRs. Once your PR is reviewed and passes all tests it can be merged.
 
 Direct commits to `deployment` are not supported by the repo and will be blocked. This is to ensure safe development.
+
