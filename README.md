@@ -4,11 +4,14 @@
 
 Daily Dashboard is a dynamic web application designed to enhance your daily routine by providing essential information at a glance. Built with React, Redux, and Jest, this application offers a user-friendly interface to display the following key features:
 
-- **City Visualization**: Utilizing Mapbox, it renders a detailed view of the user's city.
-- **Top 5 Articles**: Integrates with NewsAPI to fetch and display the top 5 articles of the day.
-- **Daily Fact**: A unique and interesting fact presented daily.
+- **Current Weather**: Displays current weather in your city using [WeatherAPI](https://weatherapi.com).
+- - **Random Fact or Quote**: A unique and interesting fact or quote each time you visit the Dashboard using the relevant APIs from [API Ninjas}(https://api-ninjas.com).
+- **Top 5 Articles**: Displays the top 5 articles of the day using [NewsAPI](https://newsapi.org/s/google-news-api).
+- **Emotional Wellbeing Check-in**: Log your daily mood and energy level and see your recent history.
+- **To-Do List**: Keep track of things you need to get done.
+- **Notes**: Take notes and save for review.
 
-This application is ideal for users who want to stay informed and connected with their surroundings with minimal effort.
+This application is ideal for users who want to stay informed and organized with minimal effort.
 
 ## Getting Started
 
@@ -35,11 +38,12 @@ Before setting up the project, ensure you have the following installed:
    ```
 
 3. **API Keys Setup:**
-   To fully utilize the features of Daily Dashboard, you need to obtain API keys from the following services:
+   To use the features of Daily Dashboard, you need to obtain API keys from the following services:
 
-   - WeatherAPI (for city visualization)
-   - Mapbox (for mapping services, make sure to use the public key)
+   - WeatherAPI (for retrieving the current weather for the selected city)
+   - Mapbox (for retrieving a list of cities for the Weather component)
    - NewsAPI (for top articles)
+   - API-Ninjas (for retrieving a random quote or fact)
 
    Register and create an account at each of these services to obtain your API keys.
 
@@ -51,6 +55,7 @@ Before setting up the project, ensure you have the following installed:
      REACT_APP_WEATHER_API_KEY=your_weatherapi_key
      REACT_APP_MAPBOX_API_KEY=your_mapbox_key
      REACT_APP_NEWS_API_KEY=your_newsapi_key
+     REACT_APP_X_Api_Key=your_api-ninjas_key
      ```
 
 5. **Running the application locally:**
@@ -62,7 +67,7 @@ Before setting up the project, ensure you have the following installed:
 
 ## Usage
 
-After setting up and running the application, you can access the Daily Dashboard in your web browser. The interface will display your city's visualization, the top 5 articles of the day, and a unique daily fact.
+After setting up and running the application, you can access the Daily Dashboard in your web browser.
 
 ## Contributing
 
