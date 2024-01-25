@@ -22,7 +22,7 @@ afterEach(() => server.resetHandlers());
 // clean up once the tests are done
 afterAll(() => server.close());
 
-it('Should show text content as Toronto', async () => {
+it('Should show text content as Atlanta', async () => {
   // set up userEvent before component is rendered (https://testing-library.com/docs/user-event/intro#writing-tests-with-userevent)
   const user = userEvent.setup();
 
@@ -35,7 +35,7 @@ it('Should show text content as Toronto', async () => {
   // Simulate typing 'Atlanta'
   user.type(textbox, 'Atlanta');
 
-  // Assert textbox has text content 'Toronto'
+  // Assert textbox has text content 'Atlanta'
   const city = await screen.findByDisplayValue('Atlanta');
   expect(city).toBeInTheDocument();
 });
