@@ -1,33 +1,15 @@
-import fetchWeather from './Weather';
-jest.mock('./Weather');
+import React from 'react';
+import { screen } from '@testing-library/react';
+import Weather from './Weather';
+import '@testing-library/jest-dom';
+import { renderWithProviders } from '../../utils/test-utils';
 
-it('Fetches the weather from API', async () => {
-  // Arrange
-  const expectedResponse = {
-    current: {
-      condition: {
-        text: 'Clear',
-      },
-    },
-    temp_c: 20,
-    temp_f: 68,
-  };
-
-  // Set resolved value for the next call to fetchWeather
-  const mockResponse = {
-    current: {
-      condition: {
-        text: 'Clear',
-      },
-    },
-    temp_c: 20,
-    temp_f: 68,
-  };
-  fetchWeather.mockResolvedValueOnce(mockResponse);
-
-  // Act
-  const actualResponse = await fetchWeather();
-
-  // Assert
-  expect(actualResponse).toEqual(expectedResponse)
+describe('Weather', () => {
+  describe('Component', () => {
+    test('renders when the app loads', () => {
+      const { getByText } = renderWithProviders(<Weather />);
+      // render(<Weather />);
+      expect(screen.getByText('Weather')).toBeInTheDocument();
+    });
+  });
 });
