@@ -29,4 +29,4 @@ jobs:
       - name: Install Cypress
         run: npm install --global cypress
       - name: Run Cypress Tests
-        run: cypress run --config baseUrl=${{ needs.Deploy-Preview.outputs.preview_url }}
+        run: npm run cypress:run -- ${{ needs.Deploy-Preview.outputs.preview_url }}
