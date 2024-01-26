@@ -13,4 +13,4 @@ jobs:
         uses: cypress-io/github-action@v6
 
         with:
-          start: vercel dev --token "$VERCEL_TOKEN"
+          start: vercel dev --token $VERCEL_TOKEN
