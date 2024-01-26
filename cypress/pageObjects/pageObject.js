@@ -4,7 +4,7 @@ export class MainPageObject {
     this.dashboardLogo = "div:contains('Daily Dashboard')";
   }
   visit() {
-    cy.visit();
+    cy.visit("/");
   }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
