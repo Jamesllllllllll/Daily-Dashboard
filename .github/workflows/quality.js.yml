@@ -7,6 +7,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         uses: cypress-io/github-action@v6
         with:
-          start: vercel dev
+          start: vercel dev --token "$VERCEL_TOKEN"
