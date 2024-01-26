@@ -8,12 +8,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Check if Vercel token is set
-        run: |
-          if [ -z $VERCEL_TOKEN ]; then
-            echo "VERCEL_TOKEN is not set"
-            exit 1
-          fi
+        run: echo $VERCEL_TOKEN
       - name: Cypress run
         uses: cypress-io/github-action@v6
 
