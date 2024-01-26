@@ -27,6 +27,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Cypress
-        run: npm install --global cypress
+        run: npm ci
       - name: Run Cypress Tests
         run: npm run cypress:run -- --config baseUrl="${{ needs.Deploy-Preview.outputs.preview_url }}"
