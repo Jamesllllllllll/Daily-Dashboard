@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "jest --env=jsdom",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --config baseUrl=",
+    "cypress:run": "cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
