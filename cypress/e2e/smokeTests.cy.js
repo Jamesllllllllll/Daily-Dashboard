@@ -1,6 +1,8 @@
-import cy from "cypress";
+import { MainPageObject } from "../pageObjects/pageObject";
+const mainPageObject = new MainPageObject();
 describe("Smoke Tests", () => {
-  it("should load the home page", () => {
-    cy.visit("/");
+  it("Loads the page with out errors", () => {
+    mainPageObject.visit();
+    mainPageObject.getDashboardLogo().should("be.visible");
   });
 });
