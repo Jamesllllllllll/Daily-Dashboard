@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "vercel dev -l 3000",
     "build": "react-scripts build",
     "test": "jest --env=jsdom",
     "cypress:open": "cypress open",
