@@ -82,4 +82,4 @@ This project uses a variety of tools for testing. It uses Cypress for End-to-end
 1. Start the app through `npm run start`. This will use vercel to start the app
 2. Assuming the app is runing at `http://localhost:3000`, you can run `npm run cypress:run`. If the app is running at a specific port, you can run `npm run cypress:run -- --p <port_number>`
 
-Cypress is able to run the tests in headful mode as well. As in, it can spin up an Electron app and you can see cypress complete the tests yo've specificed. You can do this by running `npm cypress:open` and then navigating to the appropriate test
+Cypress is able to run the tests in headful mode as well. As in, it can spin up an Electron app and you can see cypress complete the tests you've specificed. You can do this by running `npm cypress:open` and then navigating to the appropriate test
