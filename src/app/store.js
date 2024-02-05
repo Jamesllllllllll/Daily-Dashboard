@@ -7,7 +7,7 @@ import notesReducer from "../features/notes/notesSlice";
 import weatherReducer from "../features/weather/weatherSlice";
 import settingsReducer from "../routes/settingsSlice";
 import redditReducer from "../features/reddit/redditSlice";
-
+import toDoListReducer from "../features/to-do-list/toDoListSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
@@ -26,6 +26,7 @@ const rootReducer = combineReducers({
   weather: weatherReducer,
   reddit: redditReducer,
   settings: settingsReducer,
+  toDoList: toDoListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
