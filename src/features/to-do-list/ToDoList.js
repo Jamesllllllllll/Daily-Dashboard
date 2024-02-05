@@ -44,20 +44,30 @@ function ToDoList() {
 
   const handleStepAdd = (event) => {
     event.preventDefault();
-    
-    if (steps.length < 1 && stepTitle && (newTask.taskSteps[0].title === newTask.taskTitle)) {
+    switch (newTask.taskSteps.length) {
+      case 0:
         setSteps([{
-            id: 1,
-            title: stepTitle,
-            complete: false
+          id: 1,
+          title: stepTitle,
+          complete: false
         }]);
-    } else if (steps.length >= 1 && stepTitle) {
-        setSteps((prev) => ([...prev, {
-            id: steps.length + 1,
-            title: stepTitle,
-            complete: false
-        }]));
+      break;
+      default:
+        if (steps.length < 1 && stepTitle && (newTask.taskSteps[0].title === newTask.taskTitle)) {
+          setSteps([{
+              id: 1,
+              title: stepTitle,
+              complete: false
+          }]);
+        } else if (steps.length >= 1 && stepTitle) {
+            setSteps((prev) => ([...prev, {
+                id: steps.length + 1,
+                title: stepTitle,
+                complete: false
+            }]));
+        }
     }
+    
     setNewTask((prev) => ({
         id: prev.id,
         taskTitle: prev.taskTitle,
