@@ -47,7 +47,7 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                     alignItems: "flex-start",
                 }}
             >
-                {allTasks.map((taskObj, index) => (
+                {allTasks.length < 1 ? null : allTasks.map((taskObj, index) => (
                     <ListItem key={taskObj.taskTitle + index} listid={index} sx={{ }}>
                         <Stack 
                             direction="row" 

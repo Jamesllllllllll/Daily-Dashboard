@@ -16,7 +16,7 @@ function ToDoList() {
   const onBlur = () => setFocused(false);
   const dispatch = useDispatch();
   const allTasks = useSelector((state) => state.toDoList);
-  console.log(allTasks);
+  //console.log(allTasks);
 
   const [newTask, setNewTask] = useState({});
 
@@ -31,7 +31,7 @@ function ToDoList() {
         complete: false
       }],
     }));
-    console.log(allTasks);
+    //console.log(allTasks);
   };
 
   const [stepTitle, setStepTitle] = useState('');
@@ -84,8 +84,8 @@ function ToDoList() {
         prev.splice(stepIndex, 1);
         return [...prev];
     });
-    console.log(event.target.attributes.listid.value);
-    console.log(steps);
+    //console.log(event.target.attributes.listid.value);
+    //console.log(steps);
   }
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function ToDoList() {
       draft.splice(taskIndexToRemove, 1);
     });
     dispatch(updateTasks(updateAllTasks));
-  }
+  };
 
   const completedStepCounter = (stepsArr) => {
     let counter = 0;
@@ -128,7 +128,7 @@ function ToDoList() {
         }
     }
     return counter;
-  }
+  };
 
   const [index, setIndex] = useState('');
 
