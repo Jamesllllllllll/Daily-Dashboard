@@ -18,15 +18,28 @@ export class MainPageObject {
   async getLocalStorageItem(key) {
     try {
       const response = await cy.getAllLocalStorage();
-      return response["http://localhost:3000"][key];
+      const baseUrl = cy.config("baseUrl");
+      console.log(baseUrl);
+      console.log(response);
+      return response[baseUrl][key];
     } catch (error) {
       console.error(`Error getting local storage item: ${error}`);
     }
   }
+  setLocalStorageItem(key, value) {
+    try {
+      cy.window().then((win) => {
+        win.localStorage.setItem(key, value);
+      });
+    } catch (error) {
+      console.error(`Error setting local storage item: ${error}`);
+    }
+  }
 }
 
-class WeatherWidget {
+class WeatherWidget extends MainPageObject {
   constructor() {
+    super();
     this.weatherWidget = "[data-testid='weatherWidget']";
   }
   getWeatherContainer() {

@@ -5,6 +5,11 @@ describe("General Smoke Tests", () => {
     mainPageObject.visit();
     mainPageObject.getDashboardLogo().should("be.visible");
   });
+  it("Able to set and retrieve local storage", async () => {
+    mainPageObject.setLocalStorageItem("testKey", "testValue");
+    const response = await mainPageObject.getLocalStorageItem("testKey");
+    expect(response).to.equal("testValue");
+  });
 });
 
 describe("Weather Widget Smoke Tests", () => {
