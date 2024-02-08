@@ -12,4 +12,37 @@ export class MainPageObject {
   getDashboardLogo() {
     return cy.get(this.dashboardLogo);
   }
+  getWeatherWidget() {
+    return new WeatherWidget();
+  }
+  async getLocalStorageItem(key) {
+    try {
+      const response = await cy.getAllLocalStorage();
+      const baseUrl = cy.config("baseUrl");
+      console.log(baseUrl);
+      console.log(response);
+      return response[baseUrl][key];
+    } catch (error) {
+      console.error(`Error getting local storage item: ${error}`);
+    }
+  }
+  setLocalStorageItem(key, value) {
+    try {
+      cy.window().then((win) => {
+        win.localStorage.setItem(key, value);
+      });
+    } catch (error) {
+      console.error(`Error setting local storage item: ${error}`);
+    }
+  }
+}
+
+class WeatherWidget extends MainPageObject {
+  constructor() {
+    super();
+    this.weatherWidget = "[data-testid='weatherWidget']";
+  }
+  getWeatherContainer() {
+    return cy.get(this.weatherWidget);
+  }
 }
