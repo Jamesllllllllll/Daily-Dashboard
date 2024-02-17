@@ -28,7 +28,7 @@ export default function Settings() {
     return (
       <>
         <p>Current City: {city}</p>
-        <button onClick={setCity}>Change city</button>
+        <button onClick={setCity} data-testid="ChangeCity">Change city</button>
       </>
     );
   };

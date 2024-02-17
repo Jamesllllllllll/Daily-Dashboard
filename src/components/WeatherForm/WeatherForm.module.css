@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 1rem 0 0 0;
+  list-style-type: none;
+  padding: 0;
+  flex-basis: 100%;
+}
+
+.option {
+  background: #f6f7ff;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.option:hover {
+  cursor: pointer;
+  background: #e2e4f3;
+}
