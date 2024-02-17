@@ -1,4 +1,5 @@
 import { MainPageObject } from "../pageObjects/pageObject";
+
 const mainPageObject = new MainPageObject();
 describe("General Smoke Tests", () => {
   it("Loads the page with out errors", () => {
@@ -18,6 +19,36 @@ describe("Weather Widget Smoke Tests", () => {
     mainPageObject
       .getWeatherWidget()
       .getWeatherContainer()
+      .should("be.visible");
+  });
+});
+
+describe("Emotions Check-in Smoke Tests", () => {
+  it("Loads the Emotions Ckeck-in Widget", () => {
+    mainPageObject.visit();
+    mainPageObject
+      .getEmotionsCheckinWidget()
+      .getEmotionsCheckinContainer()
+      .should("be.visible");
+  });
+});
+
+describe("Energy Checkin", () => {
+  it("Loads the Energy Ckeck-in Widget", () => {
+    mainPageObject.visit();
+    mainPageObject
+      .getEnergyCheckinWidget()
+      .getEnergyCheckinContainer()
+      .should("be.visible");
+  });
+});
+
+describe("Calendar", () => {
+  it("Loads the Calendar Widget", () => {
+    mainPageObject.visit();
+    mainPageObject
+      .getCalendarWidget()
+      .getCalendarContainer()
       .should("be.visible");
   });
 });
