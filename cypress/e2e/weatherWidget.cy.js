@@ -7,7 +7,7 @@ describe("User Journey", () => {
     mainPageObject.visit();
   })
 
-  it.only("allows a user to enter a city name, choose their city and load the current weather", () => {
+  it("allows a user to enter a city name, choose their city and load the current weather", () => {
     cy.get("[data-testid='weather-form']").type('Toronto')
 
     // cy.intercept({
