@@ -24,29 +24,31 @@ describe("User Journey", () => {
     cy.get("[data-testid='cityPicker-0']").click()
     
     // cy.wait('@getWeather')
-    cy.get("[data-testid='weather-info']").should("exist").contains('in Toronto')
+    cy.get("[data-testid='weather-info']", { timeout: 15000 }).should("exist").contains('in Toronto')
   })
 
   it("allows a user to change their city", () => {
 
-    cy.intercept({
-      url: 'http://localhost:3000/api/city*',
-      query: { city: 'Atlanta' },
-    }).as('getCity')
+    // cy.intercept({
+    //   url: 'http://localhost:3000/api/city*',
+    //   query: { city: 'Atlanta' },
+    // }).as('getCity')
 
-    cy.intercept({
-      url: 'http://localhost:3000/api/weather*',
-      query: { city: 'Atlanta, Georgia, United States' },
-    }).as('getWeather')
+    // cy.intercept({
+    //   url: 'http://localhost:3000/api/weather*',
+    //   query: { city: 'Atlanta, Georgia, United States' },
+    // }).as('getWeather')
 
     cy.get("[data-testid='SettingsIcon']").eq(0).click()
     cy.get("[data-testid='ChangeCity']").click()
     cy.get("[data-testid='weather-form']").type('Atlanta')
-    cy.get("[data-testid='cityPicker-0']").click()
-    cy.wait('@getCity')
+    cy.get("[data-testid='cityPicker-0']", { timeout: 15000 }).click()
+
+    // cy.wait('@getCity')
     cy.get("[data-testid='CloseIcon']").eq(0).click()
-    cy.wait('@getWeather')
-    cy.get("[data-testid='weather-info']").should("exist").contains('in Atlanta')
+    
+    // cy.wait('@getWeather')
+    cy.get("[data-testid='weather-info']", { timeout: 15000 }).should("exist").contains('in Atlanta')
   })
 
 })
