@@ -43,6 +43,7 @@ const WeatherForm = () => {
     };
 
     fetchCities();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedCity]);
 
   const handleSubmit = (e) => {
