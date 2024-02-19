@@ -12,12 +12,14 @@
 }
 
 .lineChartContainer{
-    position: absolute;
-    top: 45%;
-    left: 23%;
     background-color: #f0f0f0;
     border: solid black .5px;
     border-radius: 5px;
     padding: .5rem;
     z-index: 2;
+}
+
+.calendarButton {
+    border: none;
+    background: none;
 }

@@ -1,34 +1,33 @@
 .table {
   border-collapse: collapse;
-  border: 2px solid rgb(204, 204, 204);
+  border: none;
   border-radius: 4px;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  /* box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12); */
   padding: 3rem;
+  table-layout: fixed;
 }
 
 .thead{
-  border-bottom: 4px solid  rgb(204, 204, 204);;
+  border-bottom: 1px solid  #ccc;
 }
 
-.td{
+.thead th {
+  padding-inline: 5px;
+}
+
+.td {
   border-collapse: collapse;
-  border-right: 2px solid rgb(204, 204, 204);
-  border-left: 2px solid rgb(204, 204, 204);
+  text-align: center;
+  line-height: 1rem;
+  height: 50px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
 }
 
 .energy{
   z-index: 2;
   background-image: url('../../Lightning.png');
-}
-
-
-
-.button{
-    color: #274D00;
-    border-radius: .25rem;
-    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2);
-    transition: all 0.3s ease 0s;
-
 }
 
 .button:hover {
