@@ -1,22 +1,25 @@
+.container {
+    width: 100%;
+}
+
 .img{
-  max-width: 100%;
-  max-height: 100%;
-  width: 2rem;
-  height: 2rem;
+    max-width: 100%;
+    max-height: 100%;
+    width: 2rem;
+    height: 2rem;
 }
 
 .calendarContainer{
-  margin: auto;
-  padding: .5rem;
+    margin: auto;
+    padding: .5rem;
+    align-self: center;
 }
 
+.lineChartContainer{
+    width: 100%;
+}
 
-.calendarButton{
-  height: 3rem;
-  appearance: none;
-  background: none;
-  color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+.calendarButton {
+    border: none;
+    background: none;
 }

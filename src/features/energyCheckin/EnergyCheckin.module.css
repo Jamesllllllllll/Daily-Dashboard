@@ -1,101 +1,103 @@
-.sliderContainer {
-  margin: auto;
-  height: 3rem;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  padding: 0.5rem;
-}
-
-.energyValue {
-  font-size: 1.5rem;
-  align-self: center;
-  padding-left: 2rem;
-  margin-right: 2rem;
-}
-
-.closeButton{
-  color: #274D00;
-  border-radius: .25rem;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2);
-  transition: all 0.3s ease 0s;
-}
-
-.closeButton:hover {
-  background: rgba(0,0,0,0.2)
-}
-
-.lightning{
-  height: 2rem;
+.lightning {
+  max-width: 100%;
+  max-height: 100%;
   width: 2rem;
+  height: 2rem;
+}
+
+.energyContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  align-items: center;
+  height: 60px;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  gap:10px;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.5s;
+}
+
+.saveButton:hover {
+  background: #e8d9f0;
 }
 
 input.slider[type='range'] {
   /* removing default appearance */
   align-self: center;
   -webkit-appearance: none;
-  appearance: none;
-  width: 50%;
-  justify-content: start;
+  width: 100%;
   cursor: pointer;
   outline: none;
   height: 1rem;
-  background: #ccc;
+  background: #f0e7f5;
   border-radius: 1rem;
-
 }
+
 
 /* Track: webkit browsers */
 
 input.slider[type='range']::-webkit-slider-runnable-track {
-  height: 1rem;
-  background: #ccc;
-  border-radius: 1rem;
-  overflow: hidden;
-} 
-
-/* Thumb: webkit */
-input.slider[type='range']::-webkit-slider-thumb {
-  /*creating a custom design */
-  -webkit-appearance: none;
-  appearance: none;
-  margin-top: -12;
-  height: 1rem;
-  width: 1rem;
-  background-color: gray;
-  background-size: contain;
-  background-repeat: no-repeat; 
-  border-radius: 50%;
-  border: none;
-  box-shadow: -410px 0 0 400px #f50;  
-  transition: 0.2s ease-in-out;
-} 
-
-
-/* Track: Mozilla Firefox */
-input.slider[type='range']::-moz-range-track {
-  height: 1rem;
-  background: #ccc;
-  border-radius: 16px;
-}
-
-input[type="range"]::-moz-range-progress{
-  background-color: #f50;
-  height: inherit;
-}
-
-
-/* Thumb: Firefox */
-input.slider[type='range']::-moz-range-thumb {
-  height: 1.5rem;
-  width: 1.5rem;
-  background-color: gray;
-  background-size: contain;
-  border-radius: 50%;
-  border: none;
-  transition: 0.2s ease-in-out;
-  overflow: visible;
-}
-
-
+    height: 1rem;
+    background: #f7f3fa;
+    border-radius: 1rem;
+    overflow: hidden;
+  } 
+  
+  /* Thumb: webkit */
+  input.slider[type='range']::-webkit-slider-thumb {
+    /*creating a custom design */
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -12;
+    height: 1rem;
+    width: 1rem;
+    background-color: gray;
+    background-size: contain;
+    background-repeat: no-repeat; 
+    border-radius: 50%;
+    border: none;
+    box-shadow: -410px 0 0 400px #f50;  
+    transition: 0.2s ease-in-out;
+  } 
+  
+  
+  /* Track: Mozilla Firefox */
+  input.slider[type='range']::-moz-range-track {
+    height: 1rem;
+    background: #f7f3fa;
+    border-radius: 16px;
+  }
+  
+  input[type="range"]::-moz-range-progress{
+    background-color: #e8d9f0;
+    height: inherit;
+  }
+  
+  
+  /* Thumb: Firefox */
+  input.slider[type='range']::-moz-range-thumb {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: gray;
+    background-size: contain;
+    border-radius: 50%;
+    border: none;
+    transition: 0.2s ease-in-out;
+    overflow: visible;
+  }
+  

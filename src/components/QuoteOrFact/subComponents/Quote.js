@@ -101,9 +101,7 @@ function Quote() {
       } finally {
         setLoading(false);
       }
-    }
-  
-
+    };
   
     fetchQuote();
 // eslint-disable-next-line react-hooks/exhaustive-deps
