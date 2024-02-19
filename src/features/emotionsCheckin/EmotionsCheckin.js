@@ -56,7 +56,9 @@ let emojiPics = emotionsArray.map( ({name, pic}) => {
    
   return (
     <>
-      <div className={styles.container}>
+      <div 
+        className={styles.container}
+        data-testid="emotionsCheckin">
         <div className={styles.emotionsContainer}>
           <ul className={styles.list}>
             {emojiPics}
