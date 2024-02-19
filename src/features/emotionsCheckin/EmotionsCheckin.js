@@ -33,7 +33,7 @@ export default function EmotionsCheckin() {
     let today = date.getDay();
     const picName = e.target.name;
     const picSrc = e.target.src;
-    setSelectOpen(!selectOpen)
+    setSelectOpen(!selectOpen);
     dispatch(
       selectEmotion({
         name: picName,
@@ -75,19 +75,16 @@ export default function EmotionsCheckin() {
   });
 
   return (
-    <>
-      <div 
-        className={styles.container}
-        data-testid="emotionsCheckin">
-        <div className={styles.emotionsContainer}>
-          <button className={styles.button} onClick={() => setSelectOpen(!selectOpen)}>
-            <img
-              src={emotionPic}
-              alt={emotionName}
-              className={styles.emojiPic}
-            />
-          </button>
-          {selectOpen && <ul className={styles.list}>{emojiPics}</ul>}
-        </div>
+    <div className={styles.container} data-testid='emotionsCheckin'>
+      <div className={styles.emotionsContainer}>
+        <button
+          className={styles.button}
+          onClick={() => setSelectOpen(!selectOpen)}
+        >
+          <img src={emotionPic} alt={emotionName} className={styles.emojiPic} />
+        </button>
+        {selectOpen && <ul className={styles.list}>{emojiPics}</ul>}
+      </div>
+    </div>
   );
 }
