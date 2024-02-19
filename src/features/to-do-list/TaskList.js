@@ -71,6 +71,7 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                                 listid={index} 
                                 onClick={handleFullTaskDisplay}
                                 sx={{ backgroundColor: completedStepCounter(taskObj.taskSteps) === taskObj.taskSteps.length ? 'rgba(0, 255, 0, .25)' : '#fff' }}
+                                data-testid={`task-${index}`}
                             >
                                 <Typography 
                                     variant="body1"
@@ -88,6 +89,7 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                                     variant="body1"
                                     listid={index} 
                                     onClick={handleFullTaskDisplay}
+                                    data-testid={`steps-completed-${index}`}
                                 >{`Completed ${completedStepCounter(taskObj.taskSteps)} of ${taskObj.taskSteps.length} steps.`}</Typography>
                             </TaskListItem>
                             

@@ -16,7 +16,8 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
           variant="outlined" 
           size="small" 
           type="submit"
-          sx={{ marginLeft: '5px' }}  
+          sx={{ marginLeft: '5px' }}
+          data-testid='save-opened-task'
         >Save</Button>
         <List>
           {allTasks[index].taskSteps.map((step, stepIndex) => {
@@ -41,6 +42,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     onChange={handleStepTitleEdit}
                     onFocus={onFocus}
                     onBlur={onBlur} 
+                    id={`task-step-${stepIndex}`}
                   />
                   <FormControlLabel
                     control={
@@ -51,6 +53,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                         onClick={handleCheck} 
                         checked={step.complete}
                         sx={{ padding: '0px' }}
+                        data-testid={`task-checkbox-${stepIndex}`}
                       />
                     }
                     label="Completed?"

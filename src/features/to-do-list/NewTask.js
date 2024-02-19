@@ -19,7 +19,9 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                     label="Enter new Task Title"
                     name="taskTitle"
                     value={newTask.taskTitle || ""}
-                    onChange={handleTaskTitleChange} 
+                    onChange={handleTaskTitleChange}
+                    data-testid="new-task-item"
+                    id="new-task-item"
                 />
                 
                 {newTask.taskTitle && (
@@ -70,16 +72,19 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                             variant="standard"
                             value={stepTitle}
                             onChange={handleStepTitleChange}
+                            data-testid='new-task-step'
                         />
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             onClick={handleStepAdd}
+                            data-testid='add-task-step'
                         >Add Step</NewTaskButton>
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             type="submit"
+                            data-testid='save-task'
                         >Save Task</NewTaskButton>
                     </Container>
                 </>)}
