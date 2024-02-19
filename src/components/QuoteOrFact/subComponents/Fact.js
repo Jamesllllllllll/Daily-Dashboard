@@ -18,10 +18,12 @@ function Fact() {
         setLoading(false);
       } else {
         console.log(`Error: ${response.statusText}`);
+        console.log(response);
         setLoading(false);
         return <p>No fact data</p>;
       }
     } catch (error) {
+      
       console.log('error');
     }
   };
@@ -33,8 +35,6 @@ function Fact() {
     fetchQuote();
   }, []);
 
-  //log to test output
-  //console.log('fact ' + fact)
   //returning to set the component.  The link is set to 'search' and the target is set to blank so that when the fact is clicked it will open a new tab in the browser with the google search result
   return (
     <>
