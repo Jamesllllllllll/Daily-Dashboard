@@ -7,9 +7,6 @@ const NewTaskButton = styled(Button)(({ theme }) => ({
  }));
 
 function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleTaskTitleChange, handleStepTitleChange, handleStepAdd, handleStepRemove, handleTaskSubmit }) {
-
-    //console.log(steps);
-    //console.log(newTask);
    
     return (
         <form onSubmit={handleTaskSubmit}>
@@ -50,8 +47,6 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                                         variant="outlined"
                                         value={steps[index].title}
                                         onChange={handleStepChange}
-                                        //onFocus={onFocus}
-                                        //onBlur={onBlur} 
                                     />
                                     <PermDeleteButton 
                                         variant="outlined" 

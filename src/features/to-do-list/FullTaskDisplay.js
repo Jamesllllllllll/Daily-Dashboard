@@ -27,8 +27,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                 draft[index].taskSteps[stepIndex].title = event.target.value;
               });
               dispatch(updateTasks(updateAllTasks));
-              //console.log(allTasks);
-              //console.log(step.title + stepIndex);
             }
 
             
@@ -76,7 +74,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               label="Add steps"
               variant="standard"
               size="small"
-              //placeholder="Add Step"
               taskindex={index}
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
