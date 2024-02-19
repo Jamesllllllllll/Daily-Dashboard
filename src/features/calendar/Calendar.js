@@ -13,7 +13,10 @@ export default function Calendar() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.calendarContainer}>
+      <div 
+        className={styles.calendarContainer}
+        data-testid="calendar"
+      >
         <button type="submit" className={styles.calendarButton}  onClick={() => dispatch(toggleCalendar())}>
           <img className={styles.img} alt="calendar" src='/media/Calendar.png' />
         </button>          

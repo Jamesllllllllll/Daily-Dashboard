@@ -75,6 +75,10 @@ export default function EmotionsCheckin() {
   });
 
   return (
+    <>
+      <div 
+        className={styles.container}
+        data-testid="emotionsCheckin">
         <div className={styles.emotionsContainer}>
           <button className={styles.button} onClick={() => setSelectOpen(!selectOpen)}>
             <img

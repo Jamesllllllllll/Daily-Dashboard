@@ -40,7 +40,7 @@ export default function EnergyCheckin() {
 
   //check sliderOpen state and display either slider or lightning picture:
   return (
-    <div className={styles.energyContainer}>
+    <div className={styles.energyContainer} data-testid="energyCheckin">
       <button
         className={styles.button}
         onClick={() => dispatch(toggleSlider())}

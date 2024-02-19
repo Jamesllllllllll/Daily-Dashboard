@@ -1,19 +1,18 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-import energyCheckinReducer from '../features/energyCheckin/energyCheckinSlice';
-import emotionsCheckinReducer from '../features/emotionsCheckin/emotionsCheckinSlice';
-import calendarReducer from '../features/calendar/calendarSlice';
-import notesReducer from '../features/notes/notesSlice';
-import weatherReducer from '../features/weather/weatherSlice';
-import settingsReducer from '../routes/settingsSlice';
-import redditReducer from '../features/reddit/redditSlice';
+import energyCheckinReducer from "../features/energyCheckin/energyCheckinSlice";
+import emotionsCheckinReducer from "../features/emotionsCheckin/emotionsCheckinSlice";
+import calendarReducer from "../features/calendar/calendarSlice";
+import notesReducer from "../features/notes/notesSlice";
+import weatherReducer from "../features/weather/weatherSlice";
+import settingsReducer from "../routes/settingsSlice";
+import redditReducer from "../features/reddit/redditSlice";
 
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
-
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
 };
 

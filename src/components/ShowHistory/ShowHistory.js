@@ -45,9 +45,9 @@ export function ShowHistory() {
     return emotionsMapped;
   }
 
-  function mapOutEnergy() {
-    let energyMapped = [];
-    let counter = 8;
+function mapOutEnergy(){
+  let energyMapped = [];
+  let counter = 7;
 
     for (let i = 0; i <= 6; i++) {
       let existingDay;

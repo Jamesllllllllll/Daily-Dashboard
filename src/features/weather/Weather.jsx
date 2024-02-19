@@ -1,16 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import {
   citySelector,
   weatherSelector,
   defaultWeatherSelector,
   updateWeather,
-} from './weatherSlice';
-import WeatherForm from '../../components/WeatherForm/WeatherForm';
-import Box from '@mui/material/Box';
-import { Skeleton } from '@mui/material';
-import StyledCard from '../../components/LayoutComponents/FeatureCard';
-import Typography from '@mui/material/Typography';
+} from "./weatherSlice";
+import WeatherForm from "../../components/WeatherForm/WeatherForm";
+import Box from "@mui/material/Box";
+import { Skeleton } from "@mui/material";
+import StyledCard from "../../components/LayoutComponents/FeatureCard";
+import Typography from "@mui/material/Typography";
 
 const Weather = () => {
   const city = useSelector(citySelector);
@@ -47,7 +47,7 @@ const Weather = () => {
   const CurrentWeather = () => {
     return !loading ? (
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
         <img
           src={weatherIconSrc}
@@ -56,21 +56,21 @@ const Weather = () => {
           width="64"
         />
         <Typography>{`${weather.current.condition.text} and ${
-          city.includes('United States')
+          city.includes("United States")
             ? weather.current.temp_f
             : weather.current.temp_c
         }° in ${weather.location.name}`}</Typography>
       </Box>
     ) : (
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
         <Skeleton
           variant="circular"
           width={50}
           height={50}
           animation="wave"
-          sx={{ my: '1rem' }}
+          sx={{ my: "1rem" }}
         />
         <Skeleton
           variant="rounded"
@@ -85,14 +85,17 @@ const Weather = () => {
   return (
     <Box
       className="cardContainer"
+      data-testid="weatherWidget"
       sx={{
-        width: { xs: '50%', sm: '25%' },
+        width: { xs: "50%", sm: "25%" },
         minWidth: 250,
-        alignSelf: { xs: 'center', sm: 'flex-start' },
+        alignSelf: { xs: "center", sm: "flex-start" },
       }}
     >
       <h2 className="cardTitle">Weather</h2>
-      <StyledCard content={showForm && !city ? <WeatherForm /> : <CurrentWeather />} />
+      <StyledCard
+        content={showForm && !city ? <WeatherForm /> : <CurrentWeather />}
+      />
     </Box>
   );
 };
