@@ -1,66 +1,64 @@
-.container{
-  margin: auto;
-  padding: .5rem;
-  height: 6rem;
-  width: 30%;
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-
-.emotionsContainer{
-  margin: auto;
-  height:fit-content;
-  width: fit-content;
-  justify-content: center;
-  align-content: center;
-  padding-top: 2rem;
-}
-
-
-
-.list{
-  display: none;
-  list-style: none;
-  flex-direction: row;
-  margin: auto;
-  justify-content: center;
-  align-content: center;
-}
-
-.openingEmojiButton{
-  height: 3rem;
-  width: 3rem;
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-}
-
-.emojiPic{
-  background-size: cover;
-}
-
-.emotionsContainer:hover .list{
-  display: flex;
-} 
-
-.emotionsContainer:hover .openingEmojiButton{
-  display: none;
-} 
-
-
-img{
+.emojiPic {
   max-width: 100%;
   max-height: 100%;
+  width: 3rem;
+  height: 3rem;
 }
 
+.emotionsContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 60px;
+  align-items: center;
+}
 
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  animation-name: fadein;
+  animation-duration: 0.75s;
+  animation-iteration-count: 1;
+}
 
-.button{
-  appearance: none;
+.list li {
+    margin: 0;
+    padding: 0;
+}
+
+.img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.emotionsContainer .list {
+  display: flex;
+}
+
+.button {
   background: none;
-  color: transparent;
   border: none;
   cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  margin: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background .5s;
 }
 
-
+.listButton:hover {
+    background: #e8d9f0;
+}
