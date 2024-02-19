@@ -2,17 +2,31 @@
   border-collapse: collapse;
   border: none;
   border-radius: 4px;
+  width: 100%;
+  max-width: 500px;
   /* box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12); */
-  padding: 3rem;
-  table-layout: fixed;
+  /* padding: 3rem; */
 }
 
-.thead{
-  border-bottom: 1px solid  #ccc;
+.thead {
+  border-bottom: 1px solid #ccc;
 }
 
 .thead th {
-  padding-inline: 5px;
+  padding-inline: 0px;
+  overflow:hidden;
+}
+
+@media screen and (min-width: 400px) {
+  .thead th {
+    padding-inline: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .thead th {
+    max-width: 25px;
+  }
 }
 
 .td {
@@ -21,25 +35,25 @@
   line-height: 1rem;
   height: 50px;
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
 }
 
-.energy{
+.energy {
   z-index: 2;
   background-image: url('../../Lightning.png');
 }
 
 .button:hover {
-    background: rgba(0,0,0,0.2)
-  }
-
-.energyPic{
-    height: 2rem;
-    width: 2rem;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.emojiPic{
-    height: 2rem;
-    width: 2rem;
+.energyPic {
+  height: 2rem;
+  width: 2rem;
+}
+
+.emojiPic {
+  height: 2rem;
+  width: 2rem;
 }
