@@ -104,10 +104,15 @@ class ToDoListWidget extends MainPageObject {
     this.saveTask = "[data-testid='save-task']";
     this.firstTask = "[data-testid='task-0']";
     this.firstStep = "#task-step-0";
+    this.removeSecondStep = "[data-testid='remove-step-1']"
     this.secondStep = "#task-step-1";
+    this.thirdStep = "#task-step-2";
+    this.addTaskStepInTaskView = "[data-testid='add-new-step']"
+    this.submitStepInTaskView = "[data-testid='submit-new-step']"
     this.firstStepCheckbox = "[data-testid='task-checkbox-0']";
     this.saveOpenTask = "[data-testid='save-opened-task']";
-    this.firstTaskStepsCompleted = "[data-testid='steps-completed-0']"
+    this.firstTaskStepsCompleted = "[data-testid='steps-completed-0']";
+    this.deleteTask = "[data-testid='delete-task']";
   }
   getToDoListContainer() {
     return cy.get(this.toDoList);
@@ -130,8 +135,20 @@ class ToDoListWidget extends MainPageObject {
   getFirstStep() {
     return cy.get(this.firstStep)
   }
+  getRemoveSecondStep() {
+    return cy.get(this.removeSecondStep)
+  }
   getSecondStep() {
     return cy.get(this.secondStep)
+  }
+  getThirdStep() {
+    return cy.get(this.thirdStep)
+  }
+  getAddTaskStepInTaskView() {
+    return cy.get(this.addTaskStepInTaskView)
+  }
+  getSubmitStepInTaskView() {
+    return cy.get(this.submitStepInTaskView)
   }
   getFirstStepCheckbox() {
     return cy.get(this.firstStepCheckbox)
@@ -141,5 +158,8 @@ class ToDoListWidget extends MainPageObject {
   }
   getFirstTaskStepsCompleted() {
     return cy.get(this.firstTaskStepsCompleted)
+  }
+  getDeleteTask() {
+    return cy.get(this.deleteTask)
   }
 }

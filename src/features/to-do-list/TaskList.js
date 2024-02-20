@@ -87,6 +87,7 @@ function TaskList({
                       alignSelf: 'center',
                       minWidth: '0px',
                     }}
+                    data-testid='delete-task'
                   >
                     X
                   </PermDeleteButton>

@@ -63,6 +63,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     stepindex={stepIndex} 
                     listid={index} 
                     onClick={handleSubmittedStepDeleteToggle}
+                    data-testid={`remove-step-${stepIndex}`}
                   >{step.removed === true ? 'Re-add' : 'Remove'}</Button>
                 </ListItem>
             )})
@@ -78,6 +79,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
               onChange={handleSubmittedTaskNewStepChange}
+              data-testid='add-new-step'
             />
             <Button 
               variant="outlined" 
@@ -85,6 +87,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               onClick={handleSubmittedTaskNewStepAdd} 
               listid={index}
               sx={{ marginLeft: '5px' }} 
+              data-testid='submit-new-step'
             >Add Step</Button>
         </Container>  
     </form>
