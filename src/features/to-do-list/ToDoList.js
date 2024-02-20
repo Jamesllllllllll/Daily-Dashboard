@@ -5,11 +5,17 @@ import TaskList from './TaskList';
 import FullTaskDisplay from './FullTaskDisplay';
 import StyledCard from '../../components/LayoutComponents/FeatureCard';
 import Box from '@mui/material/Box';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateTasks } from './toDoListSlice';
+import { produce } from 'immer';
+
 
 function ToDoList() {
   const [focused, setFocused] = useState(false);
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
+  const dispatch = useDispatch();
+  const allTasks = useSelector((state) => state.toDoList);
 
   const [newTask, setNewTask] = useState({});
 
@@ -31,25 +37,34 @@ function ToDoList() {
 
   const handleStepTitleChange = ({ target }) => {
     setStepTitle(target.value);
-    console.log(stepTitle);
   }
 
   const handleStepAdd = (event) => {
     event.preventDefault();
-    
-    if (steps.length < 1 && stepTitle && newTask.taskSteps[0].title === newTask.taskTitle) {
+    switch (newTask.taskSteps.length) {
+      case 0:
         setSteps([{
-            id: 1,
-            title: stepTitle,
-            complete: false
+          id: 1,
+          title: stepTitle,
+          complete: false
         }]);
-    } else if (steps.length >= 1 && stepTitle) {
-        setSteps((prev) => ([...prev, {
-            id: steps.length + 1,
-            title: stepTitle,
-            complete: false
-        }]));
+      break;
+      default:
+        if (steps.length < 1 && stepTitle && (newTask.taskSteps[0].title === newTask.taskTitle)) {
+          setSteps([{
+              id: 1,
+              title: stepTitle,
+              complete: false
+          }]);
+        } else if (steps.length >= 1 && stepTitle) {
+            setSteps((prev) => ([...prev, {
+                id: steps.length + 1,
+                title: stepTitle,
+                complete: false
+            }]));
+        }
     }
+    
     setNewTask((prev) => ({
         id: prev.id,
         taskTitle: prev.taskTitle,
@@ -66,8 +81,6 @@ function ToDoList() {
         prev.splice(stepIndex, 1);
         return [...prev];
     });
-    console.log(event.target.attributes.listid.value);
-    console.log(steps);
   }
 
   useEffect(() => {
@@ -79,15 +92,13 @@ function ToDoList() {
     );
   },[steps]);
 
-  const [allTasks, setAllTasks] = useState([]);
-  
   const handleTaskSubmit = (event) => {
     event.preventDefault();
     if (!newTask.taskTitle) {
       return;
     }
 
-    setAllTasks((prev) => [...prev, newTask]);
+    dispatch(updateTasks([...allTasks, newTask]));
     setNewTask({});
     setSteps([]);
     setStepTitle('');
@@ -96,10 +107,11 @@ function ToDoList() {
   const handleTaskDelete = (event) => {
     event.preventDefault();
     let taskIndexToRemove = event.target.attributes.listid.value;
-    let updateAllTasks = [...allTasks];
-    updateAllTasks.splice(taskIndexToRemove, 1);
-    setAllTasks(updateAllTasks);
-  }
+    let updateAllTasks = produce(allTasks, draft => {
+      draft.splice(taskIndexToRemove, 1);
+    });
+    dispatch(updateTasks(updateAllTasks));
+  };
 
   const completedStepCounter = (stepsArr) => {
     let counter = 0;
@@ -109,7 +121,7 @@ function ToDoList() {
         }
     }
     return counter;
-  }
+  };
 
   const [index, setIndex] = useState('');
 
@@ -118,35 +130,38 @@ function ToDoList() {
   };
 
   const handleTaskTitleEdit = ({ target }) => {
-    let updateAllTasks = [...allTasks];
-    updateAllTasks[index].taskTitle = target.value;
-    setAllTasks(updateAllTasks);
+    let updateAllTasks = produce(allTasks, draft => {
+      draft[index].taskTitle = target.value;
+    });
+    dispatch(updateTasks(updateAllTasks));
   }
 
   const handleCheck = ({ target }) => {
     let stepIndex = target.parentNode.attributes.stepindex.value;
-    let updateAllTasks = [...allTasks];
-    updateAllTasks[index].taskSteps[stepIndex].complete = !updateAllTasks[index].taskSteps[stepIndex].complete;  
-    setAllTasks(updateAllTasks);
+    let updateAllTasks = produce(allTasks, draft => {
+      draft[index].taskSteps[stepIndex].complete = !draft[index].taskSteps[stepIndex].complete;
+    });
+    dispatch(updateTasks(updateAllTasks));
   }
 
-  const handleSubmittedStepDelete = (event) => {
+  const handleSubmittedStepDeleteToggle = (event) => {
     event.preventDefault();
     let stepIndex = event.target.attributes.stepindex.value;
-    let updateAllTasks = [...allTasks];
-    if (updateAllTasks[index].taskSteps[stepIndex].removed === true) {
-      updateAllTasks[index].taskSteps[stepIndex].removed = false;
+    let updateAllTasks;
+    if (allTasks[index].taskSteps[stepIndex].removed === true) {
+      updateAllTasks = produce(allTasks, draft => {
+        draft[index].taskSteps[stepIndex].removed = false;
+      });
       event.target.parentNode.childNodes[0].disabled = false;
       event.target.parentNode.childNodes[1].disabled = false;
-      //console.log(event);
     } else {
-      updateAllTasks[index].taskSteps[stepIndex].removed = true;
+      updateAllTasks = produce(allTasks, draft => {
+        draft[index].taskSteps[stepIndex].removed = true;
+      });
       event.target.parentNode.childNodes[0].disabled = true;
       event.target.parentNode.childNodes[1].disabled = true;
-      //console.log(event);
     }
-    console.log(event.target.parentNode.childNodes);
-    setAllTasks(updateAllTasks);
+    dispatch(updateTasks(updateAllTasks));
   }
 
   const [submittedTaskNewStep, setSubmittedTaskNewStep] = useState('');
@@ -158,30 +173,31 @@ function ToDoList() {
 
   const handleSubmittedTaskNewStepAdd = (event) => {
     event.preventDefault();
-    let updateAllTasks = [...allTasks];
+    let updateAllTasks;
     if (submittedTaskNewStep) {
-      updateAllTasks[index].taskSteps.push({
-        id: updateAllTasks[index].taskSteps.length + 1,
+      updateAllTasks= produce(allTasks, draft => {
+        draft[index].taskSteps.push({
+        id: draft[index].taskSteps.length + 1,
         title: submittedTaskNewStep,
         complete: false});
+      });
     }
-      setAllTasks(updateAllTasks);
+    dispatch(updateTasks(updateAllTasks));
       setSubmittedTaskNewStep('');
-      //console.log(allTasks.taskSteps);
   }
   
   const handleListClose = (event) => {
     event.preventDefault();
-    let updateAllTasks = [...allTasks];
-    let updateTaskSteps = updateAllTasks[index].taskSteps.filter(obj => !obj.removed);
-    updateAllTasks[index].taskSteps = updateTaskSteps;
-    setAllTasks(updateAllTasks);
+    let updateAllTasks = produce(allTasks, draft => {
+      draft[index].taskSteps = draft[index].taskSteps.filter(obj => !obj.removed);
+    });
+    dispatch(updateTasks(updateAllTasks));
     setIndex('');  
     setSubmittedTaskStepFocus(false);
   }
 
   return (
-    <Box className="cardContainer">
+    <Box className="cardContainer" data-testid="toDoList">
       <h2 className="cardTitle">To-Dos</h2>
       <StyledCard
         content={
@@ -218,10 +234,11 @@ function ToDoList() {
                 onFocus={onFocus}
                 onBlur={onBlur}
                 allTasks={allTasks}
-                setAllTasks={setAllTasks}
+                dispatch={dispatch}
+                updateTasks={updateTasks}
                 handleTaskTitleEdit={handleTaskTitleEdit}
                 handleCheck={handleCheck}
-                handleSubmittedStepDelete={handleSubmittedStepDelete}
+                handleSubmittedStepDeleteToggle={handleSubmittedStepDeleteToggle}
                 submittedTaskNewStep={submittedTaskNewStep}
                 handleSubmittedTaskNewStepChange={handleSubmittedTaskNewStepChange}
                 handleSubmittedTaskNewStepAdd={handleSubmittedTaskNewStepAdd}

@@ -1,7 +1,8 @@
 import { TextField, Button, List, ListItem, Checkbox, FormControlLabel, Container } from "@mui/material";
 import React from "react";
+import { produce } from 'immer';
 
-function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, setAllTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDelete, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
+function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, dispatch, updateTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDeleteToggle, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
 
   return (
     <form onSubmit={handleListClose}>
@@ -15,17 +16,17 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
           variant="outlined" 
           size="small" 
           type="submit"
-          sx={{ marginLeft: '5px' }}  
+          sx={{ marginLeft: '5px' }}
+          data-testid='save-opened-task'
         >Save</Button>
         <List>
           {allTasks[index].taskSteps.map((step, stepIndex) => {
 
             const handleStepTitleEdit = (event) => {
-              let updateAllTasks = [...allTasks];
-              updateAllTasks[index].taskSteps[stepIndex].title = event.target.value;
-              setAllTasks(updateAllTasks);
-              console.log(event);
-              console.log(step.title + stepIndex);
+              let updateAllTasks = produce(allTasks, draft => {
+                draft[index].taskSteps[stepIndex].title = event.target.value;
+              });
+              dispatch(updateTasks(updateAllTasks));
             }
 
             
@@ -39,6 +40,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     onChange={handleStepTitleEdit}
                     onFocus={onFocus}
                     onBlur={onBlur} 
+                    id={`task-step-${stepIndex}`}
                   />
                   <FormControlLabel
                     control={
@@ -47,8 +49,9 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                         stepindex={stepIndex} 
                         type="checkbox" 
                         onClick={handleCheck} 
-                        defaultChecked={step.complete}
+                        checked={step.complete}
                         sx={{ padding: '0px' }}
+                        data-testid={`task-checkbox-${stepIndex}`}
                       />
                     }
                     label="Completed?"
@@ -59,7 +62,8 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     size="small"
                     stepindex={stepIndex} 
                     listid={index} 
-                    onClick={handleSubmittedStepDelete}
+                    onClick={handleSubmittedStepDeleteToggle}
+                    data-testid={`remove-step-${stepIndex}`}
                   >{step.removed === true ? 'Re-add' : 'Remove'}</Button>
                 </ListItem>
             )})
@@ -71,11 +75,11 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               label="Add steps"
               variant="standard"
               size="small"
-              //placeholder="Add Step"
               taskindex={index}
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
               onChange={handleSubmittedTaskNewStepChange}
+              data-testid='add-new-step'
             />
             <Button 
               variant="outlined" 
@@ -83,6 +87,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               onClick={handleSubmittedTaskNewStepAdd} 
               listid={index}
               sx={{ marginLeft: '5px' }} 
+              data-testid='submit-new-step'
             >Add Step</Button>
         </Container>  
     </form>

@@ -4,7 +4,7 @@ export class MainPageObject {
     this.dashboardLogo = "div:contains('Daily Dashboard')";
   }
   visit() {
-    cy.visit("/");
+    cy.visit('/');
   }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
@@ -28,10 +28,14 @@ export class MainPageObject {
     return new CalendarWidget();
   }
 
+  getToDoListWidget() {
+    return new ToDoListWidget();
+  }
+
   async getLocalStorageItem(key) {
     try {
       const response = await cy.getAllLocalStorage();
-      const baseUrl = cy.config("baseUrl");
+      const baseUrl = cy.config('baseUrl');
       console.log(baseUrl);
       console.log(response);
       return response[baseUrl][key];
@@ -87,5 +91,75 @@ class CalendarWidget extends MainPageObject {
   }
   getCalendarContainer() {
     return cy.get(this.calendar);
+  }
+}
+
+class ToDoListWidget extends MainPageObject {
+  constructor() {
+    super();
+    this.toDoList = "[data-testid='toDoList']";
+    this.taskItem = '#new-task-item';
+    this.taskInput = "[data-testid='new-task-step']";
+    this.addTaskStep = "[data-testid='add-task-step']";
+    this.saveTask = "[data-testid='save-task']";
+    this.firstTask = "[data-testid='task-0']";
+    this.firstStep = "#task-step-0";
+    this.removeSecondStep = "[data-testid='remove-step-1']"
+    this.secondStep = "#task-step-1";
+    this.thirdStep = "#task-step-2";
+    this.addTaskStepInTaskView = "[data-testid='add-new-step']"
+    this.submitStepInTaskView = "[data-testid='submit-new-step']"
+    this.firstStepCheckbox = "[data-testid='task-checkbox-0']";
+    this.saveOpenTask = "[data-testid='save-opened-task']";
+    this.firstTaskStepsCompleted = "[data-testid='steps-completed-0']";
+    this.deleteTask = "[data-testid='delete-task']";
+  }
+  getToDoListContainer() {
+    return cy.get(this.toDoList);
+  }
+  getTaskItem() {
+    return cy.get(this.taskItem)
+  }
+  getTaskInput() {
+    return cy.get(this.taskInput);
+  }
+  getAddTaskStep() {
+    return cy.get(this.addTaskStep)
+  }
+  getSaveTask() {
+    return cy.get(this.saveTask)
+  }
+  getFirstTask() {
+    return cy.get(this.firstTask)
+  }
+  getFirstStep() {
+    return cy.get(this.firstStep)
+  }
+  getRemoveSecondStep() {
+    return cy.get(this.removeSecondStep)
+  }
+  getSecondStep() {
+    return cy.get(this.secondStep)
+  }
+  getThirdStep() {
+    return cy.get(this.thirdStep)
+  }
+  getAddTaskStepInTaskView() {
+    return cy.get(this.addTaskStepInTaskView)
+  }
+  getSubmitStepInTaskView() {
+    return cy.get(this.submitStepInTaskView)
+  }
+  getFirstStepCheckbox() {
+    return cy.get(this.firstStepCheckbox)
+  }
+  getSaveOpenTask() {
+    return cy.get(this.saveOpenTask)
+  }
+  getFirstTaskStepsCompleted() {
+    return cy.get(this.firstTaskStepsCompleted)
+  }
+  getDeleteTask() {
+    return cy.get(this.deleteTask)
   }
 }
