@@ -7,6 +7,7 @@ import Weather from '../features/weather/Weather';
 import QuoteOrFact from '../components/QuoteOrFact/QuoteOrFact';
 import ToDoList from '../features/to-do-list/ToDoList.js';
 import WellBeingCheckin from '../components/WellBeingCheckin/WellBeingCheckin';
+import News from '../features/news/News'
 import Stack from '@mui/material/Stack';
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
               <Weather />
               <QuoteOrFact />
             </Stack>
+            <News />
             {/* <RedditPosts />  */}
             <Notes />
             <WellBeingCheckin />

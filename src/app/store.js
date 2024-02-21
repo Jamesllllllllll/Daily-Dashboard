@@ -7,6 +7,7 @@ import notesReducer from "../features/notes/notesSlice";
 import weatherReducer from "../features/weather/weatherSlice";
 import settingsReducer from "../routes/settingsSlice";
 import redditReducer from "../features/reddit/redditSlice";
+import newsReducer from "../features/news/newsSlice"
 
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   notes: notesReducer,
   weather: weatherReducer,
   reddit: redditReducer,
+  news: newsReducer,
   settings: settingsReducer,
 });
 

@@ -1,10 +1,12 @@
+/* global cy */
+
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";
     this.dashboardLogo = "div:contains('Daily Dashboard')";
   }
   visit() {
-    cy.visit("/");
+    cy.visit('/');
   }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
@@ -28,10 +30,14 @@ export class MainPageObject {
     return new CalendarWidget();
   }
 
+  getNewsWidget() {
+    return new NewsWidget();
+  }
+
   async getLocalStorageItem(key) {
     try {
       const response = await cy.getAllLocalStorage();
-      const baseUrl = cy.config("baseUrl");
+      const baseUrl = cy.config('baseUrl');
       console.log(baseUrl);
       console.log(response);
       return response[baseUrl][key];
@@ -87,5 +93,43 @@ class CalendarWidget extends MainPageObject {
   }
   getCalendarContainer() {
     return cy.get(this.calendar);
+  }
+}
+
+class NewsWidget extends MainPageObject {
+  constructor() {
+    super();
+    this.news = "[data-testid='news-widget']";
+    this.loadingArticles = "[data-testid='loading-articles";
+    this.fifthArticle = "[data-testid='article-4']";
+    this.failedToLoad = "[data-testid='failed-to-load']"
+  }
+  getNewsContainer() {
+    return cy.get(this.news);
+  }
+  getLoadingArticles() {
+    return cy.get(this.loadingArticles);
+  }
+  getFifthArticle() {
+    return cy.get(this.fifthArticle);
+  }
+  getFailedToLoad() {
+    return cy.get(this.failedToLoad)
+  }
+  getApiAlias() {
+    return cy
+      .intercept({
+        method: 'GET',
+        url: '/api/news',
+      })
+      .as('api');
+  }
+  getApiError() {
+    return cy.intercept('GET', '/api/news', {
+      statusCode: 500,
+      body: {
+        statusText: 'Could not fetch news items',
+      },
+    }).as('apiError');
   }
 }
