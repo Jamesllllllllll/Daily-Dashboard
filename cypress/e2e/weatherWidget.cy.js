@@ -1,5 +1,5 @@
+/* global cy */
 import { MainPageObject } from "../pageObjects/pageObject";
-// const { cy } = require("date-fns/locale")
 const mainPageObject = new MainPageObject();
 
 describe("User Journey", () => {
