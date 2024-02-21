@@ -19,7 +19,8 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                     label="Enter new Task Title"
                     name="taskTitle"
                     value={newTask.taskTitle || ""}
-                    onChange={handleTaskTitleChange} 
+                    onChange={handleTaskTitleChange}
+                    data-test="todo-newtask-name-input" 
                 />
                 
                 {newTask.taskTitle && (

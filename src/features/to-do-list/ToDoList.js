@@ -209,7 +209,7 @@ function ToDoList() {
   }
 
   return (
-    <Box className="cardContainer">
+    <Box className="cardContainer" data-test="todo-container">
       <h2 className="cardTitle">To-Dos</h2>
       <StyledCard
         content={
@@ -228,6 +228,7 @@ function ToDoList() {
                     handleStepAdd={handleStepAdd}
                     handleStepRemove={handleStepRemove}
                     handleTaskSubmit={handleTaskSubmit}
+                    data-test="todo-newtask-input-container"
                 />  
                 <TaskList
                   allTasks={allTasks}
