@@ -41,13 +41,13 @@ const Weather = () => {
         console.log(error);
       }
     };
-    fetchWeather();
+    city && fetchWeather();
   }, [city, dispatch]);
 
   const CurrentWeather = () => {
     return !loading ? (
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }} data-testid="weather-info"
       >
         <img
           src={weatherIconSrc}

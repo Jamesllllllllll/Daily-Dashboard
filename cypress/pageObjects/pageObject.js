@@ -1,3 +1,5 @@
+/* global cy */
+
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";
