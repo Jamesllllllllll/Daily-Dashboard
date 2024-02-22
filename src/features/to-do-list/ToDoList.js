@@ -46,11 +46,13 @@ function ToDoList() {
     event.preventDefault();
     switch (newTask.taskSteps.length) {
       case 0:
-        setSteps([{
-          id: 1,
-          title: stepTitle,
-          complete: false
-        }]);
+        if (stepTitle) {
+          setSteps([{
+            id: 1,
+            title: stepTitle,
+            complete: false
+          }]);
+        }
       break;
       default:
         if (steps.length < 1 && stepTitle && (newTask.taskSteps[0].title === newTask.taskTitle)) {
