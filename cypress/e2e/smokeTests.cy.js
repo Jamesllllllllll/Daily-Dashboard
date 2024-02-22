@@ -23,32 +23,12 @@ describe("Weather Widget Smoke Tests", () => {
   });
 });
 
-describe("Emotions Check-in Smoke Tests", () => {
-  it("Loads the Emotions Ckeck-in Widget", () => {
+describe("Well Being Check-in Widget Smoke Tests", () => {
+  it("Loads the Well Being Ckeck-in Widget", () => {
     mainPageObject.visit();
     mainPageObject
-      .getEmotionsCheckinWidget()
-      .getEmotionsCheckinContainer()
-      .should("be.visible");
-  });
-});
-
-describe("Energy Checkin", () => {
-  it("Loads the Energy Ckeck-in Widget", () => {
-    mainPageObject.visit();
-    mainPageObject
-      .getEnergyCheckinWidget()
-      .getEnergyCheckinContainer()
-      .should("be.visible");
-  });
-});
-
-describe("Calendar", () => {
-  it("Loads the Calendar Widget", () => {
-    mainPageObject.visit();
-    mainPageObject
-      .getCalendarWidget()
-      .getCalendarContainer()
+      .getWellBeingCheckinWidget()
+      .getWellBeingCheckinContainer()
       .should("be.visible");
   });
 });

@@ -16,16 +16,8 @@ export class MainPageObject {
     return new WeatherWidget();
   }
 
-  getEmotionsCheckinWidget() {
-    return new EmotionsCheckinWidget();
-  }
-
-  getEnergyCheckinWidget() {
-    return new EnergyCheckinWidget();
-  }
-
-  getCalendarWidget() {
-    return new CalendarWidget();
+  getWellBeingCheckinWidget() {
+    return new WellBeingCheckinWidget();
   }
 
   async getLocalStorageItem(key) {
@@ -60,32 +52,14 @@ class WeatherWidget extends MainPageObject {
   }
 }
 
-class EmotionsCheckinWidget extends MainPageObject {
+class WellBeingCheckinWidget extends MainPageObject {
   constructor() {
     super();
-    this.emotionsCheckin = "[data-testid='emotionsCheckin']";
+    this.welBeingCheckin = "[data-testid='wellBeingCheckin']";
+    //add test ids 
   }
-  getEmotionsCheckinContainer() {
-    return cy.get(this.emotionsCheckin);
+  getWellBeingCheckinContainer() {
+    return cy.get(this.wellBeingCheckin);
   }
-}
-
-class EnergyCheckinWidget extends MainPageObject {
-  constructor() {
-    super();
-    this.energyCheckin = "[data-testid='energyCheckin']";
-  }
-  getEnergyCheckinContainer() {
-    return cy.get(this.energyCheckin);
-  }
-}
-
-class CalendarWidget extends MainPageObject {
-  constructor() {
-    super();
-    this.calendar = "[data-testid='calendar']";
-  }
-  getCalendarContainer() {
-    return cy.get(this.calendar);
-  }
+  //add getters for each element
 }
