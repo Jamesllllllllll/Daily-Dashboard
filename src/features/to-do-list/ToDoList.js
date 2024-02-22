@@ -194,9 +194,11 @@ function ToDoList() {
         title: submittedTaskNewStep,
         complete: false});
       });
+    } else {
+      return;
     }
     dispatch(updateTasks(updateAllTasks));
-      setSubmittedTaskNewStep('');
+    setSubmittedTaskNewStep('');
       //console.log(allTasks.taskSteps);
   }
   
