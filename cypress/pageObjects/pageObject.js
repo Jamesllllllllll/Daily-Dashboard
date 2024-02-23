@@ -1,5 +1,7 @@
 /* global cy */
 
+import { cy } from "date-fns/locale";
+
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";
@@ -99,43 +101,47 @@ class CalendarWidget extends MainPageObject {
 class ToDoListWidget extends MainPageObject {
   constructor() {
     super();
-    //NewTask component (5)
-    this.newTaskTitle = '[data-test="todo-newtask-name-input"]';
-    this.newTaskSteps = '[data-test="todo-newtask-steps-list"]';
-    this.newTaskNewStep = '[data-test="todo-newtask-step-input"]';
-    this.newTaskSubmitBtn = '[data-test="todo-newtask-submit-btn"]';
-    this.newTaskStepsSubmitBtn = '[data-test="todo-newtask-step-submit-btn"]';
-    //TaskList component (1)
-    this.toDoList = '[data-test="todo-list"]';
-    //FullTaskDisplay component (5)
-    this.submittedTaskTitle = '[data-test="todo-submitted-task-title"]';
-    this.submittedTaskSaveBtn = '[data-test="todo-submitted-task-save-btn"]';
-    this.submittedTaskStepList = '[data-test="todo-submitted-task-step-list"]';
-    this.submittedTaskNewStep = '[data-test="todo-submitted-task-new-step-input"]';
-    this.submittedTaskNewStepSubmitBtn = '[data-test="todo-submitted-task-new-step-submit-btn"]';
   }
   getNewTaskTitleInput() {
-    return cy.get(this.newTaskTitle);
+    return cy.get('[data-test="todo-newtask-name-input"]');
   }
   setNewTaskTitle(text) {
     return this.getNewTaskTitleInput().type(text);
   }
   getNewTaskNewStep() {
-    return this.newTaskNewStep;
+    return cy.get('[data-test="todo-newtask-step-input"]');
   }
   getNewTaskStepList() {
-    return cy.get(this.newTaskSteps);
+    return cy.get('[data-test="todo-newtask-steps-list"]');
   }
   getNewTaskSubmitBtn() {
-    return cy.get(this.newTaskSubmitBtn);
+    return cy.get('[data-test="todo-newtask-submit-btn"]');
   }
   getNewTaskStepSubmitBtn() {
-    return cy.get(this.newTaskStepsSubmitBtn);
+    return cy.get('[data-test="todo-newtask-step-submit-btn"]');
   }
   getToDoList() {
-    return cy.get(this.toDoList);
+    return cy.get('[data-test="todo-list"]');
   }
   getSubmittedTaskTitle() {
-    return cy.get(this.submittedTaskTitle)
+    return cy.get('[data-test="todo-submitted-task-title"]');
+  }
+  editSubmittedTaskTitle(text) {
+    return this.getSubmittedTaskTitle().type(text);
+  }
+  getSubmittedTaskSaveBtn() {
+    return cy.get('[data-test="todo-submitted-task-save-btn"]');
+  }
+  getSubmittedTaskStepList() {
+    return cy.get('[data-test="todo-submitted-task-step-list"]');
+  }
+  getSubmittedTaskNewStepInput() {
+    return cy.get('[data-test="todo-submitted-task-new-step-input"]');
+  }
+  setSubmittedTaskNewStep(text) {
+    return this.getSubmittedTaskNewStepInput().type(text);
+  }
+  getSubmittedTaskNewStepSubmitBtn() {
+    return cy.get('[data-test="todo-submitted-task-new-step-submit-btn"]');
   }
 }
