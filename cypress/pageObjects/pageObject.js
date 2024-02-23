@@ -1,7 +1,5 @@
 /* global cy */
 
-import { cy } from "date-fns/locale";
-
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";

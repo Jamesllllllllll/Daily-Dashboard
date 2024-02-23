@@ -61,6 +61,7 @@ describe('To-Dos', () => {
     mainPageObject
       .getToDoListWidget()
       .getNewTaskTitleInput()
-      .should('be.visible');
+      .should('be.visible')
+      .and('not.have.value');
   });
 });
