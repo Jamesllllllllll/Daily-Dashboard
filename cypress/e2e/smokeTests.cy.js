@@ -1,3 +1,5 @@
+/* global cy */
+
 import { MainPageObject } from "../pageObjects/pageObject";
 
 const mainPageObject = new MainPageObject();

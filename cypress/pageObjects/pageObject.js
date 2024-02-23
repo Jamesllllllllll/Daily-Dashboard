@@ -1,3 +1,4 @@
+/* global cy */
 
 export class MainPageObject {
   constructor() {
@@ -98,9 +99,10 @@ class CalendarWidget extends MainPageObject {
 class ToDoListWidget extends MainPageObject {
   constructor() {
     super();
-    //NewTask component (4)
+    //NewTask component (5)
     this.newTaskTitle = '[data-test="todo-newtask-name-input"]';
     this.newTaskSteps = '[data-test="todo-newtask-steps-list"]';
+    this.newTaskNewStep = '[data-test="todo-newtask-step-input"]';
     this.newTaskSubmitBtn = '[data-test="todo-newtask-submit-btn"]';
     this.newTaskStepsSubmitBtn = '[data-test="todo-newtask-step-submit-btn"]';
     //TaskList component (1)
@@ -118,6 +120,9 @@ class ToDoListWidget extends MainPageObject {
   setNewTaskTitle(text) {
     return this.getNewTaskTitleInput().type(text);
   }
+  getNewTaskNewStep() {
+    return this.newTaskNewStep;
+  }
   getNewTaskStepList() {
     return cy.get(this.newTaskSteps);
   }
@@ -125,7 +130,12 @@ class ToDoListWidget extends MainPageObject {
     return cy.get(this.newTaskSubmitBtn);
   }
   getNewTaskStepSubmitBtn() {
-    return cy.get(this.newTaskStepsSubmitBtn)
+    return cy.get(this.newTaskStepsSubmitBtn);
   }
-
+  getToDoList() {
+    return cy.get(this.toDoList);
+  }
+  getSubmittedTaskTitle() {
+    return cy.get(this.submittedTaskTitle)
+  }
 }

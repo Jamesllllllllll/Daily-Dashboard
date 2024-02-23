@@ -1,11 +1,13 @@
+/* global cy */
+
+import { MainPageObject } from "../pageObjects/pageObject";
+
+const mainPageObject = new MainPageObject();
+const toDoList = mainPageObject.getToDoListWidget();
 describe('To-Do List', () => {
-  it('displays to-do list component', () => {
-    cy.visit("/")
-    cy.get('[data-test="todo-container"]')
-      .within(() => {
-        cy.get('[data-test="todo-newtask-name-input"]').should("contain", "Enter new Task Title")
-        
-      })
+  it('testing todo widget object function', () => {
+    mainPageObject.visit();
+    toDoList.setNewTaskTitle('hello');
     
-  })
-})
+  });
+});
