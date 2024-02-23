@@ -52,3 +52,13 @@ describe("Calendar", () => {
       .should("be.visible");
   });
 });
+
+describe('To-Dos', () => {
+  it('Loads the ToDos Widget"', () => {
+    mainPageObject.visit();
+    mainPageObject
+      .getToDoListWidget()
+      .getNewTaskTitleInput()
+      .should('be.visible');
+  });
+});

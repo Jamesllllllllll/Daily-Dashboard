@@ -5,20 +5,22 @@ import { produce } from 'immer';
 function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, dispatch, updateTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDeleteToggle, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
 
   return (
-    <form onSubmit={handleListClose}>
+    <form onSubmit={handleListClose} data-test="todo-submitted-task-full-display">
         <TextField
           label="Task Title"
           name="Task Title"
           defaultValue={allTasks[index].taskTitle}
           onChange={handleTaskTitleEdit}
+          data-test="todo-submitted-task-title"
         />
         <Button 
           variant="outlined" 
           size="small" 
           type="submit"
-          sx={{ marginLeft: '5px' }}  
+          sx={{ marginLeft: '5px' }}
+          data-test="todo-submitted-task-save-btn"  
         >Save</Button>
-        <List>
+        <List data-test="todo-submitted-task-step-list">
           {allTasks[index].taskSteps.map((step, stepIndex) => {
 
             const handleStepTitleEdit = (event) => {
@@ -78,13 +80,15 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
               onChange={handleSubmittedTaskNewStepChange}
+              data-test="todo-submitted-task-new-step-input"
             />
             <Button 
               variant="outlined" 
               size="small" 
               onClick={handleSubmittedTaskNewStepAdd} 
               listid={index}
-              sx={{ marginLeft: '5px' }} 
+              sx={{ marginLeft: '5px' }}
+              data-test="todo-submitted-task-new-step-submit-btn" 
             >Add Step</Button>
         </Container>  
     </form>

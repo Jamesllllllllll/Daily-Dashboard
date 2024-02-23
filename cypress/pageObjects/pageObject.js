@@ -1,3 +1,4 @@
+
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";
@@ -26,6 +27,10 @@ export class MainPageObject {
 
   getCalendarWidget() {
     return new CalendarWidget();
+  }
+
+  getToDoListWidget() {
+    return new ToDoListWidget();
   }
 
   async getLocalStorageItem(key) {
@@ -88,4 +93,39 @@ class CalendarWidget extends MainPageObject {
   getCalendarContainer() {
     return cy.get(this.calendar);
   }
+}
+
+class ToDoListWidget extends MainPageObject {
+  constructor() {
+    super();
+    //NewTask component (4)
+    this.newTaskTitle = '[data-test="todo-newtask-name-input"]';
+    this.newTaskSteps = '[data-test="todo-newtask-steps-list"]';
+    this.newTaskSubmitBtn = '[data-test="todo-newtask-submit-btn"]';
+    this.newTaskStepsSubmitBtn = '[data-test="todo-newtask-step-submit-btn"]';
+    //TaskList component (1)
+    this.toDoList = '[data-test="todo-list"]';
+    //FullTaskDisplay component (5)
+    this.submittedTaskTitle = '[data-test="todo-submitted-task-title"]';
+    this.submittedTaskSaveBtn = '[data-test="todo-submitted-task-save-btn"]';
+    this.submittedTaskStepList = '[data-test="todo-submitted-task-step-list"]';
+    this.submittedTaskNewStep = '[data-test="todo-submitted-task-new-step-input"]';
+    this.submittedTaskNewStepSubmitBtn = '[data-test="todo-submitted-task-new-step-submit-btn"]';
+  }
+  getNewTaskTitleInput() {
+    return cy.get(this.newTaskTitle);
+  }
+  setNewTaskTitle(text) {
+    return this.getNewTaskTitleInput().type(text);
+  }
+  getNewTaskStepList() {
+    return cy.get(this.newTaskSteps);
+  }
+  getNewTaskSubmitBtn() {
+    return cy.get(this.newTaskSubmitBtn);
+  }
+  getNewTaskStepSubmitBtn() {
+    return cy.get(this.newTaskStepsSubmitBtn)
+  }
+
 }

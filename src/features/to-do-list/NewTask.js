@@ -32,6 +32,7 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                             alignItems: 'flex-start', 
                             marginBottom: '1rem',
                         }}
+                        data-test="todo-newtask-steps-list"
                     >
                         {steps.map((step, index) => {
 
@@ -71,16 +72,19 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                             variant="standard"
                             value={stepTitle}
                             onChange={handleStepTitleChange}
+                            data-test="todo-newtask-step-input"
                         />
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             onClick={handleStepAdd}
+                            data-test="todo-newtask-step-submit-btn"
                         >Add Step</NewTaskButton>
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             type="submit"
+                            data-test="todo-newtask-submit-btn"
                         >Save Task</NewTaskButton>
                     </Container>
                 </>)}

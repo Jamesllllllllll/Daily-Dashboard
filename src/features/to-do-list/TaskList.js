@@ -46,6 +46,7 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                     flexDirection: "column",
                     alignItems: "flex-start",
                 }}
+                data-test="todo-list"
             >
                 {allTasks.length < 1 ? null : allTasks.map((taskObj, index) => (
                     <ListItem key={taskObj.taskTitle + index} listid={index} sx={{ }}>
