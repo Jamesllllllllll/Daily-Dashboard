@@ -70,13 +70,23 @@ function ToDoList() {
         }
     }
     
-    setNewTask((prev) => ({
+    if (steps.length > 0) {
+      setNewTask((prev) => ({
+          id: prev.id,
+          taskTitle: prev.taskTitle,
+          taskSteps: steps,
+        })
+      );
+    setStepTitle("");
+    } else {
+      setNewTask((prev) => ({
         id: prev.id,
         taskTitle: prev.taskTitle,
-        taskSteps: steps,
+        taskSteps: prev.taskSteps,
       })
     );
     setStepTitle("");
+    }
   }
 
   const handleStepRemove = (event) => {

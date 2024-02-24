@@ -101,7 +101,7 @@ class ToDoListWidget extends MainPageObject {
     super();
   }
   getNewTaskTitleInput() {
-    return cy.get('[data-test="todo-newtask-name-input"]');
+    return cy.get('[data-test="todo-newtask-name-input"]').find('input');
   }
   setNewTaskTitle(text) {
     return this.getNewTaskTitleInput().type(text);
@@ -122,7 +122,7 @@ class ToDoListWidget extends MainPageObject {
     return cy.get('[data-test="todo-list"]');
   }
   getSubmittedTaskTitle() {
-    return cy.get('[data-test="todo-submitted-task-title"]');
+    return cy.get('[data-test="todo-submitted-task-title"]').find('input');
   }
   editSubmittedTaskTitle(text) {
     return this.getSubmittedTaskTitle().type(text);
@@ -134,7 +134,7 @@ class ToDoListWidget extends MainPageObject {
     return cy.get('[data-test="todo-submitted-task-step-list"]');
   }
   getSubmittedTaskNewStepInput() {
-    return cy.get('[data-test="todo-submitted-task-new-step-input"]');
+    return cy.get('[data-test="todo-submitted-task-new-step-input"]').find('input');
   }
   setSubmittedTaskNewStep(text) {
     return this.getSubmittedTaskNewStepInput().type(text);
