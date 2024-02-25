@@ -6,7 +6,7 @@ import styles from './WellBeingCheckin.module.css'
 import Box from '@mui/material/Box';
 export default function WellBeingCheckin() {
   return (
-      <Box className="cardContainer">
+      <Box className="cardContainer" data-testid='wellBeingCheckin'>
         <h2 className="cardTitle">Well Being Check-in</h2>
         <StyledCard
           content={

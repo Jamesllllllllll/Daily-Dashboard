@@ -57,7 +57,9 @@ export default function EmotionsCheckin() {
   //emojiPics is an array of emoji buttons
   let emojiPics = emotionsArray.map(({ name, pic }) => {
     return (
-      <li key={name}>
+      <li key={name}
+        data-testid='emotionsList'
+        >
         <button
           value={name}
           className={`${styles.button} ${styles.listButton}`}
@@ -75,13 +77,14 @@ export default function EmotionsCheckin() {
   });
 
   return (
-    <div className={styles.container} data-testid='emotionsCheckin'>
+    <div className={styles.container}>
       <div className={styles.emotionsContainer}>
         <button
           className={styles.button}
           onClick={() => setSelectOpen(!selectOpen)}
+          data-testid='openEmotionsButton'
         >
-          <img src={emotionPic} alt={emotionName} className={styles.emojiPic} />
+          <img src={emotionPic} alt={emotionName} className={styles.emojiPic}  data-testid='emotion'/>
         </button>
         {selectOpen && <ul className={styles.list}>{emojiPics}</ul>}
       </div>

@@ -55,11 +55,25 @@ class WeatherWidget extends MainPageObject {
 class WellBeingCheckinWidget extends MainPageObject {
   constructor() {
     super();
-    this.welBeingCheckin = "[data-testid='wellBeingCheckin']";
-    //add test ids 
+    this.wellBeingCheckin = "[data-testid='wellBeingCheckin']";
+    this.openEmotionsButton = "[data-testid = 'openEmotionsButton']";
+    this.emotionsList = "[data-testid ='emotionsList']";
+    this.emotion = "[data-testid ='emotion']";
+
   }
   getWellBeingCheckinContainer() {
     return cy.get(this.wellBeingCheckin);
   }
-  //add getters for each element
+  getOpenEmotionsButton(){
+    return cy.get(this.openEmotionsButton);
+  }
+
+  getEmotionsList(){
+    return cy.get(this.emotionsList);
+  }
+
+  getEmotion(){
+    return cy.get(this.emotion);
+  }
+
 }

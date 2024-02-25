@@ -6,156 +6,27 @@ describe("User Journey", () => {
     mainPageObject.visit();
   })
 
-  it("is able to select an emotion", () => {
+  it("is shows corresponding emotion when clicking on it", () => {
     const wellBeingCheckinWidget = mainPageObject.getWellBeingCheckinWidget();
 
-    toDoListWidget.getToDoListContainer().should("be.visible")
-    toDoListWidget.getTaskItem().type("Clean kitchen")
-
-    toDoListWidget.getTaskInput().type("Fill dishwasher")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getTaskInput().type("Wipe counters")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getSaveTask().click()
-
-    // Open the task again
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().should("have.value", "Fill dishwasher")
-    toDoListWidget.getSecondStep().should("have.value", "Wipe counters")
-
-    // Mark one as complete
-    toDoListWidget.getFirstStepCheckbox().click()
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    // "Completed 1 of 2 steps" shown when viewing task list
-    toDoListWidget.getFirstTaskStepsCompleted().contains("Completed 1 of 2 steps.")
+    wellBeingCheckinWidget.getWellBeingCheckinContainer().should("be.visible");
+    wellBeingCheckinWidget.getOpenEmotionsButton().click();
+    wellBeingCheckinWidget.getEmotionsList().should("be.visible"); 
+    wellBeingCheckinWidget.getEmotionsList().get('[name="meh"]').click();
+    wellBeingCheckinWidget.getEmotion().get('[alt="meh"]').should("be.visible");  
   })
-
+/* 
   it("shows the correct emotion when app reloads", () => {
-    const toDoListWidget = mainPageObject.getToDoListWidget();
-
-    toDoListWidget.getToDoListContainer().should("be.visible")
-    toDoListWidget.getTaskItem().type("Write novel")
-
-    toDoListWidget.getTaskInput().type("Gather ideas")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getTaskInput().type("Write outline")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getSaveTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().type("{selectall}{backspace}Use ChatGPT")
-
-    toDoListWidget.getRemoveSecondStep().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("???")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("Profit!")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().should("have.value", "Use ChatGPT")
-    toDoListWidget.getSecondStep().should("have.value", "???")
-    toDoListWidget.getThirdStep().should("have.value", "Profit!")
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getDeleteTask().click()
-
-    toDoListWidget.getFirstTaskStepsCompleted().should("not.exist")
+ 
   })
 
   it("changes emotion when clicking on a different one", () => {
-    const toDoListWidget = mainPageObject.getToDoListWidget();
 
-    toDoListWidget.getToDoListContainer().should("be.visible")
-    toDoListWidget.getTaskItem().type("Write novel")
-
-    toDoListWidget.getTaskInput().type("Gather ideas")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getTaskInput().type("Write outline")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getSaveTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().type("{selectall}{backspace}Use ChatGPT")
-
-    toDoListWidget.getRemoveSecondStep().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("???")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("Profit!")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().should("have.value", "Use ChatGPT")
-    toDoListWidget.getSecondStep().should("have.value", "???")
-    toDoListWidget.getThirdStep().should("have.value", "Profit!")
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getDeleteTask().click()
-
-    toDoListWidget.getFirstTaskStepsCompleted().should("not.exist")
   })
 
   it("stores the selected emotion on local storage", () => {
-    const toDoListWidget = mainPageObject.getToDoListWidget();
+    
+  }) 
+  */
 
-    toDoListWidget.getToDoListContainer().should("be.visible")
-    toDoListWidget.getTaskItem().type("Write novel")
-
-    toDoListWidget.getTaskInput().type("Gather ideas")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getTaskInput().type("Write outline")
-    toDoListWidget.getAddTaskStep().click()
-
-    toDoListWidget.getSaveTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().type("{selectall}{backspace}Use ChatGPT")
-
-    toDoListWidget.getRemoveSecondStep().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("???")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getAddTaskStepInTaskView().type("Profit!")
-    toDoListWidget.getSubmitStepInTaskView().click()
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getFirstTask().click()
-
-    toDoListWidget.getFirstStep().should("have.value", "Use ChatGPT")
-    toDoListWidget.getSecondStep().should("have.value", "???")
-    toDoListWidget.getThirdStep().should("have.value", "Profit!")
-
-    toDoListWidget.getSaveOpenTask().click()
-
-    toDoListWidget.getDeleteTask().click()
-
-    toDoListWidget.getFirstTaskStepsCompleted().should("not.exist")
-  })
-
-})
+})  
