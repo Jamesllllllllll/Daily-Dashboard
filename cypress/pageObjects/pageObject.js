@@ -100,6 +100,9 @@ class ToDoListWidget extends MainPageObject {
   constructor() {
     super();
   }
+  getToDoContainer() {
+    return cy.get('[data-test="todo-container"]');
+  }
   getNewTaskTitleInput() {
     return cy.get('[data-test="todo-newtask-name-input"]').find('input');
   }
@@ -107,7 +110,10 @@ class ToDoListWidget extends MainPageObject {
     return this.getNewTaskTitleInput().type(text);
   }
   getNewTaskNewStep() {
-    return cy.get('[data-test="todo-newtask-step-input"]');
+    return cy.get('[data-test="todo-newtask-step-input"]').find('input');
+  }
+  setNewTaskNewStep(text) {
+    return this.getNewTaskNewStep().type(text);
   }
   getNewTaskStepList() {
     return cy.get('[data-test="todo-newtask-steps-list"]');
