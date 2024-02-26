@@ -2,7 +2,7 @@ import { TextField, Button, List, ListItem, Checkbox, FormControlLabel, Containe
 import React from "react";
 import { produce } from 'immer';
 
-function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, dispatch, updateTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDeleteToggle, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
+function FullTaskDisplay ({ index, allTasks, dispatch, updateTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDeleteToggle, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
 
   return (
     <form onSubmit={handleListClose} data-test="todo-submitted-task-full-display">
@@ -28,8 +28,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                 draft[index].taskSteps[stepIndex].title = event.target.value;
               });
               dispatch(updateTasks(updateAllTasks));
-              //console.log(allTasks);
-              //console.log(step.title + stepIndex);
             }
 
             
@@ -41,8 +39,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     size="small" 
                     defaultValue={allTasks[index].taskSteps[stepIndex].title} 
                     onChange={handleStepTitleEdit}
-                    onFocus={onFocus}
-                    onBlur={onBlur} 
                   />
                   <FormControlLabel
                     control={
@@ -75,7 +71,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               label="Add steps"
               variant="standard"
               size="small"
-              //placeholder="Add Step"
               taskindex={index}
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
