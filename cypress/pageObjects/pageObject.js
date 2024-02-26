@@ -6,7 +6,7 @@ export class MainPageObject {
     this.dashboardLogo = "div:contains('Daily Dashboard')";
   }
   visit() {
-    cy.visit("/");
+    cy.visit('/');
   }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
@@ -37,7 +37,7 @@ export class MainPageObject {
   async getLocalStorageItem(key) {
     try {
       const response = await cy.getAllLocalStorage();
-      const baseUrl = cy.config("baseUrl");
+      const baseUrl = cy.config('baseUrl');
       console.log(baseUrl);
       console.log(response);
       return response[baseUrl][key];

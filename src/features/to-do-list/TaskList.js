@@ -1,15 +1,24 @@
-import { List, ListItem, Paper, Typography, Button, styled, Stack, Divider } from "@mui/material";
+import { 
+    List, 
+    ListItem, 
+    Paper, 
+    Typography, 
+    Button, 
+    styled, 
+    Stack, 
+    Divider 
+} from "@mui/material";
 import React from "react";
 
 const TaskListItem = styled(Paper)(({ theme }) => ({
-   padding: "10px",
+   padding: '10px',
    maxWidth: '335px',
    overflow: 'auto',
    height: 'fit-content',
    alignSelf: 'center',
    '&:hover': {
-       cursor: 'pointer'  
-   }
+       cursor: 'pointer',  
+   },
 }));
 
 export const PermDeleteButton = styled(Button)(({ theme }) => ({
@@ -25,8 +34,8 @@ export const PermDeleteButton = styled(Button)(({ theme }) => ({
         marginRight: '1px',
         borderColor: 'red',
         paddingLeft: '9px',
-        opacity: '1'
-    }
+        opacity: '1',
+    },
 }));
 
 function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completedStepCounter }) {
@@ -38,7 +47,9 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                     variant="h6" 
                     component="h4" 
                     sx={{ marginTop: '20px', textDecoration: 'underline', textAlign: 'center' }}
-                >To-Do List</Typography>
+                >
+                    To-Do List
+                </Typography>
             }
             <List 
                 sx= {{
@@ -66,7 +77,9 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                                         height: 'fit-content', 
                                         alignSelf: 'center',  
                                         minWidth: '0px' }}
-                            >X</PermDeleteButton>
+                            >
+                                X
+                            </PermDeleteButton>
                             <TaskListItem 
                                 elevation={2} 
                                 listid={index} 
@@ -89,9 +102,10 @@ function TaskList({ allTasks, handleTaskDelete, handleFullTaskDisplay, completed
                                     variant="body1"
                                     listid={index} 
                                     onClick={handleFullTaskDisplay}
-                                >{`Completed ${completedStepCounter(taskObj.taskSteps)} of ${taskObj.taskSteps.length} steps.`}</Typography>
+                                >
+                                    {`Completed ${completedStepCounter(taskObj.taskSteps)} of ${taskObj.taskSteps.length} steps.`}
+                                </Typography>
                             </TaskListItem>
-                            
                         </Stack> 
                     </ListItem>
                 ))}
