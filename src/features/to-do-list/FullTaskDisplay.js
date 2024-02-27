@@ -1,31 +1,33 @@
 import { TextField, Button, List, ListItem, Checkbox, FormControlLabel, Container } from "@mui/material";
 import React from "react";
+import { produce } from 'immer';
 
-function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepFocus, focused, onFocus, onBlur, allTasks, setAllTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDelete, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
+function FullTaskDisplay ({ index, allTasks, dispatch, updateTasks, handleTaskTitleEdit, handleCheck, handleSubmittedStepDeleteToggle, submittedTaskNewStep, handleSubmittedTaskNewStepChange, handleSubmittedTaskNewStepAdd, handleListClose }) {
 
   return (
-    <form onSubmit={handleListClose}>
+    <form onSubmit={handleListClose} data-test="todo-submitted-task-full-display">
         <TextField
           label="Task Title"
           name="Task Title"
           defaultValue={allTasks[index].taskTitle}
           onChange={handleTaskTitleEdit}
+          data-test="todo-submitted-task-title"
         />
         <Button 
           variant="outlined" 
           size="small" 
           type="submit"
-          sx={{ marginLeft: '5px' }}  
+          sx={{ marginLeft: '5px' }}
+          data-test="todo-submitted-task-save-btn"  
         >Save</Button>
-        <List>
+        <List data-test="todo-submitted-task-step-list">
           {allTasks[index].taskSteps.map((step, stepIndex) => {
 
             const handleStepTitleEdit = (event) => {
-              let updateAllTasks = [...allTasks];
-              updateAllTasks[index].taskSteps[stepIndex].title = event.target.value;
-              setAllTasks(updateAllTasks);
-              console.log(event);
-              console.log(step.title + stepIndex);
+              let updateAllTasks = produce(allTasks, draft => {
+                draft[index].taskSteps[stepIndex].title = event.target.value;
+              });
+              dispatch(updateTasks(updateAllTasks));
             }
 
             
@@ -37,8 +39,6 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     size="small" 
                     defaultValue={allTasks[index].taskSteps[stepIndex].title} 
                     onChange={handleStepTitleEdit}
-                    onFocus={onFocus}
-                    onBlur={onBlur} 
                   />
                   <FormControlLabel
                     control={
@@ -47,7 +47,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                         stepindex={stepIndex} 
                         type="checkbox" 
                         onClick={handleCheck} 
-                        defaultChecked={step.complete}
+                        checked={step.complete}
                         sx={{ padding: '0px' }}
                       />
                     }
@@ -59,7 +59,7 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
                     size="small"
                     stepindex={stepIndex} 
                     listid={index} 
-                    onClick={handleSubmittedStepDelete}
+                    onClick={handleSubmittedStepDeleteToggle}
                   >{step.removed === true ? 'Re-add' : 'Remove'}</Button>
                 </ListItem>
             )})
@@ -71,18 +71,19 @@ function FullTaskDisplay ({ index, submittedTaskStepFocus, setSubmittedTaskStepF
               label="Add steps"
               variant="standard"
               size="small"
-              //placeholder="Add Step"
               taskindex={index}
               newstepindex={allTasks[index].taskSteps.length}
               value={submittedTaskNewStep}
               onChange={handleSubmittedTaskNewStepChange}
+              data-test="todo-submitted-task-new-step-input"
             />
             <Button 
               variant="outlined" 
               size="small" 
               onClick={handleSubmittedTaskNewStepAdd} 
               listid={index}
-              sx={{ marginLeft: '5px' }} 
+              sx={{ marginLeft: '5px' }}
+              data-test="todo-submitted-task-new-step-submit-btn" 
             >Add Step</Button>
         </Container>  
     </form>

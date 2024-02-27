@@ -1,10 +1,15 @@
+/* global cy */
+
 export class MainPageObject {
   constructor() {
     this.settingsIcon = "[data-testid='SettingsIcon']";
     this.dashboardLogo = "div:contains('Daily Dashboard')";
   }
   visit() {
-    cy.visit("/");
+    cy.visit('/');
+  }
+  reload() {
+    cy.reload();
   }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
@@ -28,10 +33,14 @@ export class MainPageObject {
     return new CalendarWidget();
   }
 
+  getToDoListWidget() {
+    return new ToDoListWidget();
+  }
+
   async getLocalStorageItem(key) {
     try {
       const response = await cy.getAllLocalStorage();
-      const baseUrl = cy.config("baseUrl");
+      const baseUrl = cy.config('baseUrl');
       console.log(baseUrl);
       console.log(response);
       return response[baseUrl][key];
@@ -48,7 +57,7 @@ export class MainPageObject {
       console.error(`Error setting local storage item: ${error}`);
     }
   }
-}
+} 
 
 class WeatherWidget extends MainPageObject {
   constructor() {
@@ -87,5 +96,59 @@ class CalendarWidget extends MainPageObject {
   }
   getCalendarContainer() {
     return cy.get(this.calendar);
+  }
+}
+
+class ToDoListWidget extends MainPageObject {
+  constructor() {
+    super();
+  }
+  getToDoContainer() {
+    return cy.get('[data-test="todo-container"]');
+  }
+  getNewTaskTitleInput() {
+    return cy.get('[data-test="todo-newtask-name-input"]').find('input');
+  }
+  setNewTaskTitle(text) {
+    return this.getNewTaskTitleInput().type(text);
+  }
+  getNewTaskNewStep() {
+    return cy.get('[data-test="todo-newtask-step-input"]').find('input');
+  }
+  setNewTaskNewStep(text) {
+    return this.getNewTaskNewStep().type(text);
+  }
+  getNewTaskStepList() {
+    return cy.get('[data-test="todo-newtask-steps-list"]');
+  }
+  getNewTaskSubmitBtn() {
+    return cy.get('[data-test="todo-newtask-submit-btn"]');
+  }
+  getNewTaskStepSubmitBtn() {
+    return cy.get('[data-test="todo-newtask-step-submit-btn"]');
+  }
+  getToDoList() {
+    return cy.get('[data-test="todo-list"]');
+  }
+  getSubmittedTaskTitle() {
+    return cy.get('[data-test="todo-submitted-task-title"]').find('input');
+  }
+  editSubmittedTaskTitle(text) {
+    return this.getSubmittedTaskTitle().type(text);
+  }
+  getSubmittedTaskSaveBtn() {
+    return cy.get('[data-test="todo-submitted-task-save-btn"]');
+  }
+  getSubmittedTaskStepList() {
+    return cy.get('[data-test="todo-submitted-task-step-list"]');
+  }
+  getSubmittedTaskNewStepInput() {
+    return cy.get('[data-test="todo-submitted-task-new-step-input"]').find('input');
+  }
+  setSubmittedTaskNewStep(text) {
+    return this.getSubmittedTaskNewStepInput().type(text);
+  }
+  getSubmittedTaskNewStepSubmitBtn() {
+    return cy.get('[data-test="todo-submitted-task-new-step-submit-btn"]');
   }
 }

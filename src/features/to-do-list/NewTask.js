@@ -1,16 +1,13 @@
 import { TextField, Button, List, ListItem, styled, Container, Box } from "@mui/material";
 import { PermDeleteButton } from "./TaskList";
-import React from "react"; //removed useState import as it was not in use
+import React from "react"; 
 
 const NewTaskButton = styled(Button)(({ theme }) => ({
     marginLeft: '5px',
  }));
 
-function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleTaskTitleChange, handleStepTitleChange, handleStepAdd, handleStepRemove, handleTaskSubmit }) {
+function NewTask({ newTask, stepTitle, steps, setSteps, handleTaskTitleChange, handleStepTitleChange, handleStepAdd, handleStepRemove, handleTaskSubmit }) {
 
-    //console.log(steps);
-    //console.log(newTask);
-   
     return (
         <form onSubmit={handleTaskSubmit}>
             <Box sx={{ display: 'flex', flexDirection: 'column'}}>
@@ -19,7 +16,8 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                     label="Enter new Task Title"
                     name="taskTitle"
                     value={newTask.taskTitle || ""}
-                    onChange={handleTaskTitleChange} 
+                    onChange={handleTaskTitleChange}
+                    data-test="todo-newtask-name-input" 
                 />
                 
                 {newTask.taskTitle && (
@@ -31,6 +29,7 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                             alignItems: 'flex-start', 
                             marginBottom: '1rem',
                         }}
+                        data-test="todo-newtask-steps-list"
                     >
                         {steps.map((step, index) => {
 
@@ -48,8 +47,6 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                                         variant="outlined"
                                         value={steps[index].title}
                                         onChange={handleStepChange}
-                                        //onFocus={onFocus}
-                                        //onBlur={onBlur} 
                                     />
                                     <PermDeleteButton 
                                         variant="outlined" 
@@ -70,16 +67,19 @@ function NewTask({ newTask, onFocus, onBlur, stepTitle, steps, setSteps, handleT
                             variant="standard"
                             value={stepTitle}
                             onChange={handleStepTitleChange}
+                            data-test="todo-newtask-step-input"
                         />
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             onClick={handleStepAdd}
+                            data-test="todo-newtask-step-submit-btn"
                         >Add Step</NewTaskButton>
                         <NewTaskButton 
                             variant="outlined" 
                             size="small" 
                             type="submit"
+                            data-test="todo-newtask-submit-btn"
                         >Save Task</NewTaskButton>
                     </Container>
                 </>)}

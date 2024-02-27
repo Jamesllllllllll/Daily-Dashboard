@@ -1,3 +1,5 @@
+/* global cy */
+
 import { MainPageObject } from "../pageObjects/pageObject";
 
 const mainPageObject = new MainPageObject();
@@ -50,5 +52,16 @@ describe("Calendar", () => {
       .getCalendarWidget()
       .getCalendarContainer()
       .should("be.visible");
+  });
+});
+
+describe('To-Dos', () => {
+  it('Loads the ToDos Widget"', () => {
+    mainPageObject.visit();
+    mainPageObject
+      .getToDoListWidget()
+      .getNewTaskTitleInput()
+      .should('be.visible')
+      .and('not.have.value');
   });
 });
