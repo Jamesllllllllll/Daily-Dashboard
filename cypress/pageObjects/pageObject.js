@@ -8,6 +8,9 @@ export class MainPageObject {
   visit() {
     cy.visit('/');
   }
+  reload() {
+    cy.reload();
+  }
   clickSettingsIcon() {
     cy.get(this.settingsIcon).click();
   }
@@ -54,7 +57,7 @@ export class MainPageObject {
       console.error(`Error setting local storage item: ${error}`);
     }
   }
-}
+} 
 
 class WeatherWidget extends MainPageObject {
   constructor() {

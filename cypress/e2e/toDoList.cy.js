@@ -20,10 +20,12 @@ const taskName2Step4 = 'Run 10km';
 
 
 describe('ToDo Widget E2E Tests', () => {
-  
-  it('E2E test 1', () => {
-    // Open URL
+  // Open Url before each test
+  beforeEach(() => {
     mainPageObject.visit();
+  });
+
+  it('E2E test 1', () => {
     // Enter new task name
     toDoWidget.setNewTaskTitle(taskName);
     toDoWidget.getNewTaskTitleInput().should('have.value', taskName);
@@ -39,7 +41,12 @@ describe('ToDo Widget E2E Tests', () => {
     toDoWidget.getNewTaskSubmitBtn().click();
     toDoWidget.getNewTaskTitleInput().should('have.value', '');
     toDoWidget.getToDoList().should('be.visible');
-    toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 0 of 1 steps.')
+    toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 0 of 1 steps.');
+    // Reload page to check data persistence
+    mainPageObject.reload();
+    toDoWidget.getNewTaskTitleInput().should('have.value', '');
+    toDoWidget.getToDoList().should('be.visible');
+    toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 0 of 1 steps.');
     // Click into task to display detailed task view
     toDoWidget.getToDoList().first().click();
     toDoWidget.getSubmittedTaskTitle().should('have.value', taskName);
@@ -67,6 +74,12 @@ describe('ToDo Widget E2E Tests', () => {
     toDoWidget.getSubmittedTaskSaveBtn().click();
     toDoWidget.getNewTaskTitleInput().should('be.visible');
     toDoWidget.getToDoList().should('be.visible');
+    toDoWidget.getToDoList().find('p').first().should('have.text', taskName + taskNameEdit);
+    toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 0 of 2 steps.');
+    // Reload page to check data persistence
+    mainPageObject.reload();
+    toDoWidget.getToDoList().should('be.visible');
+    toDoWidget.getToDoList().find('p').first().should('have.text', taskName + taskNameEdit);
     toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 0 of 2 steps.');
     // Click back into task to display detailed task view
     toDoWidget.getToDoList().first().click();
@@ -158,6 +171,9 @@ describe('ToDo Widget E2E Tests', () => {
     toDoWidget.getSubmittedTaskStepList().first().find('li').first().find('input').last().click();
     toDoWidget.getSubmittedTaskStepList().first().find('li').last().find('input').last().click();
     toDoWidget.getSubmittedTaskSaveBtn().click();
+    toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 2 of 3 steps.');
+    mainPageObject.reload();
+    toDoWidget.getToDoList().find('p').first().should('have.text', taskName2);
     toDoWidget.getToDoList().find('p').last().should('have.text', 'Completed 2 of 3 steps.');
   })
 
