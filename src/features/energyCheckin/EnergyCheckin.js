@@ -44,6 +44,7 @@ export default function EnergyCheckin() {
       <button
         className={styles.button}
         onClick={() => dispatch(toggleSlider())}
+        data-testid='openEnergySlider'
       >
         <img src={lightning} alt='lightning' className={styles.lightning} />
       </button>
@@ -59,11 +60,17 @@ export default function EnergyCheckin() {
             value={energy}
             id='energy-slider'
             onChange={handleChange}
+            data-testid='energySlider'
           />
-          <p className={styles.energyValue}>{energy}</p>
+          <p className={styles.energyValue} 
+            data-testid='energy'>
+            {energy}
+          </p>
+
           <Button
             onClick={() => dispatch(toggleSlider())}
             sx={{ alignSelf: 'center' }}
+            data-testid='saveEnergy'
           >
             Save
           </Button>

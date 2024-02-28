@@ -42,7 +42,69 @@ export class MainPageObject {
   }
 }
 
-function isJSONValid(obj) {
+class WeatherWidget extends MainPageObject {
+  constructor() {
+    super();
+    this.weatherWidget = "[data-testid='weatherWidget']";
+  }
+  getWeatherContainer() {
+    return cy.get(this.weatherWidget);
+  }
+}
+
+class WellBeingCheckinWidget extends MainPageObject {
+  constructor() {
+    super();
+    this.wellBeingCheckin = "[data-testid='wellBeingCheckin']";
+    //emotions
+    this.openEmotionsButton = "[data-testid = 'openEmotionsButton']";
+    this.emotionsList = "[data-testid ='emotionsList']";
+    this.emotion = "[data-testid ='emotion']";
+    //energy
+    this.openEnergySlider = "[data-testid = 'openEnergySlider']";
+    this.energySlider = "[data-testid = 'energySlider']";
+    this.energy = "[data-testid = 'energy']";
+    this.saveEnergy = "[data-testid = 'saveEnergy']";
+
+  }
+  getWellBeingCheckinContainer() {
+    return cy.get(this.wellBeingCheckin);
+  }
+
+  //Emotions Methods
+  getOpenEmotionsButton(){
+    return cy.get(this.openEmotionsButton);
+  }
+
+  getEmotionsList(){
+    return cy.get(this.emotionsList);
+  }
+
+  getEmotion(){
+    return cy.get(this.emotion);
+  }
+
+  //Energy Methods
+  getOpenEnergySlider(){
+    return cy.get(this.openEnergySlider);
+  }
+
+  getEnergySlider(){
+    return cy.get(this.energySlider);
+  }
+
+  getEnergy(){
+    return cy.get(this.energy);
+  }
+
+  getSaveEnergy(){
+    return cy.get(this.saveEnergy);
+  }
+
+}
+
+//Template IDEA for Schema Validation 
+/* function isJSONValid(obj) {
 
   for (let key in obj) {
     if (obj[key] !== null && obj[key] !== undefined) {
@@ -65,47 +127,11 @@ function isJSONValid(obj) {
     }
   }
   return true; //valid
-};
+}; */
 
-
+//SHAPE TO FOLLOW:
 /* addToEmotionsHistory({
   date: today,
   name: picName,
   pic: picSrc,
 }) */
-
-class WeatherWidget extends MainPageObject {
-  constructor() {
-    super();
-    this.weatherWidget = "[data-testid='weatherWidget']";
-  }
-  getWeatherContainer() {
-    return cy.get(this.weatherWidget);
-  }
-}
-
-class WellBeingCheckinWidget extends MainPageObject {
-  constructor() {
-    super();
-    this.wellBeingCheckin = "[data-testid='wellBeingCheckin']";
-    this.openEmotionsButton = "[data-testid = 'openEmotionsButton']";
-    this.emotionsList = "[data-testid ='emotionsList']";
-    this.emotion = "[data-testid ='emotion']";
-
-  }
-  getWellBeingCheckinContainer() {
-    return cy.get(this.wellBeingCheckin);
-  }
-  getOpenEmotionsButton(){
-    return cy.get(this.openEmotionsButton);
-  }
-
-  getEmotionsList(){
-    return cy.get(this.emotionsList);
-  }
-
-  getEmotion(){
-    return cy.get(this.emotion);
-  }
-
-}
