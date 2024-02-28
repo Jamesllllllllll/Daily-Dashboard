@@ -42,6 +42,38 @@ export class MainPageObject {
   }
 }
 
+function isJSONValid(obj) {
+
+  for (let key in obj) {
+    if (obj[key] !== null && obj[key] !== undefined) {
+      if (typeof obj[key] === "object") {
+        if (Object.keys(obj[key]).length === 0) {
+          return false; //invalid
+        }
+      }
+      if (Array.isArray(obj[key])) {
+        if (obj[key].length === 0) {
+          return false; //invalid
+        }
+      }
+      if (!isJSONValid(obj)) {
+        return isJSONValid(obj);
+      }
+
+    } else {
+      return false; //invalid
+    }
+  }
+  return true; //valid
+};
+
+
+/* addToEmotionsHistory({
+  date: today,
+  name: picName,
+  pic: picSrc,
+}) */
+
 class WeatherWidget extends MainPageObject {
   constructor() {
     super();

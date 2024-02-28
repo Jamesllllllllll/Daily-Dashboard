@@ -18,7 +18,7 @@ export function ShowHistory() {
     let counter = 0;
 
     for (let i = 0; i <= 6; i++) {
-      let existingDay; //moved this so it reset each day
+      let existingDay; //moved this so it resets each day
       emotionsMapped.push(
         emotionsHistory.map((object) => {
           if (object.date !== i) {
