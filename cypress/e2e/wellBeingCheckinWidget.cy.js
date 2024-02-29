@@ -42,6 +42,7 @@ describe("User Journey", () => {
     //ENERGY
   
     it("is shows corresponding energy level when dragging slider", () => {
+    it("it saves corresponding energy level when dragging slider", () => {
       const wellBeingCheckinWidget = mainPageObject.getWellBeingCheckinWidget();
   
       //opening energy slider
@@ -52,12 +53,14 @@ describe("User Journey", () => {
       wellBeingCheckinWidget.getEnergySlider().click({ multiple: true, force: true });
       // Press right arrow four times to "40"
       wellBeingCheckinWidget.getEnergySlider().type("{leftarrow}");
+      wellBeingCheckinWidget.getEnergySlider().as('range').invoke('val', 40).trigger('input');
       //saving energy
       wellBeingCheckinWidget.getSaveEnergy().click();
       //checking "40" is visible
       wellBeingCheckinWidget.getOpenEnergySlider().click();
       wellBeingCheckinWidget.getEnergySlider().should("be.visible"); 
       wellBeingCheckinWidget.getEnergy().get('[value="40"]').should("be.visible");
+      wellBeingCheckinWidget.getEnergy().should('have.text', '40');
 
 
 /*       
