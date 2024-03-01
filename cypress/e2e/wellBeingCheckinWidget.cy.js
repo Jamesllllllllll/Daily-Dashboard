@@ -53,6 +53,7 @@ describe("User Journey", () => {
       wellBeingCheckinWidget.getEnergySlider().click({ multiple: true, force: true });
       // Press right arrow four times to "40"
       wellBeingCheckinWidget.getEnergySlider().type("{leftarrow}");
+      // Changing the range value to 40
       wellBeingCheckinWidget.getEnergySlider().as('range').invoke('val', 40).trigger('input');
       //saving energy
       wellBeingCheckinWidget.getSaveEnergy().click();

@@ -21,6 +21,7 @@
     "slate": "^0.94.1",
     "slate-history": "^0.93.0",
     "slate-react": "^0.97.1",
+    "vercel": "^33.5.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
